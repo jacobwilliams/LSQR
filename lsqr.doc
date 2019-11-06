@@ -1,0 +1,14 @@
+*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*     File lsqr.doc
+*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+The following files are associated with LSQR.
+If you receive them as a single file, unpack them by
+looking for the string "File lsqr" at the start of each file.
+
+   lsqr.doc       This file.
+   lsqr.f         The f77 source code for LSQR, including documentation.
+   lsqrblas.f     A few BLAS.
+   lsqrchk.f      Routines you can call to check your Ax and A'y products.
+   lsqrtst.f      An example problem and driver.
+
