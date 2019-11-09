@@ -115,8 +115,7 @@
 !     than SYMMLQ (but will take the same number of iterations).
 !
 !
-!     Notation
-!     --------
+!### Notation
 !
 !     The following quantities are used in discussing the subroutine
 !     parameters:
@@ -140,91 +139,7 @@
 !     Parameters
 !     ----------
 !
-!     m       input      m, the number of rows in A.
 !
-!     n       input      n, the number of columns in A.
-!
-!     aprod   external   See above.
-!
-!     damp    input      The damping parameter for problem 3 above.
-!                        (damp should be 0.0 for problems 1 and 2.)
-!                        If the system A*x = b is incompatible, values
-!                        of damp in the range 0 to sqrt(relpr)*norm(A)
-!                        will probably have a negligible effect.
-!                        Larger values of damp will tend to decrease
-!                        the norm of x and reduce the number of
-!                        iterations required by LSQR.
-!
-!                        The work per iteration and the storage needed
-!                        by LSQR are the same for all values of damp.
-!
-!     wantse  input      A logical variable to say if the array se(*)
-!                        of standard error estimates should be computed.
-!                        If m > n  or  damp > 0,  the system is
-!                        overdetermined and the standard errors may be
-!                        useful.  (See the first LSQR reference.)
-!                        Otherwise (m <= n  and  damp = 0) they do not
-!                        mean much.  Some time and storage can be saved
-!                        by setting wantse = .false. and using any
-!                        convenient array for se(*), which won't be
-!                        touched.
-!
-!     u(m)    input      The rhs vector b.  Beware that u is
-!                        over-written by LSQR.
-!
-!     v(n)    workspace
-!
-!     w(n)    workspace
-!
-!     x(n)    output     Returns the computed solution x.
-!
-!     se(*)   output     If wantse is true, the dimension of se must be
-!             (maybe)    n or more.  se(*) then returns standard error
-!                        estimates for the components of x.
-!                        For each i, se(i) is set to the value
-!                           rnorm * sqrt( sigma(i,i) / t ),
-!                        where sigma(i,i) is an estimate of the i-th
-!                        diagonal of the inverse of Abar(transpose)*Abar
-!                        and  t = 1      if  m <= n,
-!                             t = m - n  if  m > n  and  damp = 0,
-!                             t = m      if  damp /= 0.
-!
-!                        If wantse is false, se(*) will not be touched.
-!                        The actual parameter can be any suitable array
-!                        of any length.
-!
-!     atol    input      An estimate of the relative error in the data
-!                        defining the matrix A.  For example,
-!                        if A is accurate to about 6 digits, set
-!                        atol = 1.0e-6 .
-!
-!     btol    input      An estimate of the relative error in the data
-!                        defining the rhs vector b.  For example,
-!                        if b is accurate to about 6 digits, set
-!                        btol = 1.0e-6 .
-!
-!     conlim  input      An upper limit on cond(Abar), the apparent
-!                        condition number of the matrix Abar.
-!                        Iterations will be terminated if a computed
-!                        estimate of cond(Abar) exceeds conlim.
-!                        This is intended to prevent certain small or
-!                        zero singular values of A or Abar from
-!                        coming into effect and causing unwanted growth
-!                        in the computed solution.
-!
-!                        conlim and damp may be used separately or
-!                        together to regularize ill-conditioned systems.
-!
-!                        Normally, conlim should be in the range
-!                        1000 to 1/relpr.
-!                        Suggested value:
-!                        conlim = 1/(100*relpr)  for compatible systems,
-!                        conlim = 1/(10*sqrt(relpr)) for least squares.
-!
-!             Note:  If the user is not concerned about the parameters
-!             atol, btol and conlim, any or all of them may be set
-!             to zero.  The effect will be the same as the values
-!             relpr, relpr and 1/relpr respectively.
 !
 !     itnlim  input      An upper limit on the number of iterations.
 !                        Suggested value:
@@ -291,85 +206,67 @@
 !     xnorm   output     An estimate of the norm of the final
 !                        solution vector x.
 !
-!
-!     Subroutines and functions used
-!     ------------------------------
-!
-!     USER               aprod
-!     LSQR               d2norm
-!     BLAS               dcopy, dnrm2, dscal (see Lawson et al. below)
-!
-!
 !     Precision
 !     ---------
 !
 !     The number of iterations required by LSQR will usually decrease
 !     if the computation is performed in higher precision.
-!     At least 15-digit arithmetic should normally be used.
-!     To convert LSQR and D2NORM between single and real(wp),
-!     change
-!                        real(wp)
-!                        dcopy, dnrm2, dscal
-!     to the appropriate FORTRAN and BLAS equivalents.
-!     Also change 'd+' or 'e+' in the parameter statement.
 !
 !
-!     References
-!     ----------
+!### References
 !
-!     C.C. Paige and M.A. Saunders,  LSQR: An algorithm for sparse
-!          linear equations and sparse least squares,
-!          ACM Transactions on Mathematical Software 8, 1 (March 1982),
-!          pp. 43-71.
+!  * C.C. Paige and M.A. Saunders,  LSQR: An algorithm for sparse
+!    linear equations and sparse least squares,
+!    ACM Transactions on Mathematical Software 8, 1 (March 1982),
+!    pp. 43-71.
 !
-!     C.C. Paige and M.A. Saunders,  Algorithm 583, LSQR: Sparse
-!          linear equations and least-squares problems,
-!          ACM Transactions on Mathematical Software 8, 2 (June 1982),
-!          pp. 195-209.
+!  * C.C. Paige and M.A. Saunders,  Algorithm 583, LSQR: Sparse
+!    linear equations and least-squares problems,
+!    ACM Transactions on Mathematical Software 8, 2 (June 1982),
+!    pp. 195-209.
 !
-!     C.L. Lawson, R.J. Hanson, D.R. Kincaid and F.T. Krogh,
-!          Basic linear algebra subprograms for Fortran usage,
-!          ACM Transactions on Mathematical Software 5, 3 (Sept 1979),
-!          pp. 308-323 and 324-325.
-!     ------------------------------------------------------------------
+!  * C.L. Lawson, R.J. Hanson, D.R. Kincaid and F.T. Krogh,
+!    Basic linear algebra subprograms for Fortran usage,
+!    ACM Transactions on Mathematical Software 5, 3 (Sept 1979),
+!    pp. 308-323 and 324-325.
 !
+!### LSQR development
 !
-!     LSQR development:
-!     22 Feb 1982: LSQR sent to ACM TOMS to become Algorithm 583.
-!     15 Sep 1985: Final F66 version.  LSQR sent to "misc" in netlib.
-!     13 Oct 1987: Bug (Robert Davies, DSIR).  Have to delete
+!  * 22 Feb 1982: LSQR sent to ACM TOMS to become Algorithm 583.
+!  * 15 Sep 1985: Final F66 version.  LSQR sent to "misc" in netlib.
+!  * 13 Oct 1987: Bug (Robert Davies, DSIR).  Have to delete
 !                     if ( (one + dabs(t)) <= one ) GO TO 200
 !                  from loop 200.  The test was an attempt to reduce
 !                  underflows, but caused w(i) not to be updated.
-!     17 Mar 1989: First F77 version.
-!     04 May 1989: Bug (David Gay, AT&T).  When the second beta is zero,
+!  * 17 Mar 1989: First F77 version.
+!  * 04 May 1989: Bug (David Gay, AT&T).  When the second beta is zero,
 !                  rnorm = 0 and
 !                  test2 = arnorm / (anorm * rnorm) overflows.
 !                  Fixed by testing for rnorm = 0.
-!     05 May 1989: Sent to "misc" in netlib.
-!     14 Mar 1990: Bug (John Tomlin via IBM OSL testing).
+!  * 05 May 1989: Sent to "misc" in netlib.
+!  * 14 Mar 1990: Bug (John Tomlin via IBM OSL testing).
 !                  Setting rhbar2 = rhobar**2 + dampsq can give zero
 !                  if rhobar underflows and damp = 0.
 !                  Fixed by testing for damp = 0 specially.
-!     15 Mar 1990: Converted to lower case.
-!     21 Mar 1990: d2norm introduced to avoid overflow in numerous
+!  * 15 Mar 1990: Converted to lower case.
+!  * 21 Mar 1990: d2norm introduced to avoid overflow in numerous
 !                  items like  c = sqrt( a**2 + b**2 ).
-!     04 Sep 1991: wantse added as an argument to LSQR, to make
+!  * 04 Sep 1991: wantse added as an argument to LSQR, to make
 !                  standard errors optional.  This saves storage and
 !                  time when se(*) is not wanted.
-!     13 Feb 1992: istop now returns a value in [1,5], not [1,7].
+!  * 13 Feb 1992: istop now returns a value in [1,5], not [1,7].
 !                  1, 2 or 3 means that x solves one of the problems
 !                  Ax = b,  min norm(Ax - b)  or  damped least squares.
 !                  4 means the limit on cond(A) was reached.
 !                  5 means the limit on iterations was reached.
-!     07 Dec 1994: Keep track of dxmax = max_k norm( phi_k * d_k ).
+!  * 07 Dec 1994: Keep track of dxmax = max_k norm( phi_k * d_k ).
 !                  So far, this is just printed at the end.
 !                  A large value (relative to norm(x)) indicates
 !                  significant cancellation in forming
 !                  x  = D*f  = sum( phi_k * d_k ).
 !                  A large column of D need NOT be serious if the
 !                  corresponding phi_k is small.
-!     27 Dec 1994: Include estimate of alfa_opt in iteration log.
+!  * 27 Dec 1994: Include estimate of alfa_opt in iteration log.
 !                  alfa_opt is the optimal scale factor for the
 !                  residual in the "augmented system", as described by
 !                  A. Bjorck (1992),
@@ -380,51 +277,129 @@
 !                  Pitman Research Notes in Mathematics 260,
 !                  Longman Scientific and Technical, Harlow, Essex, 1992.
 !
+!### Author
 !
-!     Michael A. Saunders                  mike@sol-michael.stanford.edu
-!     Dept of Operations Research          na.Msaunders@na-net.ornl.gov
-!     Stanford University
-!     Stanford, CA 94305-4022              (415) 723-1875
-!-----------------------------------------------------------------------
+!  Michael A. Saunders                  mike@sol-michael.stanford.edu
+!  Dept of Operations Research          na.Msaunders@na-net.ornl.gov
+!  Stanford University
+!  Stanford, CA 94305-4022              (415) 723-1875
 
 subroutine LSQR  ( m, n, aprod, damp, wantse, &
                    u, v, w, x, se, &
                    atol, btol, conlim, itnlim, nout, &
                    istop, itn, anorm, acond, rnorm, arnorm, xnorm)
 
-implicit real(wp) (a-h,o-z)
 
-procedure(aprod_func) :: aprod
-logical            wantse
-integer            m, n, itnlim, nout, istop, itn
-real(wp)           u(m), v(n), w(n), x(n), se(*), &
-                   atol, btol, conlim, damp, &
-                   anorm, acond, rnorm, arnorm, xnorm
-
-!------------------------------------------------------------------
-
-! Local variables
+integer,intent(in)    :: m          !! the number of rows in A.
+integer,intent(in)    :: n          !! the number of columns in A.
+procedure(aprod_func) :: aprod      !!
+real(wp),intent(in)   :: damp       !! The damping parameter for problem 3 above.
+                                    !! (damp should be 0.0 for problems 1 and 2.)
+                                    !! If the system A*x = b is incompatible, values
+                                    !! of damp in the range 0 to sqrt(relpr)*norm(A)
+                                    !! will probably have a negligible effect.
+                                    !! Larger values of damp will tend to decrease
+                                    !! the norm of x and reduce the number of
+                                    !! iterations required by LSQR.
+                                    !!
+                                    !! The work per iteration and the storage needed
+                                    !! by LSQR are the same for all values of damp.
+logical,intent(in)    :: wantse     !! A logical variable to say if the array se(*)
+                                    !! of standard error estimates should be computed.
+                                    !! If m > n  or  damp > 0,  the system is
+                                    !! overdetermined and the standard errors may be
+                                    !! useful.  (See the first LSQR reference.)
+                                    !! Otherwise (m <= n  and  damp = 0) they do not
+                                    !! mean much.  Some time and storage can be saved
+                                    !! by setting wantse = .false. and using any
+                                    !! convenient array for se(*), which won't be
+                                    !! touched.
+real(wp),intent(inout):: u(m)       !! The rhs vector b.  Beware that u is
+                                    !! over-written by LSQR.
+real(wp),intent(inout):: v(n)       !! workspace
+real(wp),intent(inout):: w(n)       !! workspace
+real(wp),intent(out)  :: x(n)       !! Returns the computed solution x.
+real(wp),dimension(*),intent(out) :: se   !! If wantse is true, the dimension of se must be
+                                          !! n or more.  se(*) then returns standard error
+                                          !! estimates for the components of x.
+                                          !! For each i, se(i) is set to the value
+                                          !! `rnorm * sqrt( sigma(i,i) / t )`,
+                                          !! where sigma(i,i) is an estimate of the i-th
+                                          !! diagonal of the inverse of Abar(transpose)*Abar
+                                          !! and:
+                                          !! * t = 1      if  m <= n,
+                                          !! * t = m - n  if  m > n  and  damp = 0,
+                                          !! * t = m      if  damp /= 0.
+                                          !!
+                                          !! If wantse is false, se(*) will not be touched.
+                                          !! The actual parameter can be any suitable array
+                                          !! of any length.
+real(wp),intent(in)   :: atol       !! An estimate of the relative error in the data
+                                    !! defining the matrix A.  For example,
+                                    !! if A is accurate to about 6 digits, set
+                                    !! atol = 1.0e-6 .
+real(wp),intent(in)   :: btol       !! An estimate of the relative error in the data
+                                    !! defining the rhs vector b.  For example,
+                                    !! if b is accurate to about 6 digits, set
+                                    !! btol = 1.0e-6 .
+real(wp),intent(in)              :: conlim   !! An upper limit on cond(Abar), the apparent
+                                             !! condition number of the matrix Abar.
+                                             !! Iterations will be terminated if a computed
+                                             !! estimate of cond(Abar) exceeds conlim.
+                                             !! This is intended to prevent certain small or
+                                             !! zero singular values of A or Abar from
+                                             !! coming into effect and causing unwanted growth
+                                             !! in the computed solution.
+                                             !!
+                                             !! conlim and damp may be used separately or
+                                             !! together to regularize ill-conditioned systems.
+                                             !!
+                                             !! Normally, conlim should be in the range
+                                             !! 1000 to 1/relpr.
+                                             !!
+                                             !! Suggested value:
+                                             !!
+                                             !! * conlim = 1/(100*relpr)  for compatible systems,
+                                             !! * conlim = 1/(10*sqrt(relpr)) for least squares.
+                                             !!
+                                             !! Note:  If the user is not concerned about the parameters
+                                             !! atol, btol and conlim, any or all of them may be set
+                                             !! to zero.  The effect will be the same as the values
+                                             !! relpr, relpr and 1/relpr respectively.
+integer,intent(in)               :: itnlim   !! An upper limit on the number of iterations.
+                                             !! Suggested value:
+                                             !! * itnlim = n/2 for well-conditioned systems
+                                             !!   with clustered singular values,
+                                             !! * itnlim = 4*n   otherwise.
+integer               :: nout       !!
+integer               :: istop      !!
+integer               :: itn        !!
+real(wp)              :: anorm      !!
+real(wp)              :: acond      !!
+real(wp)              :: rnorm      !!
+real(wp)              :: arnorm     !!
+real(wp)              :: xnorm      !!
 
 logical :: damped, extra
 integer :: i, maxdx, nchar, nconv, nstop
-real(wp) :: alpha, beta, bnorm, &
-                   cs, cs1, cs2, ctol, &
-                   delta, dknorm, dnorm, dxk, dxmax, &
-                   gamma, gambar, phi, phibar, psi, &
-                   res2, rho, rhobar, rhbar1, &
-                   rhs, rtol, sn, sn1, sn2, &
-                   t, tau, temp, test1, test2, test3, &
-                   theta, t1, t2, t3, xnorm1, z, zbar
+real(wp) :: alfopt, alpha, beta, bnorm, &
+            cs, cs1, cs2, ctol, &
+            delta, dknorm, dnorm, dxk, dxmax, &
+            gamma, gambar, phi, phibar, psi, &
+            res2, rho, rhobar, rhbar1, &
+            rhs, rtol, sn, sn1, sn2, &
+            t, tau, temp, test1, test2, test3, &
+            theta, t1, t2, t3, xnorm1, z, zbar
 logical :: print_iter
 
 character(len=14),parameter :: enter = ' Enter LSQR.  '
 character(len=14),parameter :: exit  = ' Exit  LSQR.  '
-character(len=53),dimension(0:5),parameter :: msg = [ 'The exact solution is  x = 0', &
-                                                      'A solution to Ax = b was found, given atol, btol', &
-                                                      'A least-squares solution was found, given atol', &
-                                                      'A damped least-squares solution was found, given atol', &
-                                                      'Cond(Abar) seems to be too large, given conlim', &
-                                                      'The iteration limit was reached' ]
+character(len=53),dimension(0:5),parameter :: msg = [ 'The exact solution is  x = 0                         ',&
+                                                      'A solution to Ax = b was found, given atol, btol     ',&
+                                                      'A least-squares solution was found, given atol       ',&
+                                                      'A damped least-squares solution was found, given atol',&
+                                                      'Cond(Abar) seems to be too large, given conlim       ',&
+                                                      'The iteration limit was reached                      ' ]
 
 !-----------------------------------------------------------------------
 
@@ -745,11 +720,14 @@ end subroutine LSQR
 !>
 ! d2norm returns `sqrt( a**2 + b**2 )` with precautions to avoid overflow.
 !
-! 21 Mar 1990: First version.
+!### History
+! * 21 Mar 1990: First version.
 
-   function d2norm( a, b )
+   pure function d2norm( a, b )
 
-   real(wp) :: d2norm, a, b
+   real(wp) :: d2norm
+   real(wp),intent(in) :: a
+   real(wp),intent(in) :: b
 
    real(wp) :: scale
 

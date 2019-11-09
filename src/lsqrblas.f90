@@ -22,7 +22,6 @@
     subroutine dcopy(n,dx,incx,dy,incy)
 
     integer incx,incy,n
-
     real(wp) dx(*),dy(*)
 
     integer i,ix,iy,m,mp1

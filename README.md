@@ -4,7 +4,6 @@ The software for LSQR (f77 version) is provided by SOL, Stanford University
 under the terms of the OSI Common Public License (CPL):
 http://www.opensource.org/licenses/cpl1.0.php
 
-
 * 11 Feb 2000: First set of files available for download from SOL.
 * 31 Mar 2005: In lsqrtest.f, changed atol = eps**0.666667 to eps*0.99
              to increase accuracy of the solution.  LSQR appears to be
@@ -16,12 +15,3 @@ http://www.opensource.org/licenses/cpl1.0.php
 
 Please send comments to Michael Saunders, SOL, Stanford University
                         saunders@stanford.edu  650-723-1875
-
-The f77 version of LSQR involves the following files:
-
- * lsqr.doc
- * lsqr.f
- * lsqrblas.f   (not needed if you have BLAS-1)
- * lsqrchk.f
- * lsqrtest.f
- * LSQR.LIS     (example output file from lsqrtest.f)
