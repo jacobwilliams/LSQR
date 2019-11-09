@@ -34,7 +34,7 @@
 
 !***************************************************************************************************
 !>
-!  LSQR  finds a solution x to the following problems:
+!  LSQR finds a solution x to the following problems:
 !
 !  1. Unsymmetric equations --    solve  A*x = b
 !
@@ -45,80 +45,79 @@
 !                                        ( damp*I )     ( 0 )
 !                                 in the least-squares sense
 !
-!     where A is a matrix with m rows and n columns, b is an
-!     m-vector, and damp is a scalar.  (All quantities are real.)
-!     The matrix A is intended to be large and sparse.  It is accessed
-!     by means of subroutine calls to `aprod`.
+!  where A is a matrix with m rows and n columns, b is an
+!  m-vector, and damp is a scalar.  (All quantities are real.)
+!  The matrix A is intended to be large and sparse.  It is accessed
+!  by means of subroutine calls to `aprod`.
 !
-!     The rhs vector b is input via u, and subsequently overwritten.
+!  The rhs vector b is input via u, and subsequently overwritten.
 !
-!     Note:  LSQR uses an iterative method to approximate the solution.
-!     The number of iterations required to reach a certain accuracy
-!     depends strongly on the scaling of the problem.  Poor scaling of
-!     the rows or columns of A should therefore be avoided where
-!     possible.
+!  Note:  LSQR uses an iterative method to approximate the solution.
+!  The number of iterations required to reach a certain accuracy
+!  depends strongly on the scaling of the problem.  Poor scaling of
+!  the rows or columns of A should therefore be avoided where
+!  possible.
 !
-!     For example, in problem 1 the solution is unaltered by
-!     row-scaling.  If a row of A is very small or large compared to
-!     the other rows of A, the corresponding row of ( A  b ) should be
-!     scaled up or down.
+!  For example, in problem 1 the solution is unaltered by
+!  row-scaling.  If a row of A is very small or large compared to
+!  the other rows of A, the corresponding row of ( A  b ) should be
+!  scaled up or down.
 !
-!     In problems 1 and 2, the solution x is easily recovered
-!     following column-scaling.  Unless better information is known,
-!     the nonzero columns of A should be scaled so that they all have
-!     the same Euclidean norm (e.g., 1.0).
+!  In problems 1 and 2, the solution x is easily recovered
+!  following column-scaling.  Unless better information is known,
+!  the nonzero columns of A should be scaled so that they all have
+!  the same Euclidean norm (e.g., 1.0).
 !
-!     In problem 3, there is no freedom to re-scale if damp is
-!     nonzero.  However, the value of damp should be assigned only
-!     after attention has been paid to the scaling of A.
+!  In problem 3, there is no freedom to re-scale if damp is
+!  nonzero.  However, the value of damp should be assigned only
+!  after attention has been paid to the scaling of A.
 !
-!     The parameter damp is intended to help regularize
-!     ill-conditioned systems, by preventing the true solution from
-!     being very large.  Another aid to regularization is provided by
-!     the parameter acond, which may be used to terminate iterations
-!     before the computed solution becomes very large.
+!  The parameter damp is intended to help regularize
+!  ill-conditioned systems, by preventing the true solution from
+!  being very large.  Another aid to regularization is provided by
+!  the parameter acond, which may be used to terminate iterations
+!  before the computed solution becomes very large.
 !
-!     Note that x is not an input parameter.
-!     If some initial estimate x0 is known and if damp = 0,
-!     one could proceed as follows:
+!  Note that x is not an input parameter.
+!  If some initial estimate x0 is known and if damp = 0,
+!  one could proceed as follows:
 !
-!       1. Compute a residual vector     r0 = b - A*x0.
-!       2. Use LSQR to solve the system  A*dx = r0.
-!       3. Add the correction dx to obtain a final solution x = x0 + dx.
+!  1. Compute a residual vector     `r0 = b - A*x0`.
+!  2. Use LSQR to solve the system  `A*dx = r0`.
+!  3. Add the correction dx to obtain a final solution `x = x0 + dx`.
 !
-!     This requires that x0 be available before and after the call
-!     to LSQR.  To judge the benefits, suppose LSQR takes k1 iterations
-!     to solve A*x = b and k2 iterations to solve A*dx = r0.
-!     If x0 is "good", norm(r0) will be smaller than norm(b).
-!     If the same stopping tolerances atol and btol are used for each
-!     system, k1 and k2 will be similar, but the final solution x0 + dx
-!     should be more accurate.  The only way to reduce the total work
-!     is to use a larger stopping tolerance for the second system.
-!     If some value btol is suitable for A*x = b, the larger value
-!     btol*norm(b)/norm(r0)  should be suitable for A*dx = r0.
+!  This requires that x0 be available before and after the call
+!  to LSQR.  To judge the benefits, suppose LSQR takes k1 iterations
+!  to solve A*x = b and k2 iterations to solve A*dx = r0.
+!  If x0 is "good", norm(r0) will be smaller than norm(b).
+!  If the same stopping tolerances atol and btol are used for each
+!  system, k1 and k2 will be similar, but the final solution x0 + dx
+!  should be more accurate.  The only way to reduce the total work
+!  is to use a larger stopping tolerance for the second system.
+!  If some value btol is suitable for A*x = b, the larger value
+!  btol*norm(b)/norm(r0)  should be suitable for A*dx = r0.
 !
-!     Preconditioning is another way to reduce the number of iterations.
-!     If it is possible to solve a related system M*x = b efficiently,
-!     where M approximates A in some helpful way
-!     (e.g. M - A has low rank or its elements are small relative to
-!     those of A), LSQR may converge more rapidly on the system
-!           A*M(inverse)*z = b,
-!     after which x can be recovered by solving M*x = z.
+!  Preconditioning is another way to reduce the number of iterations.
+!  If it is possible to solve a related system M*x = b efficiently,
+!  where M approximates A in some helpful way
+!  (e.g. M - A has low rank or its elements are small relative to
+!  those of A), LSQR may converge more rapidly on the system
+!        A*M(inverse)*z = b,
+!  after which x can be recovered by solving M*x = z.
 !
-!     NOTE: If A is symmetric, LSQR should not be used!
-!     Alternatives are the symmetric conjugate-gradient method (cg)
-!     and/or SYMMLQ.
-!     SYMMLQ is an implementation of symmetric cg that applies to
-!     any symmetric A and will converge more rapidly than LSQR.
-!     If A is positive definite, there are other implementations of
-!     symmetric cg that require slightly less work per iteration
-!     than SYMMLQ (but will take the same number of iterations).
-!
+!  NOTE: If A is symmetric, LSQR should not be used!
+!  Alternatives are the symmetric conjugate-gradient method (cg)
+!  and/or SYMMLQ.
+!  SYMMLQ is an implementation of symmetric cg that applies to
+!  any symmetric A and will converge more rapidly than LSQR.
+!  If A is positive definite, there are other implementations of
+!  symmetric cg that require slightly less work per iteration
+!  than SYMMLQ (but will take the same number of iterations).
 !
 !### Notation
 !
-!     The following quantities are used in discussing the subroutine
-!     parameters:
+! The following quantities are used in discussing the subroutine
+! parameters:
 !
 !     Abar   =  (   A    ),          bbar  =  ( b )
 !               ( damp*I )                    ( 0 )
@@ -134,84 +133,6 @@
 !               precision respectively.
 !
 !     LSQR  minimizes the function rnorm with respect to x.
-!
-!
-!     Parameters
-!     ----------
-!
-!
-!
-!     itnlim  input      An upper limit on the number of iterations.
-!                        Suggested value:
-!                        itnlim = n/2   for well-conditioned systems
-!                                       with clustered singular values,
-!                        itnlim = 4*n   otherwise.
-!
-!     nout    input      File number for printed output.  If positive,
-!                        a summary will be printed on file nout.
-!
-!     istop   output     An integer giving the reason for termination:
-!
-!                0       x = 0  is the exact solution.
-!                        No iterations were performed.
-!
-!                1       The equations A*x = b are probably
-!                        compatible.  Norm(A*x - b) is sufficiently
-!                        small, given the values of atol and btol.
-!
-!                2       damp is zero.  The system A*x = b is probably
-!                        not compatible.  A least-squares solution has
-!                        been obtained that is sufficiently accurate,
-!                        given the value of atol.
-!
-!                3       damp is nonzero.  A damped least-squares
-!                        solution has been obtained that is sufficiently
-!                        accurate, given the value of atol.
-!
-!                4       An estimate of cond(Abar) has exceeded
-!                        conlim.  The system A*x = b appears to be
-!                        ill-conditioned.  Otherwise, there could be an
-!                        error in subroutine aprod.
-!
-!                5       The iteration limit itnlim was reached.
-!
-!     itn     output     The number of iterations performed.
-!
-!     anorm   output     An estimate of the Frobenius norm of  Abar.
-!                        This is the square-root of the sum of squares
-!                        of the elements of Abar.
-!                        If damp is small and if the columns of A
-!                        have all been scaled to have length 1.0,
-!                        anorm should increase to roughly sqrt(n).
-!                        A radically different value for anorm may
-!                        indicate an error in subroutine aprod (there
-!                        may be an inconsistency between modes 1 and 2).
-!
-!     acond   output     An estimate of cond(Abar), the condition
-!                        number of Abar.  A very high value of acond
-!                        may again indicate an error in aprod.
-!
-!     rnorm   output     An estimate of the final value of norm(rbar),
-!                        the function being minimized (see notation
-!                        above).  This will be small if A*x = b has
-!                        a solution.
-!
-!     arnorm  output     An estimate of the final value of
-!                        norm( Abar(transpose)*rbar ), the norm of
-!                        the residual for the usual normal equations.
-!                        This should be small in all cases.  (arnorm
-!                        will often be smaller than the true value
-!                        computed from the output vector x.)
-!
-!     xnorm   output     An estimate of the norm of the final
-!                        solution vector x.
-!
-!     Precision
-!     ---------
-!
-!     The number of iterations required by LSQR will usually decrease
-!     if the computation is performed in higher precision.
-!
 !
 !### References
 !
@@ -278,11 +199,10 @@
 !                  Longman Scientific and Technical, Harlow, Essex, 1992.
 !
 !### Author
+! * Michael A. Saunders, Dept of Operations Research, Stanford University
 !
-!  Michael A. Saunders                  mike@sol-michael.stanford.edu
-!  Dept of Operations Research          na.Msaunders@na-net.ornl.gov
-!  Stanford University
-!  Stanford, CA 94305-4022              (415) 723-1875
+!@note The number of iterations required by LSQR will usually decrease
+!      if the computation is performed in higher precision.
 
 subroutine LSQR  ( m, n, aprod, damp, wantse, &
                    u, v, w, x, se, &
@@ -371,17 +291,55 @@ integer,intent(in)               :: itnlim   !! An upper limit on the number of 
                                              !! * itnlim = n/2 for well-conditioned systems
                                              !!   with clustered singular values,
                                              !! * itnlim = 4*n   otherwise.
-integer               :: nout       !!
-integer               :: istop      !!
-integer               :: itn        !!
-real(wp)              :: anorm      !!
-real(wp)              :: acond      !!
-real(wp)              :: rnorm      !!
-real(wp)              :: arnorm     !!
-real(wp)              :: xnorm      !!
+integer,intent(in)               :: nout     !! File number for printed output.  If nonzero,
+                                             !! a summary will be printed on file nout.
+integer,intent(out)               :: istop      !! An integer giving the reason for termination:
+                                    !!
+                                    !! * 0 -- x = 0  is the exact solution.
+                                    !!   No iterations were performed.
+                                    !! * 1 -- The equations A*x = b are probably
+                                    !!   compatible.  Norm(A*x - b) is sufficiently
+                                    !!   small, given the values of atol and btol.
+                                    !! * 2 -- damp is zero.  The system A*x = b is probably
+                                    !!   not compatible.  A least-squares solution has
+                                    !!   been obtained that is sufficiently accurate,
+                                    !!   given the value of atol.
+                                    !! * 3 -- damp is nonzero.  A damped least-squares
+                                    !!   solution has been obtained that is sufficiently
+                                    !!   accurate, given the value of atol.
+                                    !! * 4 -- An estimate of cond(Abar) has exceeded
+                                    !!   conlim.  The system A*x = b appears to be
+                                    !!   ill-conditioned.  Otherwise, there could be an
+                                    !!   error in subroutine aprod.
+                                    !! * 5 -- The iteration limit itnlim was reached.
+integer,intent(out)   :: itn !! The number of iterations performed.
+real(wp),intent(out)  :: anorm      !! An estimate of the Frobenius norm of  Abar.
+                                    !! This is the square-root of the sum of squares
+                                    !! of the elements of Abar.
+                                    !! If damp is small and if the columns of A
+                                    !! have all been scaled to have length 1.0,
+                                    !! anorm should increase to roughly sqrt(n).
+                                    !! A radically different value for anorm may
+                                    !! indicate an error in subroutine aprod (there
+                                    !! may be an inconsistency between modes 1 and 2).
+real(wp),intent(out)  :: acond      !! An estimate of cond(Abar), the condition
+                                    !! number of Abar.  A very high value of acond
+                                    !! may again indicate an error in aprod.
+real(wp),intent(out)  :: rnorm      !! An estimate of the final value of norm(rbar),
+                                    !! the function being minimized (see notation
+                                    !! above).  This will be small if A*x = b has
+                                    !! a solution.
+real(wp),intent(out)  :: arnorm     !! An estimate of the final value of
+                                    !! norm( Abar(transpose)*rbar ), the norm of
+                                    !! the residual for the usual normal equations.
+                                    !! This should be small in all cases.  (arnorm
+                                    !! will often be smaller than the true value
+                                    !! computed from the output vector x.)
+real(wp),intent(out)  :: xnorm      !! An estimate of the norm of the final
+                                    !! solution vector x.
 
 logical :: damped, extra
-integer :: i, maxdx, nchar, nconv, nstop
+integer :: i, maxdx, nconv, nstop
 real(wp) :: alfopt, alpha, beta, bnorm, &
             cs, cs1, cs2, ctol, &
             delta, dknorm, dnorm, dxk, dxmax, &
@@ -392,20 +350,18 @@ real(wp) :: alfopt, alpha, beta, bnorm, &
             theta, t1, t2, t3, xnorm1, z, zbar
 logical :: print_iter
 
-character(len=14),parameter :: enter = ' Enter LSQR.  '
-character(len=14),parameter :: exit  = ' Exit  LSQR.  '
-character(len=53),dimension(0:5),parameter :: msg = [ 'The exact solution is  x = 0                         ',&
-                                                      'A solution to Ax = b was found, given atol, btol     ',&
-                                                      'A least-squares solution was found, given atol       ',&
-                                                      'A damped least-squares solution was found, given atol',&
-                                                      'Cond(Abar) seems to be too large, given conlim       ',&
-                                                      'The iteration limit was reached                      ' ]
-
-!-----------------------------------------------------------------------
+character(len=*),parameter :: enter = ' Enter LSQR.  '
+character(len=*),parameter :: exit  = ' Exit  LSQR.  '
+character(len=*),dimension(0:5),parameter :: msg = [ 'The exact solution is  x = 0                         ',&
+                                                     'A solution to Ax = b was found, given atol, btol     ',&
+                                                     'A least-squares solution was found, given atol       ',&
+                                                     'A damped least-squares solution was found, given atol',&
+                                                     'Cond(Abar) seems to be too large, given conlim       ',&
+                                                     'The iteration limit was reached                      ' ]
 
 ! Initialize.
 
-if (nout > 0) then
+if (nout /= 0) then
    write(nout, 1000) enter, m, n, damp, wantse, &
                      atol, conlim, btol, itnlim
 end if
@@ -466,7 +422,7 @@ if (arnorm /= zero) then
    bnorm = beta
    rnorm = beta
 
-   if (nout > 0) then
+   if (nout /= 0) then
       if ( damped ) then
          write(nout, 1300)
       else
@@ -622,7 +578,7 @@ if (arnorm /= zero) then
       if (test1 <= rtol) istop = 1
 
       ! See if it is time to print something.
-      if (nout  >  0 ) then
+      if (nout /= 0) then
 
          print_iter = (n     <= 40       ) .or. &
                       (itn   <= 10       ) .or. &
@@ -680,7 +636,7 @@ end if
 ! Decide if istop = 2 or 3.
 ! Print the stopping condition.
 if (damped  .and.  istop == 2) istop = 3
-if (nout > 0) then
+if (nout /= 0) then
    write(nout, 2000) exit, istop, itn, &
                      exit, anorm, acond, &
                      exit, bnorm, xnorm, &

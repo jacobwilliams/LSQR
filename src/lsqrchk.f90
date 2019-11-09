@@ -241,7 +241,13 @@ bnorm  = dnrm2 ( m, b, 1 )
 xnorm  = dnrm2 ( n, x, 1 )
 rho1   = dnrm2 ( m, u, 1 )
 sigma1 = dnrm2 ( n, v, 1 )
-if (nout /= 0) write(nout, 2200) damp, xnorm, rho1, sigma1
+if (nout /= 0) then
+   write(nout, '(A)') 'Enter xcheck. Does x solve Ax = b, etc?'
+   write(nout, '(A,E10.3)')      ' damp        =', damp
+   write(nout, '(A,E10.3)')      ' norm(x)     =', xnorm
+   write(nout, '(A,E15.8,A)')    ' norm(r)     =', rho1,   ' = rho1'
+   write(nout, '(A,E10.3,5X,A)') ' norm(A''r)  =', sigma1, ' = sigma1'
+end if
 
 if (damp == zero) then
    rho2   = rho1
@@ -251,7 +257,12 @@ else
    sigma2 = dnrm2 ( n, w, 1 )
    snorm  = rho1 / damp
    xsnorm = rho2 / damp
-   if (nout /= 0) write(nout, 2300) snorm, xsnorm, rho2, sigma2
+   if (nout /= 0) then
+      write(nout, '(A,E10.3)')      ' norm(s)         =', snorm
+      write(nout, '(A,E10.3)')      ' norm(x,s)       =', xsnorm
+      write(nout, '(A,E15.8,A)')    ' norm(rbar)      =', rho2,    ' = rho2'
+      write(nout, '(A,E10.3,5X,A)') ' norm(Abar''rbar) =', sigma2, ' = sigma2'
+   end if
 end if
 
 ! See if x seems to solve Ax = b or min norm(Ax - b)
@@ -275,27 +286,13 @@ else
    if (test1 <= tol) inform = 1
 end if
 
-if (nout /= 0) write(nout, 3000) inform, tol, test1, test2, test3
-
-return
-
-2200 format(1p &
- // ' Enter xcheck.     Does x solve Ax = b, etc?' &
- /  '    damp            =', e10.3 &
- /  '    norm(x)         =', e10.3 &
- /  '    norm(r)         =', e15.8, ' = rho1' &
- /  '    norm(A''r)       =',e10.3, '      = sigma1')
-2300 format(1p &
- /  '    norm(s)         =', e10.3 &
- /  '    norm(x,s)       =', e10.3 &
- /  '    norm(rbar)      =', e15.8, ' = rho2' &
- /  '    norm(Abar''rbar) =',e10.3, '      = sigma2')
-3000 format(1p &
- /  '    inform          =', i2 &
- /  '    tol             =', e10.3 &
- /  '    test1           =', e10.3, ' (Ax = b)' &
- /  '    test2           =', e10.3, ' (least-squares)' &
- /  '    test3           =', e10.3, ' (damped least-squares)')
+if (nout /= 0) then
+   write(nout, '(A,I2)')      ' inform          =', inform
+   write(nout, '(A,E10.3)')   ' tol             =', tol
+   write(nout, '(A,E10.3,A)') ' test1           =', test1, ' (Ax = b)'
+   write(nout, '(A,E10.3,A)') ' test2           =', test2, ' (least-squares)'
+   write(nout, '(A,E10.3,A)') ' test3           =', test3, ' (damped least-squares)'
+end if
 
 end subroutine xcheck
 !***************************************************************************************************
