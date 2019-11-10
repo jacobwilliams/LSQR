@@ -119,8 +119,9 @@
 ! The following quantities are used in discussing the subroutine
 ! parameters:
 !
-!     Abar   =  (   A    ),          bbar  =  ( b )
-!               ( damp*I )                    ( 0 )
+!```
+!     Abar   =  (   A    ),         bbar  =  ( b )
+!               ( damp*I )                   ( 0 )
 !
 !     r      = b  -  A*x,           rbar  = bbar  -  Abar*x
 !
@@ -131,6 +132,7 @@
 !               on the machine being used.  On most machines,
 !               relpr is about 1.0e-7 and 1.0d-16 in single and double
 !               precision respectively.
+!```
 !
 !     LSQR  minimizes the function rnorm with respect to x.
 !
@@ -360,10 +362,12 @@ character(len=*),dimension(0:5),parameter :: msg = [ 'The exact solution is  x =
                                                      'The iteration limit was reached                      ' ]
 
 ! Initialize.
-
 if (nout /= 0) then
-   write(nout, 1000) enter, m, n, damp, wantse, &
-                     atol, conlim, btol, itnlim
+   write(nout,'(A)') enter//'     Least-squares solution of  Ax = b'
+   write(nout,'(A,I7,A,I7,A)')         ' The matrix  A  has', m, ' rows   and', n, ' columns'
+   write(nout,'(A,E22.14,3X,A,I10)')   ' damp   =', damp, 'wantse =', wantse
+   write(nout,'(A,E10.2,15x,A,E10.2)') ' atol   =', atol, 'conlim =', conlim
+   write(nout,'(A,E10.2,15x,A,I10)')   ' btol   =', btol, 'itnlim =', itnlim
 end if
 
 damped = damp > zero
@@ -424,18 +428,18 @@ if (arnorm /= zero) then
 
    if (nout /= 0) then
       if ( damped ) then
-         write(nout, 1300)
+         write(nout, '(A)') '   Itn       x(1)           Function     Compatible   LS     Norm Abar Cond Abar'
       else
-         write(nout, 1200)
+         write(nout, '(A)') '   Itn       x(1)           Function     Compatible   LS        Norm A    Cond A'
       end if
       test1  = one
       test2  = alpha / beta
 
       if ( extra ) then
-         write(nout, 1400)
+         write(nout, '(80X,A)') '    phi    dknorm   dxk  alfa_opt'
       end if
-      write(nout, 1500) itn, x(1), rnorm, test1, test2
-      write(nout, 1600)
+      write(nout, '(I6, 2E17.9, 4E10.2, E9.1, 3E8.1)') itn, x(1), rnorm, test1, test2
+      write(nout, '(A)') ''
    end if
 
    do
@@ -593,12 +597,13 @@ if (arnorm /= zero) then
             ! Print a line for this iteration.
             ! "extra" is for experimental purposes.
             if ( extra ) then
-               write(nout, 1500) itn, x(1), rnorm, test1, test2, anorm, acond &
-                              , phi, dknorm, dxk, alfopt
+               write(nout, '(I6, 2E17.9, 4E10.2, E9.1, 3E8.1)') &
+                        itn, x(1), rnorm, test1, test2, anorm, acond, phi, dknorm, dxk, alfopt
             else
-               write(nout, 1500) itn, x(1), rnorm, test1, test2, anorm, acond
+               write(nout, '(I6, 2E17.9, 4E10.2, E9.1, 3E8.1)') &
+                        itn, x(1), rnorm, test1, test2, anorm, acond
             end if
-            if (mod(itn,10) == 0) write(nout, 1600)
+            if (mod(itn,10) == 0) write(nout, '(A)') ''
          end if
 
       end if
@@ -637,37 +642,14 @@ end if
 ! Print the stopping condition.
 if (damped  .and.  istop == 2) istop = 3
 if (nout /= 0) then
-   write(nout, 2000) exit, istop, itn, &
-                     exit, anorm, acond, &
-                     exit, bnorm, xnorm, &
-                     exit, rnorm, arnorm
-   write(nout, 2100) exit, dxmax, maxdx, &
-                     exit, dxmax/(xnorm + 1.0d-20)
-   write(nout, 3000) exit, msg(istop)
+   write(nout, '(A,5X,A,I2,15X,A,I8)')      exit, 'istop  =', istop, 'itn    =', itn
+   write(nout, '(A,5X,A,E12.5,5X,A,E12.5)') exit, 'anorm  =', anorm, 'acond  =', acond
+   write(nout, '(A,5X,A,E12.5,5X,A,E12.5)') exit, 'bnorm  =', bnorm, 'xnorm  =', xnorm
+   write(nout, '(A,5X,A,E12.5,5X,A,E12.5)') exit, 'rnorm  =', rnorm, 'arnorm =', arnorm
+   write(nout, '(A,5X,A,E8.1,A,I8)')        exit, 'max dx =', dxmax, ' occurred at itn ',maxdx
+   write(nout, '(A,5X,A,E8.1,A)'   )        exit, '       =', dxmax/(xnorm + 1.0e-20_wp), '*xnorm'
+   write(nout, '(A,5X,A)' )                 exit, msg(istop)
 end if
-
-return
-
-!------------------------------------------------------------------
-1000 format(// 1p, a, '     Least-squares solution of  Ax = b' &
-            / ' The matrix  A  has', i7, ' rows   and', i7, ' columns' &
-            / ' damp   =', e22.14, 3x,        'wantse =', l10 &
-            / ' atol   =', e10.2, 15x,        'conlim =', e10.2 &
-            / ' btol   =', e10.2, 15x,        'itnlim =', i10)
-1200 format(// '   Itn       x(1)           Function', &
-            '     Compatible   LS        Norm A    Cond A')
-1300 format(// '   Itn       x(1)           Function', &
-            '     Compatible   LS     Norm Abar Cond Abar')
-1400 format(80x, '    phi    dknorm   dxk  alfa_opt')
-1500 format(1p, i6, 2e17.9, 4e10.2, e9.1, 3e8.1)
-1600 format(1x)
-2000 format(/ 1p, a, 5x, 'istop  =', i2,   15x, 'itn    =', i8 &
-            /     a, 5x, 'anorm  =', e12.5, 5x, 'acond  =', e12.5 &
-            /     a, 5x, 'bnorm  =', e12.5, 5x, 'xnorm  =', e12.5 &
-            /     a, 5x, 'rnorm  =', e12.5, 5x, 'arnorm =', e12.5)
-2100 format(  1p, a, 5x, 'max dx =', e8.1 , ' occurred at itn ', i8, &
-            /     a, 5x, '       =', e8.1 , '*xnorm' )
-3000 format( a, 5x, a )
 
 end subroutine LSQR
 !***************************************************************************************************

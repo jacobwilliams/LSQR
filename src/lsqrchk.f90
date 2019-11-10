@@ -1,18 +1,21 @@
 !***************************************************************************************************
 !>
-!  These routines are for testing algorithms LSQR and CRAIG
+!  These routines are for testing algorithms [[LSQR]] and [[CRAIG]]
 !  (Paige and Saunders, ACM TOMS, 1982).
 !
-!  acheck  tests if products of the form y := y + Ax and x := x + A'y
-!          seem to refer to the same A.
-!  xcheck  tests if a solution from LSQR or CRAIG seems to be
-!          correct.
-!  acheck and xcheck may be helpful to all users of LSQR and CRAIG.
+!  * [[acheck]] tests if products of the form y := y + Ax and x := x + A'y
+!    seem to refer to the same A.
+!  * [[xcheck]] tests if a solution from [[LSQR]] or [[CRAIG]] seems to be
+!    correct.
 !
-!  * 10 Feb 1992:  acheck revised and xcheck implemented.
-!  * 27 May 1993:  acheck and xcheck kept separate from test problems.
+!  [[acheck]] and [[xcheck]] may be helpful to all users of [[LSQR]] and [[CRAIG]].
 !
-!  Michael Saunders, Dept of Operations Research, Stanford University.
+!### History
+!  * 10 Feb 1992: acheck revised and xcheck implemented.
+!  * 27 May 1993: acheck and xcheck kept separate from test problems.
+!
+!### Author
+!  * Michael Saunders, Dept of Operations Research, Stanford University.
 
    module lsqr_check
 
@@ -48,8 +51,7 @@
 !   tol defined via power.
 
 subroutine acheck( m, n, nout, aprod, eps, &
-                   v, w, x, y, &
-                   inform )
+                   v, w, x, y, inform )
 
 implicit none
 
@@ -280,7 +282,6 @@ else
    if (rho1 > zero) test2  = sigma1 / (anorm * rho1)
    test3  = test2
    if (rho2 > zero) test3  = sigma2 / (anorm * rho2)
-
    if (test3 <= tol) inform = 3
    if (test2 <= tol) inform = 2
    if (test1 <= tol) inform = 1
