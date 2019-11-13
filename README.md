@@ -1,27 +1,20 @@
-## lsqr_f77
+### Brief Description
 
-The software for LSQR (f77 version) is provided by SOL, Stanford University
-under the terms of the OSI Common Public License (CPL):
-http://www.opensource.org/licenses/cpl1.0.php
+A modern Fortran edition of LSQR, a conjugate-gradient type method for solving sparse linear equations and sparse least-squares problems.
 
+The original Fortran 77 version of this algorithm can be found here: https://web.stanford.edu/group/SOL/software/lsqr/
 
-* 11 Feb 2000: First set of files available for download from SOL.
-* 31 Mar 2005: In lsqrtest.f, changed atol = eps**0.666667 to eps*0.99
-             to increase accuracy of the solution.  LSQR appears to be
-             successful on all 18 test problems except 5 and 6
-             (which are over-determined and too ill-conditioned to
-             permit any correct digits).
-             The output from an Intel Xeon system with g77 is in LSQR.LIS.
-             The two "appears to have failed" messages are no cause for alarm.
+The updated version has been significantly refactored.
 
-Please send comments to Michael Saunders, SOL, Stanford University
-                        saunders@stanford.edu  650-723-1875
+### Compiling
 
-The f77 version of LSQR involves the following files:
+A [FoBiS](https://github.com/szaghi/FoBiS) configuration file (`LSQR.fobis`) is provided that can build the library and examples. Use the `mode` flag to indicate what to build. For example:
 
- * lsqr.doc
- * lsqr.f
- * lsqrblas.f   (not needed if you have BLAS-1)
- * lsqrchk.f
- * lsqrtest.f
- * LSQR.LIS     (example output file from lsqrtest.f)
+  * To build all the examples using gfortran: `FoBiS.py build -f LSQR.fobis -mode tests-gnu`
+  * To build all the examples using ifort: `FoBiS.py build -f LSQR.fobis -mode tests-intel`
+  * To build a static library using gfortran: `FoBiS.py build -f LSQR.fobis -mode static-gnu`
+  * To build a static library using ifort: `FoBiS.py build -f LSQR.fobis -mode static-intel`
+
+  The full set of modes are: `static-gnu`, `static-gnu-debug`, `static-intel`, `static-intel-debug`, `shared-gnu`, `shared-gnu-debug`, `shared-intel`, `shared-intel-debug`, `tests-gnu`, `tests-gnu-debug`, `tests-intel`, `tests-intel-debug`
+
+  To generate the documentation using [ford](https://github.com/cmacmackin/ford), run: ```FoBis.py rule --execute makedoc -f LSQR.fobis```
