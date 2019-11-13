@@ -24,7 +24,6 @@
 
     use lsqr_kinds
     use lsqpblas_module, only: dnrm2,dcopy,dscal
-    use iso_fortran_env, only: output_unit
     use lsqr_module,     only: lsqr_solver
 
     implicit none
@@ -102,11 +101,19 @@
 !  Note that subroutine aprod must be declared external
 !  if it is used only in the call to LSQR (and acheck).
 !
-!  1982---1991:  Various versions implemented.
-!  04 Sep 1991:  "wantse" added to argument list of LSQR,
-!                making standard errors optional.
-!  10 Feb 1992:  Revised for use with lsqrchk fortran.
-!
+!### History
+!  * 1982---1991:  Various versions implemented.
+!  * 04 Sep 1991:  "wantse" added to argument list of LSQR,
+!    making standard errors optional.
+!  * 10 Feb 1992:  Revised for use with lsqrchk fortran.
+!  * 31 Mar 2005: changed atol = eps**0.666667 to eps*0.99
+!    to increase accuracy of the solution.  LSQR appears to be
+!    successful on all 18 test problems except 5 and 6
+!    (which are over-determined and too ill-conditioned to
+!    permit any correct digits).
+!    The output from an Intel Xeon system with g77 is in LSQR.LIS.
+!    The two "appears to have failed" messages are no cause for alarm.
+
 !  Michael Saunders, Dept of Operations Research, Stanford University.
 
     subroutine test  ( me, m, n, nduplc, npower, damp )
