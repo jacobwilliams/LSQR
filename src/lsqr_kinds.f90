@@ -1,6 +1,9 @@
 !***************************************************************************************************
 !>
 !  Module for LSQR kinds and parameters
+!
+!### History
+!  * Jacob Williams : 8 Nov 2019 : created module
 
     module lsqr_kinds
 
