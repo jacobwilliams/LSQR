@@ -143,12 +143,12 @@
 !            = norm( rbar )
 !
 !     relpr  = the relative precision of floating-point arithmetic
-!               on the machine being used.  On most machines,
-!               relpr is about 1.0e-7 and 1.0d-16 in single and double
-!               precision respectively.
+!              on the machine being used.  On most machines,
+!              relpr is about 1.0e-7 and 1.0d-16 in single and double
+!              precision respectively.
 !```
 !
-!     LSQR  minimizes the function rnorm with respect to x.
+! LSQR  minimizes the function `rnorm` with respect to `x`.
 !
 !### References
 !
