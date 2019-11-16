@@ -8,7 +8,7 @@ The updated version has been significantly refactored.
 
 ### Usage
 
-There are two classes in the libray that can be used, `lsqr_solver` (which is more low-level) and `lsqr_solver_ez` (which has a simplier interface).
+There are two classes in the library that can be used, `lsqr_solver` (which is more low-level) and `lsqr_solver_ez` (which has a simpler interface).
 
 To use the `lsqr_solver_ez` class, you have to provide the matrix `A` in sparse form, using three arrays: the row indices, column indics, and the nonzero elements.  Here is an example:
 
@@ -32,8 +32,8 @@ program main
  real(wp),dimension(n) :: x   !! solution to `A*x = b`
  integer :: istop  !! solver exit code
 
- call solver%initialize(m,n,a,irow,icol)
- call solver%solve(b,zero,x,istop)
+ call solver%initialize(m,n,a,irow,icol) ! use defaults for other optional inputs
+ call solver%solve(b,zero,x,istop)       ! solve the linear system
 
  write(*,*) 'istop = ', istop
  write(*,'(1P,A,*(E16.6))') 'x = ', x
