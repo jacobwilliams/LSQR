@@ -874,7 +874,7 @@
 
    ! Decide if istop = 2 or 3.
    ! Print the stopping condition.
-   if (damped  .and.  istop == 2) istop = 3
+   if (damped .and. istop == 2) istop = 3
    if (nout /= 0) then
       write(nout, '(//A,5X,A,I2,15X,A,I8)')       exit, 'istop  =', istop, 'itn    =', itn
       write(nout, '(1P,A,5X,A,E12.5,5X,A,E12.5)') exit, 'anorm  =', anorm, 'acond  =', acond
