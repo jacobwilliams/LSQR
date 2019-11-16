@@ -25,14 +25,17 @@
     real(wp),dimension(n) :: x
     real(wp),dimension(1) :: se !! not used
     real(wp),dimension(n,1) :: x_vec
+    integer :: istop
 
     call solver%initialize(m,n,a,irow,icol,&
                             itnlim = 100,&
                             nout   = output_unit)
-    call solver%solve(b,damp,x)
+    call solver%solve(b,damp,x,istop)
 
     x_vec(1:3,1) = x
 
+    write(*,*) ''
+    write(*,*) 'istop = ', istop
     write(*,*) ''
     write(*,'(1P,A,*(E16.6))') 'x       = ', x
     write(*,'(1P,A,*(E16.6))') 'A*x     = ', matmul(a_mat, x_vec)

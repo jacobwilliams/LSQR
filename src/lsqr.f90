@@ -204,8 +204,8 @@
 !>
 !  Wrapper for [[lsqr]] for the easy version of the class.
 
-   subroutine solve_ez( me, b, damp, x, se, &
-                        istop, itn, anorm, acond, rnorm, arnorm, xnorm)
+   subroutine solve_ez( me, b, damp, x, istop, &
+                        se, itn, anorm, acond, rnorm, arnorm, xnorm)
 
    implicit none
 
@@ -213,8 +213,8 @@
    real(wp),dimension(me%m),intent(in)   :: b
    real(wp),intent(in)                   :: damp
    real(wp),dimension(me%n),intent(out)  :: x       !! the computed solution `x`.
+   integer,intent(out)                   :: istop   !! exit code (see [[lsqr]]).
    real(wp),dimension(me%n),intent(out),optional :: se
-   integer,intent(out) ,optional         :: istop
    integer,intent(out) ,optional         :: itn
    real(wp),intent(out),optional         :: anorm
    real(wp),intent(out),optional         :: acond
@@ -225,7 +225,7 @@
    real(wp),dimension(:),allocatable :: u  !! copy of `b` for call to [[lsqr]]
    real(wp),dimension(:),allocatable :: se_
    logical  :: wantse   !! if `se` is to be returned
-   integer  :: istop_,itn_
+   integer  :: itn_
    real(wp) :: anorm_,acond_,rnorm_,arnorm_,xnorm_
 
    ! get optional inputs:
@@ -245,11 +245,10 @@
    call me%lsqr(me%m, me%n, damp, wantse, &
                 u, me%v, me%w, x, se_, &
                 me%atol, me%btol, me%conlim, me%itnlim, me%nout, &
-                istop_, itn_, anorm_, acond_, rnorm_, arnorm_, xnorm_)
+                istop, itn_, anorm_, acond_, rnorm_, arnorm_, xnorm_)
 
    ! optional outputs:
    if (wantse)          se     = se_
-   if (present(istop))  istop  = istop_
    if (present(itn))    itn    = itn_
    if (present(anorm))  anorm  = anorm_
    if (present(acond))  acond  = acond_
