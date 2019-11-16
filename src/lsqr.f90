@@ -107,14 +107,14 @@
                                 !!   `x` should be altered without changing `y`.
     integer,intent(in) :: m     !! number of rows in `A` matrix
     integer,intent(in) :: n     !! number of columns in `A` matrix
-    real(wp),dimension(:),intent(inout) :: x
-    real(wp),dimension(:),intent(inout) :: y
+    real(wp),dimension(:),intent(inout) :: x  !! [n]
+    real(wp),dimension(:),intent(inout) :: y  !! [m]
 
     integer                     :: i    !! counter
     integer                     :: r    !! row index
     integer                     :: c    !! column index
-    real(wp),dimension(size(y)) :: Ax   !! `A*x`
-    real(wp),dimension(size(x)) :: Aty  !! `A(transpose)*y`
+    real(wp),dimension(m) :: Ax   !! `A*x`
+    real(wp),dimension(n) :: Aty  !! `A(transpose)*y`
 
     if (m/=me%m .or. n/=me%n) error stop 'lsqr_solver_ez class not properly initialized'
 
@@ -153,7 +153,7 @@
         do i = 1, me%num_nonzero_elements
             r = me%irow(i)
             c = me%icol(i)
-            Aty(r) = Aty(r) + me%a(i)*y(c)
+            Aty(c) = Aty(c) + me%a(i)*y(r)
         end do
 
         x = x + Aty
