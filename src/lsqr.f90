@@ -262,7 +262,7 @@
 !***************************************************************************************************
 !>
 !  LSQR finds a solution `x` to the following problems:
-
+!
 !  1. Unsymmetric equations --    solve  A*x = b
 !
 !  2. Linear least squares  --    solve  A*x = b
