@@ -836,7 +836,7 @@
                   write(nout, '(1P, I6, 2E17.9, 4E10.2, E9.1, 3E8.1)') &
                            itn, x(1), rnorm, test1, test2, anorm, acond
                end if
-               if (mod(itn,10) == 0) write(nout, '(A)') ''
+               !if (mod(itn,10) == 0) write(nout, '(A)') ''
             end if
 
          end if
