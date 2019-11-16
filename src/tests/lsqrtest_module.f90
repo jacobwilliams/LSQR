@@ -200,7 +200,7 @@
     conlim = 1000.0_wp * acond
     itnlim = 4*(m + n + 50)
 
-    call me%solve( m, n, damp, wantse, &
+    call me%lsqr(  m, n, damp, wantse, &
                    u, v, w, x, se, &
                    atol, btol, conlim, itnlim, me%nout, &
                    istop, itn, anorm, acond, rnorm, arnorm, xnorm )
