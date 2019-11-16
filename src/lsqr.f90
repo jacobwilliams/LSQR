@@ -15,11 +15,16 @@
 
    type,abstract,public :: lsqr_solver
       !! main class to access the [[lsqr]] solver.
+      !!
+      !! You can use this class directory by extending it
+      !! and specifying `aprod`, or you can use the
+      !! [[lsqr_solver_ez]] class that has an easier
+      !! interface.
       private
    contains
       private
       procedure(aprod_func),deferred :: aprod !! User function to access the sparse matrix `A`.
-      procedure,public :: solve => lsqr
+      procedure,public :: lsqr  !! main solver routine
       procedure,public :: acheck
       procedure,public :: xcheck
    end type lsqr_solver
@@ -28,17 +33,27 @@
       !! a simplier version of [[lsqr_solver]] where
       !! the `aprod` function is provided internally.
       !! To use, first call the `initialize` method
-      !! to set the matrix.
+      !! to set the matrix and other inputs.
       private
+
       integer :: m = 0 !! number of rows in `A` matrix
       integer :: n = 0 !! number of columns in `A` matrix
       integer :: num_nonzero_elements = 0 !! number of nonzero elements in `A` matrix
       integer,dimension(:),allocatable  :: irow !! sparsity row indices
       integer,dimension(:),allocatable  :: icol !! sparsity column indices
       real(wp),dimension(:),allocatable :: a    !! sparse `A` matrix
+
+      real(wp) :: atol    = zero  !! relative error in definition of `A`
+      real(wp) :: btol    = zero  !! relative error in definition of `b`
+      real(wp) :: conlim  = zero  !! An upper limit on `cond(Abar)`, the apparent
+                                  !! condition number of the matrix `Abar`.
+      integer  :: itnlim  = 100   !! max iterations
+      integer  :: nout    = 0     !! output unit for printing
+
    contains
       private
       procedure,public :: initialize => initialize_ez  !! Constructor. Must be call first.
+      procedure,public :: solve => solve_ez
       procedure :: aprod => aprod_ez !! internal routine
    end type lsqr_solver_ez
 
@@ -66,16 +81,22 @@
 !>
 !  Constructor for [[lsqr_solver_ez]].
 
-   subroutine initialize_ez(me,m,n,a,irow,icol)
+   subroutine initialize_ez(me,m,n,a,irow,icol,atol,btol,conlim,itnlim,nout)
 
    implicit none
 
    class(lsqr_solver_ez),intent(out) :: me
-   integer,intent(in)                :: m !! number of rows in `A` matrix
-   integer,intent(in)                :: n !! number of columns in `A` matrix
-   integer,dimension(:),intent(in)   :: irow
-   integer,dimension(:),intent(in)   :: icol
-   real(wp),dimension(:),intent(in)  :: a
+   integer,intent(in)                :: m       !! number of rows in `A` matrix
+   integer,intent(in)                :: n       !! number of columns in `A` matrix
+   integer,dimension(:),intent(in)   :: irow    !! row indices of nonzero elements of `A`
+   integer,dimension(:),intent(in)   :: icol    !! column indices of nonzero elements of `A`
+   real(wp),dimension(:),intent(in)  :: a       !! nonzero elements of `A`
+   real(wp),intent(in),optional      :: atol    !! relative error in definition of `A`
+   real(wp),intent(in),optional      :: btol    !! relative error in definition of `b`
+   real(wp),intent(in),optional      :: conlim  !! An upper limit on `cond(Abar)`, the apparent
+                                                !! condition number of the matrix `Abar`.
+   integer,intent(in),optional       :: itnlim  !! max iterations
+   integer,intent(in),optional       :: nout    !! output unit for printing
 
    ! check for consistent inputs:
    if (any(size(a)/=[size(irow),size(icol)])) error stop 'invalid a,icol,irow sizes in initialize_ez'
@@ -88,6 +109,13 @@
    me%irow  = irow
    me%icol  = icol
    me%a     = a
+
+   ! optional inputs:
+   if (present(atol))   me%atol   = atol
+   if (present(btol))   me%btol   = btol
+   if (present(conlim)) me%conlim = conlim
+   if (present(itnlim)) me%itnlim = itnlim
+   if (present(nout))   me%nout   = nout
 
    end subroutine initialize_ez
 !*******************************************************************************
@@ -110,9 +138,9 @@
     real(wp),dimension(:),intent(inout) :: x  !! [n]
     real(wp),dimension(:),intent(inout) :: y  !! [m]
 
-    integer                     :: i    !! counter
-    integer                     :: r    !! row index
-    integer                     :: c    !! column index
+    integer :: i    !! counter
+    integer :: r    !! row index
+    integer :: c    !! column index
     real(wp),dimension(m) :: Ax   !! `A*x`
     real(wp),dimension(n) :: Aty  !! `A(transpose)*y`
 
@@ -159,10 +187,72 @@
         x = x + Aty
 
     case default
-      error stop 'invalid mode in aprod_ez'
+       error stop 'invalid mode in aprod_ez'
     end select
 
     end subroutine aprod_ez
+!***************************************************************************************************
+
+!***************************************************************************************************
+!>
+!  Wrapper for [[lsqr]] for the easy version of the class.
+
+   subroutine solve_ez( me, b, damp, x, se, &
+                        istop, itn, anorm, acond, rnorm, arnorm, xnorm)
+
+   implicit none
+
+   class(lsqr_solver_ez),intent(inout) :: me
+
+   real(wp),dimension(me%m),intent(in)   :: b
+   real(wp),intent(in)                   :: damp
+   real(wp),dimension(me%n),intent(out)  :: x       !! the computed solution x.
+   real(wp),dimension(me%n),intent(out),optional :: se
+   integer,intent(out) ,optional  :: istop
+   integer,intent(out) ,optional  :: itn
+   real(wp),intent(out),optional  :: anorm
+   real(wp),intent(out),optional  :: acond
+   real(wp),intent(out),optional  :: rnorm
+   real(wp),intent(out),optional  :: arnorm
+   real(wp),intent(out),optional  :: xnorm
+
+   real(wp),dimension(:),allocatable :: u  !! copy of `b` for call to [[lsqr]]
+   real(wp),dimension(:),allocatable :: v  !! workspace
+   real(wp),dimension(:),allocatable :: w  !! workspace
+   real(wp),dimension(:),allocatable :: se_
+   logical  :: wantse   !! if `se` is to be returned
+   integer  :: istop_,itn_
+   real(wp) :: anorm_,acond_,rnorm_,arnorm_,xnorm_
+
+   ! get optional inputs:
+   wantse = present(se)
+   if (wantse) then
+      allocate(se_(me%n))
+   else
+      allocate(se_(1))
+   end if
+   allocate(u(me%m))
+   allocate(v(me%n))
+   allocate(w(me%n))
+
+   u = b    ! make a copy for input to lsqr (since it will be overwritten)
+
+   call me%lsqr(me%m, me%n, damp, wantse, &
+                u, v, w, x, se_, &
+                me%atol, me%btol, me%conlim, me%itnlim, me%nout, &
+                istop_, itn_, anorm_, acond_, rnorm_, arnorm_, xnorm_)
+
+   ! optional outputs:
+   if (wantse)          se     = se_
+   if (present(istop))  istop  = istop_
+   if (present(itn))    itn    = itn_
+   if (present(anorm))  anorm  = anorm_
+   if (present(acond))  acond  = acond_
+   if (present(rnorm))  rnorm  = rnorm_
+   if (present(arnorm)) arnorm = arnorm_
+   if (present(xnorm))  xnorm  = xnorm_
+
+   end subroutine solve_ez
 !***************************************************************************************************
 
 !***************************************************************************************************
@@ -428,26 +518,26 @@
                                                 !! * itnlim = 4*n   otherwise.
    integer,intent(in)               :: nout     !! File number for printed output.  If nonzero,
                                                 !! a summary will be printed on file nout.
-   integer,intent(out)               :: istop      !! An integer giving the reason for termination:
-                                       !!
-                                       !! * 0 -- x = 0  is the exact solution.
-                                       !!   No iterations were performed.
-                                       !! * 1 -- The equations A*x = b are probably
-                                       !!   compatible.  Norm(A*x - b) is sufficiently
-                                       !!   small, given the values of atol and btol.
-                                       !! * 2 -- damp is zero.  The system A*x = b is probably
-                                       !!   not compatible.  A least-squares solution has
-                                       !!   been obtained that is sufficiently accurate,
-                                       !!   given the value of atol.
-                                       !! * 3 -- damp is nonzero.  A damped least-squares
-                                       !!   solution has been obtained that is sufficiently
-                                       !!   accurate, given the value of atol.
-                                       !! * 4 -- An estimate of cond(Abar) has exceeded
-                                       !!   conlim.  The system A*x = b appears to be
-                                       !!   ill-conditioned.  Otherwise, there could be an
-                                       !!   error in subroutine aprod.
-                                       !! * 5 -- The iteration limit itnlim was reached.
-   integer,intent(out)   :: itn !! The number of iterations performed.
+   integer,intent(out)               :: istop   !! An integer giving the reason for termination:
+                                                !!
+                                                !! * 0 -- x = 0  is the exact solution.
+                                                !!   No iterations were performed.
+                                                !! * 1 -- The equations A*x = b are probably
+                                                !!   compatible.  Norm(A*x - b) is sufficiently
+                                                !!   small, given the values of atol and btol.
+                                                !! * 2 -- damp is zero.  The system A*x = b is probably
+                                                !!   not compatible.  A least-squares solution has
+                                                !!   been obtained that is sufficiently accurate,
+                                                !!   given the value of atol.
+                                                !! * 3 -- damp is nonzero.  A damped least-squares
+                                                !!   solution has been obtained that is sufficiently
+                                                !!   accurate, given the value of atol.
+                                                !! * 4 -- An estimate of cond(Abar) has exceeded
+                                                !!   conlim.  The system A*x = b appears to be
+                                                !!   ill-conditioned.  Otherwise, there could be an
+                                                !!   error in subroutine aprod.
+                                                !! * 5 -- The iteration limit itnlim was reached.
+   integer,intent(out)   :: itn        !! The number of iterations performed.
    real(wp),intent(out)  :: anorm      !! An estimate of the Frobenius norm of  Abar.
                                        !! This is the square-root of the sum of squares
                                        !! of the elements of Abar.
