@@ -24,6 +24,24 @@
       procedure,public :: xcheck
    end type lsqr_solver
 
+   type,public,extends(lsqr_solver) :: lsqr_solver_ez
+      !! a simplier version of [[lsqr_solver]] where
+      !! the `aprod` function is provided internally.
+      !! To use, first call the `initialize` method
+      !! to set the matrix.
+      private
+      integer :: m = 0 !! number of rows in `A` matrix
+      integer :: n = 0 !! number of columns in `A` matrix
+      integer :: num_nonzero_elements = 0 !! number of nonzero elements in `A` matrix
+      integer,dimension(:),allocatable  :: irow !! sparsity row indices
+      integer,dimension(:),allocatable  :: icol !! sparsity column indices
+      real(wp),dimension(:),allocatable :: a    !! sparse `A` matrix
+   contains
+      private
+      procedure,public :: initialize => initialize_ez  !! Constructor. Must be call first.
+      procedure :: aprod => aprod_ez !! internal routine
+   end type lsqr_solver_ez
+
    abstract interface
       subroutine aprod_func ( me, mode, m, n, x, y )
          !! User function to access the sparse matrix `A`.
@@ -41,9 +59,110 @@
       end subroutine aprod_func
    end interface
 
-   !public :: lsqr
-
    contains
+!***************************************************************************************************
+
+!*******************************************************************************
+!>
+!  Constructor for [[lsqr_solver_ez]].
+
+   subroutine initialize_ez(me,m,n,a,irow,icol)
+
+   implicit none
+
+   class(lsqr_solver_ez),intent(out) :: me
+   integer,intent(in)                :: m !! number of rows in `A` matrix
+   integer,intent(in)                :: n !! number of columns in `A` matrix
+   integer,dimension(:),intent(in)   :: irow
+   integer,dimension(:),intent(in)   :: icol
+   real(wp),dimension(:),intent(in)  :: a
+
+   ! check for consistent inputs:
+   if (any(size(a)/=[size(irow),size(icol)])) error stop 'invalid a,icol,irow sizes in initialize_ez'
+   if (any(irow>m)) error stop 'invalid irow or m in initialize_ez'
+   if (any(icol>n)) error stop 'invalid icol or n in initialize_ez'
+
+   me%num_nonzero_elements = size(irow)
+   me%m     = m
+   me%n     = n
+   me%irow  = irow
+   me%icol  = icol
+   me%a     = a
+
+   end subroutine initialize_ez
+!*******************************************************************************
+
+!*******************************************************************************
+!>
+!  The internal `aprod` function for the [[lsqr_solver_ez]] class.
+
+    subroutine aprod_ez ( me, mode, m, n, x, y )
+
+    implicit none
+
+    class(lsqr_solver_ez),intent(inout) :: me
+    integer,intent(in) :: mode  !! * If `mode = 1`, compute `y = y + A*x`.
+                                !!   `y` should be altered without changing x.
+                                !! * If `mode = 2`, compute `x = x + A(transpose)*y`.
+                                !!   `x` should be altered without changing `y`.
+    integer,intent(in) :: m     !! number of rows in `A` matrix
+    integer,intent(in) :: n     !! number of columns in `A` matrix
+    real(wp),dimension(:),intent(inout) :: x
+    real(wp),dimension(:),intent(inout) :: y
+
+    integer                     :: i    !! counter
+    integer                     :: r    !! row index
+    integer                     :: c    !! column index
+    real(wp),dimension(size(y)) :: Ax   !! `A*x`
+    real(wp),dimension(size(x)) :: Aty  !! `A(transpose)*y`
+
+    if (m/=me%m .or. n/=me%n) error stop 'lsqr_solver_ez class not properly initialized'
+
+    select case (mode)
+
+    case(1)    ! y = y + A*x
+
+        !   A    x   Ax
+        !  ---   -   -
+        !  X0X   X   X
+        !  0X0 * X = X
+        !  00X   X   X
+        !  00X       X
+
+        ! A*x:
+        Ax = zero
+        do i = 1, me%num_nonzero_elements
+            r = me%irow(i)
+            c = me%icol(i)
+            Ax(r) = Ax(r) + me%a(i)*x(c)
+        end do
+
+        y = y + Ax
+
+    case(2)   ! x = x + A(transpose)*y
+
+        !   A     Y   ATy
+        !  ---    -   -
+        !  X000   Y   X
+        !  0X00 * Y = X
+        !  X0XX   Y   X
+        !         Y
+
+        ! A(transpose)*y
+        Aty = zero
+        do i = 1, me%num_nonzero_elements
+            r = me%irow(i)
+            c = me%icol(i)
+            Aty(r) = Aty(r) + me%a(i)*y(c)
+        end do
+
+        x = x + Aty
+
+    case default
+      error stop 'invalid mode in aprod_ez'
+    end select
+
+    end subroutine aprod_ez
 !***************************************************************************************************
 
 !***************************************************************************************************
@@ -703,14 +822,13 @@
    implicit none
 
    class(lsqr_solver),intent(inout) :: me
-   !external :: aprod
    integer,intent(in)   :: m       !! No. of rows of A.
    integer,intent(in)   :: n       !! No. of columns of A.
    integer,intent(in)   :: nout    !! A file number for printed output.
    integer,intent(out)  :: inform  !! Error indicator.
-                                 !! inform = 0 if aprod seems to be
-                                 !! consistent.
-                                 !! inform = 1 otherwise.
+                                   !! inform = 0 if aprod seems to be
+                                   !! consistent.
+                                   !! inform = 1 otherwise.
    real(wp),intent(in)  :: eps     !! The machine precision.
    real(wp)             :: v(n)
    real(wp)             :: w(m)
@@ -812,8 +930,6 @@
    implicit none
 
    class(lsqr_solver),intent(inout) :: me
-   !external :: aprod !! The subroutine defining A.
-                     !! See LSQR or CRAIG.
    integer,intent(in)   :: m  !! The number of rows in A.
    integer,intent(in)   :: n  !! The number of columns in A.
    integer,intent(in)   :: nout  !! A file number for printed output.
