@@ -261,8 +261,8 @@
 
 !***************************************************************************************************
 !>
-!  LSQR finds a solution x to the following problems:
-!
+!  LSQR finds a solution `x` to the following problems:
+
 !  1. Unsymmetric equations --    solve  A*x = b
 !
 !  2. Linear least squares  --    solve  A*x = b
@@ -440,132 +440,132 @@
                      istop, itn, anorm, acond, rnorm, arnorm, xnorm)
 
    class(lsqr_solver),intent(inout) :: me
-   integer,intent(in)    :: m          !! the number of rows in A.
-   integer,intent(in)    :: n          !! the number of columns in A.
+   integer,intent(in)    :: m          !! the number of rows in `A`.
+   integer,intent(in)    :: n          !! the number of columns in `A`.
    real(wp),intent(in)   :: damp       !! The damping parameter for problem 3 above.
                                        !! (damp should be 0.0 for problems 1 and 2.)
-                                       !! If the system A*x = b is incompatible, values
-                                       !! of damp in the range 0 to sqrt(relpr)*norm(A)
+                                       !! If the system `A*x = b` is incompatible, values
+                                       !! of `damp` in the range 0 to `sqrt(relpr)*norm(A)`
                                        !! will probably have a negligible effect.
-                                       !! Larger values of damp will tend to decrease
-                                       !! the norm of x and reduce the number of
+                                       !! Larger values of `damp` will tend to decrease
+                                       !! the norm of `x` and reduce the number of
                                        !! iterations required by LSQR.
                                        !!
                                        !! The work per iteration and the storage needed
-                                       !! by LSQR are the same for all values of damp.
-   logical,intent(in)    :: wantse     !! A logical variable to say if the array se(*)
+                                       !! by LSQR are the same for all values of `damp`.
+   logical,intent(in)    :: wantse     !! A logical variable to say if the array `se(*)`
                                        !! of standard error estimates should be computed.
-                                       !! If m > n  or  damp > 0,  the system is
+                                       !! If `m > n`  or  `damp > 0`,  the system is
                                        !! overdetermined and the standard errors may be
                                        !! useful.  (See the first LSQR reference.)
-                                       !! Otherwise (m <= n  and  damp = 0) they do not
+                                       !! Otherwise (`m <= n`  and  `damp = 0`) they do not
                                        !! mean much.  Some time and storage can be saved
-                                       !! by setting wantse = .false. and using any
-                                       !! convenient array for se(*), which won't be
+                                       !! by setting `wantse = .false.` and using any
+                                       !! convenient array for `se(*)`, which won't be
                                        !! touched.
-   real(wp),intent(inout):: u(m)       !! The rhs vector b.  Beware that u is
+   real(wp),intent(inout):: u(m)       !! The rhs vector `b`.  Beware that `u` is
                                        !! over-written by LSQR.
    real(wp),intent(inout):: v(n)       !! workspace
    real(wp),intent(inout):: w(n)       !! workspace
-   real(wp),intent(out)  :: x(n)       !! Returns the computed solution x.
-   real(wp),dimension(*),intent(out) :: se   !! If wantse is true, the dimension of se must be
-                                             !! n or more.  se(*) then returns standard error
-                                             !! estimates for the components of x.
-                                             !! For each i, se(i) is set to the value
+   real(wp),intent(out)  :: x(n)       !! Returns the computed solution `x`.
+   real(wp),dimension(*),intent(out) :: se   !! If `wantse` is true, the dimension of `se` must be
+                                             !! `n` or more. `se(*)` then returns standard error
+                                             !! estimates for the components of `x`.
+                                             !! For each `i`, `se(i)` is set to the value
                                              !! `rnorm * sqrt( sigma(i,i) / t )`,
-                                             !! where sigma(i,i) is an estimate of the i-th
-                                             !! diagonal of the inverse of Abar(transpose)*Abar
+                                             !! where `sigma(i,i)` is an estimate of the i-th
+                                             !! diagonal of the inverse of `Abar(transpose)*Abar`
                                              !! and:
-                                             !! * t = 1      if  m <= n,
-                                             !! * t = m - n  if  m > n  and  damp = 0,
-                                             !! * t = m      if  damp /= 0.
+                                             !! * `t = 1      if  m <= n`
+                                             !! * `t = m - n  if  m > n  and  damp = 0`
+                                             !! * `t = m      if  damp /= 0`
                                              !!
-                                             !! If wantse is false, se(*) will not be touched.
+                                             !! If `wantse` is false, `se(*)` will not be touched.
                                              !! The actual parameter can be any suitable array
                                              !! of any length.
    real(wp),intent(in)   :: atol       !! An estimate of the relative error in the data
-                                       !! defining the matrix A.  For example,
-                                       !! if A is accurate to about 6 digits, set
-                                       !! atol = 1.0e-6 .
+                                       !! defining the matrix `A`.  For example,
+                                       !! if `A` is accurate to about 6 digits, set
+                                       !! `atol = 1.0e-6`.
    real(wp),intent(in)   :: btol       !! An estimate of the relative error in the data
-                                       !! defining the rhs vector b.  For example,
-                                       !! if b is accurate to about 6 digits, set
-                                       !! btol = 1.0e-6 .
-   real(wp),intent(in)              :: conlim   !! An upper limit on cond(Abar), the apparent
-                                                !! condition number of the matrix Abar.
+                                       !! defining the rhs vector `b`.  For example,
+                                       !! if `b` is accurate to about 6 digits, set
+                                       !! `btol = 1.0e-6`.
+   real(wp),intent(in)              :: conlim   !! An upper limit on `cond(Abar)`, the apparent
+                                                !! condition number of the matrix `Abar`.
                                                 !! Iterations will be terminated if a computed
-                                                !! estimate of cond(Abar) exceeds conlim.
+                                                !! estimate of `cond(Abar)` exceeds `conlim`.
                                                 !! This is intended to prevent certain small or
-                                                !! zero singular values of A or Abar from
+                                                !! zero singular values of `A` or `Abar` from
                                                 !! coming into effect and causing unwanted growth
                                                 !! in the computed solution.
                                                 !!
-                                                !! conlim and damp may be used separately or
+                                                !! `conlim` and `damp` may be used separately or
                                                 !! together to regularize ill-conditioned systems.
                                                 !!
-                                                !! Normally, conlim should be in the range
-                                                !! 1000 to 1/relpr.
+                                                !! Normally, `conlim` should be in the range
+                                                !! 1000 to `1/relpr`.
                                                 !!
                                                 !! Suggested value:
                                                 !!
-                                                !! * conlim = 1/(100*relpr)  for compatible systems,
-                                                !! * conlim = 1/(10*sqrt(relpr)) for least squares.
+                                                !! * `conlim = 1/(100*relpr)` for compatible systems,
+                                                !! * `conlim = 1/(10*sqrt(relpr))` for least squares.
                                                 !!
                                                 !! Note:  If the user is not concerned about the parameters
-                                                !! atol, btol and conlim, any or all of them may be set
+                                                !! `atol`, `btol` and `conlim`, any or all of them may be set
                                                 !! to zero.  The effect will be the same as the values
-                                                !! relpr, relpr and 1/relpr respectively.
+                                                !! `relpr`, `relpr` and `1/relpr` respectively.
    integer,intent(in)               :: itnlim   !! An upper limit on the number of iterations.
                                                 !! Suggested value:
-                                                !! * itnlim = n/2 for well-conditioned systems
+                                                !! * `itnlim = n/2` for well-conditioned systems
                                                 !!   with clustered singular values,
-                                                !! * itnlim = 4*n   otherwise.
+                                                !! * `itnlim = 4*n` otherwise.
    integer,intent(in)               :: nout     !! File number for printed output.  If nonzero,
-                                                !! a summary will be printed on file nout.
+                                                !! a summary will be printed on file `nout`.
    integer,intent(out)               :: istop   !! An integer giving the reason for termination:
                                                 !!
-                                                !! * 0 -- x = 0  is the exact solution.
+                                                !! * 0 -- `x` = 0  is the exact solution.
                                                 !!   No iterations were performed.
-                                                !! * 1 -- The equations A*x = b are probably
-                                                !!   compatible.  Norm(A*x - b) is sufficiently
-                                                !!   small, given the values of atol and btol.
-                                                !! * 2 -- damp is zero.  The system A*x = b is probably
+                                                !! * 1 -- The equations `A*x = b` are probably
+                                                !!   compatible.  `Norm(A*x - b)` is sufficiently
+                                                !!   small, given the values of `atol` and `btol`.
+                                                !! * 2 -- `damp` is zero.  The system `A*x = b` is probably
                                                 !!   not compatible.  A least-squares solution has
                                                 !!   been obtained that is sufficiently accurate,
-                                                !!   given the value of atol.
-                                                !! * 3 -- damp is nonzero.  A damped least-squares
+                                                !!   given the value of `atol`.
+                                                !! * 3 -- `damp` is nonzero.  A damped least-squares
                                                 !!   solution has been obtained that is sufficiently
-                                                !!   accurate, given the value of atol.
-                                                !! * 4 -- An estimate of cond(Abar) has exceeded
-                                                !!   conlim.  The system A*x = b appears to be
+                                                !!   accurate, given the value of `atol`.
+                                                !! * 4 -- An estimate of `cond(Abar)` has exceeded
+                                                !!   `conlim`.  The system `A*x = b` appears to be
                                                 !!   ill-conditioned.  Otherwise, there could be an
-                                                !!   error in subroutine aprod.
-                                                !! * 5 -- The iteration limit itnlim was reached.
+                                                !!   error in subroutine `aprod`.
+                                                !! * 5 -- The iteration limit `itnlim` was reached.
    integer,intent(out)   :: itn        !! The number of iterations performed.
-   real(wp),intent(out)  :: anorm      !! An estimate of the Frobenius norm of  Abar.
+   real(wp),intent(out)  :: anorm      !! An estimate of the Frobenius norm of `Abar`.
                                        !! This is the square-root of the sum of squares
-                                       !! of the elements of Abar.
-                                       !! If damp is small and if the columns of A
+                                       !! of the elements of `Abar`.
+                                       !! If `damp` is small and if the columns of `A`
                                        !! have all been scaled to have length 1.0,
-                                       !! anorm should increase to roughly sqrt(n).
-                                       !! A radically different value for anorm may
-                                       !! indicate an error in subroutine aprod (there
+                                       !! `anorm` should increase to roughly `sqrt(n)`.
+                                       !! A radically different value for `anorm` may
+                                       !! indicate an error in subroutine `aprod` (there
                                        !! may be an inconsistency between modes 1 and 2).
-   real(wp),intent(out)  :: acond      !! An estimate of cond(Abar), the condition
-                                       !! number of Abar.  A very high value of acond
-                                       !! may again indicate an error in aprod.
-   real(wp),intent(out)  :: rnorm      !! An estimate of the final value of norm(rbar),
+   real(wp),intent(out)  :: acond      !! An estimate of `cond(Abar)`, the condition
+                                       !! number of `Abar`.  A very high value of `acond`
+                                       !! may again indicate an error in `aprod`.
+   real(wp),intent(out)  :: rnorm      !! An estimate of the final value of `norm(rbar)`,
                                        !! the function being minimized (see notation
-                                       !! above).  This will be small if A*x = b has
+                                       !! above).  This will be small if `A*x = b` has
                                        !! a solution.
    real(wp),intent(out)  :: arnorm     !! An estimate of the final value of
-                                       !! norm( Abar(transpose)*rbar ), the norm of
+                                       !! `norm( Abar(transpose)*rbar )`, the norm of
                                        !! the residual for the usual normal equations.
                                        !! This should be small in all cases.  (arnorm
                                        !! will often be smaller than the true value
-                                       !! computed from the output vector x.)
+                                       !! computed from the output vector `x`.)
    real(wp),intent(out)  :: xnorm      !! An estimate of the norm of the final
-                                       !! solution vector x.
+                                       !! solution vector `x`.
 
    logical :: damped
    integer :: i, maxdx, nconv, nstop
@@ -889,7 +889,7 @@
 
 !***************************************************************************************************
 !>
-!  Checks the two modes of aprod for LSQR and CRAIG.
+!  Checks the two modes of aprod for [[lsqr]].
 !
 !  acheck may be called to test the user-written subroutine
 !  aprod required by LSQR and CRAIG.  For some m x n matrix A,
@@ -1001,7 +1001,7 @@
 
 !***************************************************************************************************
 !>
-!  Tests if x solves a certain least-squares problem.
+!  Tests if `x` solves a certain least-squares problem.
 !
 !  xcheck computes residuals and norms associated with the
 !  vector x and the least-squares problem solved by LSQR or CRAIG.

@@ -8,13 +8,13 @@ The updated version has been significantly refactored.
 
 ### Compiling
 
-A [FoBiS](https://github.com/szaghi/FoBiS) configuration file (`LSQR.fobis`) is provided that can build the library and examples. Use the `mode` flag to indicate what to build. For example:
+A [FoBiS](https://github.com/szaghi/FoBiS) configuration file (`lsqr.fobis`) is provided that can build the library and examples. Use the `mode` flag to indicate what to build. For example:
 
-  * To build all the examples using gfortran: `FoBiS.py build -f LSQR.fobis -mode tests-gnu`
-  * To build all the examples using ifort: `FoBiS.py build -f LSQR.fobis -mode tests-intel`
-  * To build a static library using gfortran: `FoBiS.py build -f LSQR.fobis -mode static-gnu`
-  * To build a static library using ifort: `FoBiS.py build -f LSQR.fobis -mode static-intel`
+  * To build all the examples using gfortran: `FoBiS.py build -f lsqr.fobis -mode tests-gnu`
+  * To build all the examples using ifort: `FoBiS.py build -f lsqr.fobis -mode tests-intel`
+  * To build a static library using gfortran: `FoBiS.py build -f lsqr.fobis -mode static-gnu`
+  * To build a static library using ifort: `FoBiS.py build -f lsqr.fobis -mode static-intel`
 
   The full set of modes are: `static-gnu`, `static-gnu-debug`, `static-intel`, `static-intel-debug`, `shared-gnu`, `shared-gnu-debug`, `shared-intel`, `shared-intel-debug`, `tests-gnu`, `tests-gnu-debug`, `tests-intel`, `tests-intel-debug`
 
-  To generate the documentation using [ford](https://github.com/Fortran-FOSS-Programmers/ford), run: ```FoBis.py rule --execute makedoc -f LSQR.fobis```
+  To generate the documentation using [ford](https://github.com/Fortran-FOSS-Programmers/ford), run: ```FoBis.py rule --execute makedoc -f lsqr.fobis```

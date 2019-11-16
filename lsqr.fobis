@@ -1,3 +1,7 @@
+#
+# FOBIS config file to build the library, tests, and documentation.
+#
+
 [modes]
 modes = static-gnu static-gnu-debug
         static-intel static-intel-debug
