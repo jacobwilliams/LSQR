@@ -50,6 +50,13 @@
       integer  :: itnlim  = 100   !! max iterations
       integer  :: nout    = 0     !! output unit for printing
 
+      ! used in aprod_ez:
+      real(wp),dimension(:),allocatable :: Ax   !! `A*x` (dimension m)
+      real(wp),dimension(:),allocatable :: Aty  !! `A(transpose)*y` (dimension n)
+
+      real(wp),dimension(:),allocatable :: v  !! workspace array (dimension n)
+      real(wp),dimension(:),allocatable :: w  !! workspace array (dimension n)
+
    contains
       private
       procedure,public :: initialize => initialize_ez  !! Constructor. Must be call first.
@@ -141,8 +148,6 @@
     integer :: i    !! counter
     integer :: r    !! row index
     integer :: c    !! column index
-    real(wp),dimension(m) :: Ax   !! `A*x`
-    real(wp),dimension(n) :: Aty  !! `A(transpose)*y`
 
     if (m/=me%m .or. n/=me%n) error stop 'lsqr_solver_ez class not properly initialized'
 
@@ -158,14 +163,15 @@
         !  00X       X
 
         ! A*x:
-        Ax = zero
+        if (.not. allocated(me%Ax)) allocate(me%Ax(me%m))
+        me%Ax = zero
         do i = 1, me%num_nonzero_elements
             r = me%irow(i)
             c = me%icol(i)
-            Ax(r) = Ax(r) + me%a(i)*x(c)
+            me%Ax(r) = me%Ax(r) + me%a(i)*x(c)
         end do
 
-        y = y + Ax
+        y = y + me%Ax
 
     case(2)   ! x = x + A(transpose)*y
 
@@ -177,14 +183,15 @@
         !         Y
 
         ! A(transpose)*y
-        Aty = zero
+        if (.not. allocated(me%Aty)) allocate(me%Aty(me%n))
+        me%Aty = zero
         do i = 1, me%num_nonzero_elements
             r = me%irow(i)
             c = me%icol(i)
-            Aty(c) = Aty(c) + me%a(i)*y(r)
+            me%Aty(c) = me%Aty(c) + me%a(i)*y(r)
         end do
 
-        x = x + Aty
+        x = x + me%Aty
 
     case default
        error stop 'invalid mode in aprod_ez'
@@ -202,23 +209,20 @@
 
    implicit none
 
-   class(lsqr_solver_ez),intent(inout) :: me
-
+   class(lsqr_solver_ez),intent(inout)   :: me
    real(wp),dimension(me%m),intent(in)   :: b
    real(wp),intent(in)                   :: damp
-   real(wp),dimension(me%n),intent(out)  :: x       !! the computed solution x.
+   real(wp),dimension(me%n),intent(out)  :: x       !! the computed solution `x`.
    real(wp),dimension(me%n),intent(out),optional :: se
-   integer,intent(out) ,optional  :: istop
-   integer,intent(out) ,optional  :: itn
-   real(wp),intent(out),optional  :: anorm
-   real(wp),intent(out),optional  :: acond
-   real(wp),intent(out),optional  :: rnorm
-   real(wp),intent(out),optional  :: arnorm
-   real(wp),intent(out),optional  :: xnorm
+   integer,intent(out) ,optional         :: istop
+   integer,intent(out) ,optional         :: itn
+   real(wp),intent(out),optional         :: anorm
+   real(wp),intent(out),optional         :: acond
+   real(wp),intent(out),optional         :: rnorm
+   real(wp),intent(out),optional         :: arnorm
+   real(wp),intent(out),optional         :: xnorm
 
    real(wp),dimension(:),allocatable :: u  !! copy of `b` for call to [[lsqr]]
-   real(wp),dimension(:),allocatable :: v  !! workspace
-   real(wp),dimension(:),allocatable :: w  !! workspace
    real(wp),dimension(:),allocatable :: se_
    logical  :: wantse   !! if `se` is to be returned
    integer  :: istop_,itn_
@@ -229,16 +233,17 @@
    if (wantse) then
       allocate(se_(me%n))
    else
-      allocate(se_(1))
+      allocate(se_(1)) ! not needed
    end if
    allocate(u(me%m))
-   allocate(v(me%n))
-   allocate(w(me%n))
+   if (.not. allocated(me%v)) allocate(me%v(me%n))
+   if (.not. allocated(me%w)) allocate(me%w(me%n))
 
    u = b    ! make a copy for input to lsqr (since it will be overwritten)
 
+   ! main routine:
    call me%lsqr(me%m, me%n, damp, wantse, &
-                u, v, w, x, se_, &
+                u, me%v, me%w, x, se_, &
                 me%atol, me%btol, me%conlim, me%itnlim, me%nout, &
                 istop_, itn_, anorm_, acond_, rnorm_, arnorm_, xnorm_)
 
