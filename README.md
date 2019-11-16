@@ -68,6 +68,6 @@ The lsqr source code and related files and documentation are distributed under a
 
 ### References
 
-* C.C. Paige and M.A. Saunders,  LSQR: An algorithm for sparse linear equations and sparse least squares, ACM Transactions on Mathematical Software 8, 1 (March 1982), pp. 43-71.
-* C.C. Paige and M.A. Saunders,  Algorithm 583, LSQR: Sparse linear equations and least-squares problems, ACM Transactions on Mathematical Software 8, 2 (June 1982), pp. 195-209.
-* C.L. Lawson, R.J. Hanson, D.R. Kincaid and F.T. Krogh, Basic linear algebra subprograms for Fortran usage, ACM Transactions on Mathematical Software 5, 3 (Sept 1979), pp. 308-323 and 324-325.
+* C.C. Paige and M.A. Saunders,  [LSQR: An algorithm for sparse linear equations and sparse least squares](https://stanford.edu/group/SOL/software/lsqr/lsqr-toms82a.pdf), ACM Transactions on Mathematical Software 8, 1 (March 1982), pp. 43-71.
+* C.C. Paige and M.A. Saunders,  [Algorithm 583, LSQR: Sparse linear equations and least-squares problems](https://web.stanford.edu/group/SOL/software/lsqr/lsqr-toms82b.pdf), ACM Transactions on Mathematical Software 8, 2 (June 1982), pp. 195-209.
+* C.L. Lawson, R.J. Hanson, D.R. Kincaid and F.T. Krogh, [Basic linear algebra subprograms for Fortran usage](https://dl.acm.org/citation.cfm?id=355847), ACM Transactions on Mathematical Software 5, 3 (Sept 1979), pp. 308-323 and 324-325.
