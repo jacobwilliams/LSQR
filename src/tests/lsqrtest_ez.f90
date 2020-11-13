@@ -18,7 +18,7 @@
     integer,dimension(m*n),parameter :: irow = [1,2,3,1,2,3,1,2,3]
     real(wp),dimension(m*n),parameter :: a = real([1,4,7,2,5,88,3,66,9],wp)
     real(wp),parameter :: damp = zero
-    real(wp),dimension(m,1),parameter :: b_vec = b
+    real(wp),dimension(m),parameter :: b_vec = b
     real(wp),dimension(m,n),parameter :: a_mat = reshape(a,[3,3])
 
     type(lsqr_solver_ez) :: solver
@@ -39,7 +39,7 @@
     write(*,*) ''
     write(*,'(1P,A,*(E16.6))') 'x       = ', x
     write(*,'(1P,A,*(E16.6))') 'A*x     = ', matmul(a_mat, x_vec)
-    write(*,'(1P,A,*(E16.6))') 'A*x - b = ', matmul(a_mat, x_vec) - b_vec
+    write(*,'(1P,A,*(E16.6))') 'A*x - b = ', matmul(a_mat, x_vec) - reshape(b_vec,(/m,3/))
 
     end program main
 !***************************************************************************************************
