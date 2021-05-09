@@ -59,6 +59,10 @@ A [FoBiS](https://github.com/szaghi/FoBiS) configuration file (`lsqr.fobis`) is 
 
   To generate the documentation using [ford](https://github.com/Fortran-FOSS-Programmers/ford), run: ```FoBis.py rule --execute makedoc -f lsqr.fobis```
 
+### Documentation
+
+The latest API documentation can be found [here](http://jacobwilliams.github.io/LSQR/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford).
+
 ### License
 
 The lsqr source code and related files and documentation are distributed under a permissive free software [license](https://github.com/jacobwilliams/LSQR/blob/master/LICENSE.txt) (BSD-style).
