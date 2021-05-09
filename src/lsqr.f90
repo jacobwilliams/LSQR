@@ -261,19 +261,14 @@
 
 !***************************************************************************************************
 !>
-!  LSQR finds a solution `x` to the following problems:
+!  LSQR finds a solution \(x\) to the following problems:
 !
-!  1. Unsymmetric equations --    solve  A*x = b
-!
-!  2. Linear least squares  --    solve  A*x = b
-!                                 in the least-squares sense
-!
-!  3. Damped least squares  --    solve  (   A    )*x = ( b )
-!                                        ( damp*I )     ( 0 )
-!                                 in the least-squares sense
+!  1. Unsymmetric equations -- solve:  $$ \mathbf{A} \cdot \mathbf{x} = \mathbf{b} $$
+!  2. Linear least squares  -- solve (in the least-squares sense):  $$ \mathbf{A} \cdot \mathbf{x} = \mathbf{b} $$
+!  3. Damped least squares  -- solve (in the least-squares sense): $$ \left[ \begin{array}{c} \mathbf{A}\\ damp \cdot \mathbf{I} \end{array} \right] \cdot \mathbf{x} = \left[ \begin{array}{c} \mathbf{b}\\ \mathbf{0} \end{array} \right] $$
 !
 !  where A is a matrix with m rows and n columns, b is an
-!  m-vector, and damp is a scalar.  (All quantities are real.)
+!  m-vector, and `damp` is a scalar.  (All quantities are real.)
 !  The matrix A is intended to be large and sparse.  It is accessed
 !  by means of subroutine calls to `aprod`.
 !
@@ -309,9 +304,9 @@
 !  If some initial estimate x0 is known and if damp = 0,
 !  one could proceed as follows:
 !
-!  1. Compute a residual vector     `r0 = b - A*x0`.
-!  2. Use LSQR to solve the system  `A*dx = r0`.
-!  3. Add the correction dx to obtain a final solution `x = x0 + dx`.
+!  1. Compute a residual vector     \( r_0 = b - A \cdot x_0 \).
+!  2. Use LSQR to solve the system  \( A \cdot \Delta x = r_0 \).
+!  3. Add the correction dx to obtain a final solution \( x = x_0 + \Delta x \).
 !
 !  This requires that x0 be available before and after the call
 !  to LSQR.  To judge the benefits, suppose LSQR takes k1 iterations
