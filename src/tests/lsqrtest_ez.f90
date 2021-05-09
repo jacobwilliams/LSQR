@@ -18,7 +18,7 @@
     integer,dimension(m*n),parameter :: irow = [1,2,3,1,2,3,1,2,3]
     real(wp),dimension(m*n),parameter :: a = real([1,4,7,2,5,88,3,66,9],wp)
     real(wp),parameter :: damp = zero
-    real(wp),dimension(m,1),parameter :: b_vec = b
+    real(wp),dimension(m,1),parameter :: b_vec = reshape(b,[m,1])
     real(wp),dimension(m,n),parameter :: a_mat = reshape(a,[3,3])
 
     type(lsqr_solver_ez) :: solver

@@ -23,7 +23,7 @@
       private
    contains
       private
-      procedure(aprod_func),deferred :: aprod !! User function to access the sparse matrix `A`.
+      procedure(aprod_func),deferred,public :: aprod !! User function to access the sparse matrix `A`.
       procedure,public :: lsqr  !! main solver routine
       procedure,public :: acheck
       procedure,public :: xcheck
@@ -61,7 +61,7 @@
       private
       procedure,public :: initialize => initialize_ez  !! Constructor. Must be call first.
       procedure,public :: solve => solve_ez
-      procedure :: aprod => aprod_ez !! internal routine
+      procedure,public :: aprod => aprod_ez !! internal routine
    end type lsqr_solver_ez
 
    abstract interface

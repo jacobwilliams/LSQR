@@ -36,7 +36,7 @@
         integer :: nout = -1  !! output unit for printing
         real(wp),dimension(lenrw) :: rw  !! workspace array
     contains
-        procedure :: aprod => aprod
+        procedure :: aprod => aprod_test_solver
         procedure :: test
         procedure :: aprod1
         procedure :: aprod2
@@ -280,7 +280,7 @@
 !   followed by a work array w.  These are passed to aprod1 and aprod2
 !   in order to make the code readable.
 
-    subroutine aprod (me, mode, m, n, x, y)
+    subroutine aprod_test_solver (me, mode, m, n, x, y)
 
     class(test_solver),intent(inout) :: me
     integer,intent(in) :: mode
@@ -306,7 +306,7 @@
                         me%rw(locd), me%rw(lochy), me%rw(lochz), me%rw(locw) )
     end if
 
-    end subroutine aprod
+    end subroutine aprod_test_solver
 !***************************************************************************************************
 
 !***************************************************************************************************
