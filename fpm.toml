@@ -1,0 +1,28 @@
+name = "LSQR"
+author = "Jacob Williams"
+copyright  = "Copyright (c) 2019-2021, Jacob Williams"
+license = "BSD-3"
+description = "Modern Fortran sparse linear systems solver"
+homepage = "https://github.com/jacobwilliams/LSQR"
+keywords = ["conjugate-gradient", "sparse", "linear systems", "least-squares"]
+
+[build]
+auto-executables = false
+auto-examples = false
+auto-tests = false
+
+[library]
+source-dir = "src"
+
+[install]
+library = true
+
+[[test]]
+name = "lsqrtest_ez"
+source-dir = "tests"
+main = "lsqrtest_ez.f90"
+
+[[test]]
+name = "lsqrtest"
+source-dir = "tests"
+main = "lsqrtest.f90"
