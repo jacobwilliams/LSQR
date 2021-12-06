@@ -1,3 +1,8 @@
+![LSQR](media/logo.png)
+============
+
+![Build Status](https://github.com/jacobwilliams/LSQR/actions/workflows/CI.yml/badge.svg)
+
 ### Brief Description
 
 A Fortran 2008 edition of LSQR, a conjugate-gradient type method for solving sparse linear equations and sparse least-squares problems.
