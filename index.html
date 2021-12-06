@@ -178,15 +178,16 @@
 </code></pre></div>
 
 <h3>Compiling</h3>
-<p>A <a href="https://github.com/szaghi/FoBiS">FoBiS</a> configuration file (<code>lsqr.fobis</code>) is provided that can build the library and examples. Use the <code>mode</code> flag to indicate what to build. For example:</p>
-<ul>
-<li>To build all the examples using gfortran: <code>FoBiS.py build -f lsqr.fobis -mode tests-gnu</code></li>
-<li>To build all the examples using ifort: <code>FoBiS.py build -f lsqr.fobis -mode tests-intel</code></li>
-<li>To build a static library using gfortran: <code>FoBiS.py build -f lsqr.fobis -mode static-gnu</code></li>
-<li>To build a static library using ifort: <code>FoBiS.py build -f lsqr.fobis -mode static-intel</code></li>
-</ul>
-<p>The full set of modes are: <code>static-gnu</code>, <code>static-gnu-debug</code>, <code>static-intel</code>, <code>static-intel-debug</code>, <code>shared-gnu</code>, <code>shared-gnu-debug</code>, <code>shared-intel</code>, <code>shared-intel-debug</code>, <code>tests-gnu</code>, <code>tests-gnu-debug</code>, <code>tests-intel</code>, <code>tests-intel-debug</code></p>
-<p>To generate the documentation using <a href="https://github.com/Fortran-FOSS-Programmers/ford">ford</a>, run: <code>FoBis.py rule --execute makedoc -f lsqr.fobis</code></p>
+<p>A <a href="https://github.com/fortran-lang/fpm">Fortran Package Manager</a> manifest file is included, so that the library and test cases can be compiled with FPM. For example:</p>
+<div class="codehilite"><pre><span></span><code>fpm build --profile release
+fpm test --profile release
+</code></pre></div>
+
+<p>To use <code>lsqr</code> within your fpm project, add the following to your <code>fpm.toml</code> file:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[dependencies]</span>
+<span class="n">lsqr</span> <span class="o">=</span> <span class="p">{</span> <span class="n">git</span><span class="o">=</span><span class="s">&quot;https://github.com/jacobwilliams/lsqr.git&quot;</span> <span class="p">}</span>
+</code></pre></div>
+
 <h3>Documentation</h3>
 <p>The latest API documentation can be found <a href="http://jacobwilliams.github.io/LSQR/">here</a>. This was generated from the source code using <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>.</p>
 <h3>License</h3>
