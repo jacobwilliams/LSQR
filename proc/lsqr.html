@@ -72,8 +72,11 @@
                
             <li><a href="../lists/types.html">Derived Types</a></li>
         
+               
+        
         
             </ul>
+        
             </li>
 
 
@@ -91,6 +94,8 @@
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
 
 
           </ul>
@@ -121,6 +126,7 @@
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
      
      
      
@@ -424,7 +430,7 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
 <tr>
   
-  <td><span class="anchor" id="variable-n~5"></span>integer,</td>
+  <td><span class="anchor" id="variable-n~9"></span>integer,</td>
   <td>intent(in)</td>
   <td></td>
   
@@ -445,15 +451,15 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>damp</strong></td><td><p>The damping parameter for problem 3 above.
- (damp should be 0.0 for problems 1 and 2.)
- If the system <code>A*x = b</code> is incompatible, values
- of <code>damp</code> in the range 0 to <code>sqrt(relpr)*norm(A)</code>
- will probably have a negligible effect.
- Larger values of <code>damp</code> will tend to decrease
- the norm of <code>x</code> and reduce the number of
- iterations required by LSQR.</p>
+(damp should be 0.0 for problems 1 and 2.)
+If the system <code>A*x = b</code> is incompatible, values
+of <code>damp</code> in the range 0 to <code>sqrt(relpr)*norm(A)</code>
+will probably have a negligible effect.
+Larger values of <code>damp</code> will tend to decrease
+the norm of <code>x</code> and reduce the number of
+iterations required by LSQR.</p>
 <p>The work per iteration and the storage needed
- by LSQR are the same for all values of <code>damp</code>.</p></td>
+by LSQR are the same for all values of <code>damp</code>.</p></td>
   
 </tr>
 
@@ -469,15 +475,15 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>wantse</strong></td><td><p>A logical variable to say if the array <code>se(*)</code>
- of standard error estimates should be computed.
- If <code>m &gt; n</code>  or  <code>damp &gt; 0</code>,  the system is
- overdetermined and the standard errors may be
- useful.  (See the first LSQR reference.)
- Otherwise (<code>m &lt;= n</code>  and  <code>damp = 0</code>) they do not
- mean much.  Some time and storage can be saved
- by setting <code>wantse = .false.</code> and using any
- convenient array for <code>se(*)</code>, which won't be
- touched.</p></td>
+of standard error estimates should be computed.
+If <code>m &gt; n</code>  or  <code>damp &gt; 0</code>,  the system is
+overdetermined and the standard errors may be
+useful.  (See the first LSQR reference.)
+Otherwise (<code>m &lt;= n</code>  and  <code>damp = 0</code>) they do not
+mean much.  Some time and storage can be saved
+by setting <code>wantse = .false.</code> and using any
+convenient array for <code>se(*)</code>, which won't be
+touched.</p></td>
   
 </tr>
 
@@ -493,7 +499,7 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>u</strong>(m)</td><td><p>The rhs vector <code>b</code>.  Beware that <code>u</code> is
- over-written by LSQR.</p></td>
+over-written by LSQR.</p></td>
   
 </tr>
 
@@ -533,7 +539,7 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
 <tr>
   
-  <td><span class="anchor" id="variable-x~4"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-x~5"></span>real(kind=wp),</td>
   <td>intent(out)</td>
   <td></td>
   
@@ -554,19 +560,19 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td>dimension(*)</td><td>::</td>
   <td><strong>se</strong></td><td><p>If <code>wantse</code> is true, the dimension of <code>se</code> must be
- <code>n</code> or more. <code>se(*)</code> then returns standard error
- estimates for the components of <code>x</code>.
- For each <code>i</code>, <code>se(i)</code> is set to the value
- <code>rnorm * sqrt( sigma(i,i) / t )</code>,
- where <code>sigma(i,i)</code> is an estimate of the i-th
- diagonal of the inverse of <code>Abar(transpose)*Abar</code>
- and:
- * <code>t = 1      if  m &lt;= n</code>
- * <code>t = m - n  if  m &gt; n  and  damp = 0</code>
- * <code>t = m      if  damp /= 0</code></p>
+<code>n</code> or more. <code>se(*)</code> then returns standard error
+estimates for the components of <code>x</code>.
+For each <code>i</code>, <code>se(i)</code> is set to the value
+<code>rnorm * sqrt( sigma(i,i) / t )</code>,
+where <code>sigma(i,i)</code> is an estimate of the i-th
+diagonal of the inverse of <code>Abar(transpose)*Abar</code>
+and:
+* <code>t = 1      if  m &lt;= n</code>
+* <code>t = m - n  if  m &gt; n  and  damp = 0</code>
+* <code>t = m      if  damp /= 0</code></p>
 <p>If <code>wantse</code> is false, <code>se(*)</code> will not be touched.
- The actual parameter can be any suitable array
- of any length.</p></td>
+The actual parameter can be any suitable array
+of any length.</p></td>
   
 </tr>
 
@@ -582,9 +588,9 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>atol</strong></td><td><p>An estimate of the relative error in the data
- defining the matrix <code>A</code>.  For example,
- if <code>A</code> is accurate to about 6 digits, set
- <code>atol = 1.0e-6</code>.</p></td>
+defining the matrix <code>A</code>.  For example,
+if <code>A</code> is accurate to about 6 digits, set
+<code>atol = 1.0e-6</code>.</p></td>
   
 </tr>
 
@@ -600,9 +606,9 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>btol</strong></td><td><p>An estimate of the relative error in the data
- defining the rhs vector <code>b</code>.  For example,
- if <code>b</code> is accurate to about 6 digits, set
- <code>btol = 1.0e-6</code>.</p></td>
+defining the rhs vector <code>b</code>.  For example,
+if <code>b</code> is accurate to about 6 digits, set
+<code>btol = 1.0e-6</code>.</p></td>
   
 </tr>
 
@@ -618,26 +624,26 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>conlim</strong></td><td><p>An upper limit on <code>cond(Abar)</code>, the apparent
- condition number of the matrix <code>Abar</code>.
- Iterations will be terminated if a computed
- estimate of <code>cond(Abar)</code> exceeds <code>conlim</code>.
- This is intended to prevent certain small or
- zero singular values of <code>A</code> or <code>Abar</code> from
- coming into effect and causing unwanted growth
- in the computed solution.</p>
+condition number of the matrix <code>Abar</code>.
+Iterations will be terminated if a computed
+estimate of <code>cond(Abar)</code> exceeds <code>conlim</code>.
+This is intended to prevent certain small or
+zero singular values of <code>A</code> or <code>Abar</code> from
+coming into effect and causing unwanted growth
+in the computed solution.</p>
 <p><code>conlim</code> and <code>damp</code> may be used separately or
- together to regularize ill-conditioned systems.</p>
+together to regularize ill-conditioned systems.</p>
 <p>Normally, <code>conlim</code> should be in the range
- 1000 to <code>1/relpr</code>.</p>
+1000 to <code>1/relpr</code>.</p>
 <p>Suggested value:</p>
 <ul>
 <li><code>conlim = 1/(100*relpr)</code> for compatible systems,</li>
 <li><code>conlim = 1/(10*sqrt(relpr))</code> for least squares.</li>
 </ul>
 <p>Note:  If the user is not concerned about the parameters
- <code>atol</code>, <code>btol</code> and <code>conlim</code>, any or all of them may be set
- to zero.  The effect will be the same as the values
- <code>relpr</code>, <code>relpr</code> and <code>1/relpr</code> respectively.</p></td>
+<code>atol</code>, <code>btol</code> and <code>conlim</code>, any or all of them may be set
+to zero.  The effect will be the same as the values
+<code>relpr</code>, <code>relpr</code> and <code>1/relpr</code> respectively.</p></td>
   
 </tr>
 
@@ -653,10 +659,10 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>itnlim</strong></td><td><p>An upper limit on the number of iterations.
- Suggested value:
- * <code>itnlim = n/2</code> for well-conditioned systems
-   with clustered singular values,
- * <code>itnlim = 4*n</code> otherwise.</p></td>
+Suggested value:
+* <code>itnlim = n/2</code> for well-conditioned systems
+  with clustered singular values,
+* <code>itnlim = 4*n</code> otherwise.</p></td>
   
 </tr>
 
@@ -672,7 +678,7 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>nout</strong></td><td><p>File number for printed output.  If nonzero,
- a summary will be printed on file <code>nout</code>.</p></td>
+a summary will be printed on file <code>nout</code>.</p></td>
   
 </tr>
 
@@ -690,21 +696,21 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   <td><strong>istop</strong></td><td><p>An integer giving the reason for termination:</p>
 <ul>
 <li>0 -- <code>x</code> = 0  is the exact solution.
-   No iterations were performed.</li>
+  No iterations were performed.</li>
 <li>1 -- The equations <code>A*x = b</code> are probably
-   compatible.  <code>Norm(A*x - b)</code> is sufficiently
-   small, given the values of <code>atol</code> and <code>btol</code>.</li>
+  compatible.  <code>Norm(A*x - b)</code> is sufficiently
+  small, given the values of <code>atol</code> and <code>btol</code>.</li>
 <li>2 -- <code>damp</code> is zero.  The system <code>A*x = b</code> is probably
-   not compatible.  A least-squares solution has
-   been obtained that is sufficiently accurate,
-   given the value of <code>atol</code>.</li>
+  not compatible.  A least-squares solution has
+  been obtained that is sufficiently accurate,
+  given the value of <code>atol</code>.</li>
 <li>3 -- <code>damp</code> is nonzero.  A damped least-squares
-   solution has been obtained that is sufficiently
-   accurate, given the value of <code>atol</code>.</li>
+  solution has been obtained that is sufficiently
+  accurate, given the value of <code>atol</code>.</li>
 <li>4 -- An estimate of <code>cond(Abar)</code> has exceeded
-   <code>conlim</code>.  The system <code>A*x = b</code> appears to be
-   ill-conditioned.  Otherwise, there could be an
-   error in subroutine <code>aprod</code>.</li>
+  <code>conlim</code>.  The system <code>A*x = b</code> appears to be
+  ill-conditioned.  Otherwise, there could be an
+  error in subroutine <code>aprod</code>.</li>
 <li>5 -- The iteration limit <code>itnlim</code> was reached.</li>
 </ul></td>
   
@@ -737,14 +743,14 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>anorm</strong></td><td><p>An estimate of the Frobenius norm of <code>Abar</code>.
- This is the square-root of the sum of squares
- of the elements of <code>Abar</code>.
- If <code>damp</code> is small and if the columns of <code>A</code>
- have all been scaled to have length 1.0,
- <code>anorm</code> should increase to roughly <code>sqrt(n)</code>.
- A radically different value for <code>anorm</code> may
- indicate an error in subroutine <code>aprod</code> (there
- may be an inconsistency between modes 1 and 2).</p></td>
+This is the square-root of the sum of squares
+of the elements of <code>Abar</code>.
+If <code>damp</code> is small and if the columns of <code>A</code>
+have all been scaled to have length 1.0,
+<code>anorm</code> should increase to roughly <code>sqrt(n)</code>.
+A radically different value for <code>anorm</code> may
+indicate an error in subroutine <code>aprod</code> (there
+may be an inconsistency between modes 1 and 2).</p></td>
   
 </tr>
 
@@ -760,8 +766,8 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>acond</strong></td><td><p>An estimate of <code>cond(Abar)</code>, the condition
- number of <code>Abar</code>.  A very high value of <code>acond</code>
- may again indicate an error in <code>aprod</code>.</p></td>
+number of <code>Abar</code>.  A very high value of <code>acond</code>
+may again indicate an error in <code>aprod</code>.</p></td>
   
 </tr>
 
@@ -777,9 +783,9 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>rnorm</strong></td><td><p>An estimate of the final value of <code>norm(rbar)</code>,
- the function being minimized (see notation
- above).  This will be small if <code>A*x = b</code> has
- a solution.</p></td>
+the function being minimized (see notation
+above).  This will be small if <code>A*x = b</code> has
+a solution.</p></td>
   
 </tr>
 
@@ -795,11 +801,11 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>arnorm</strong></td><td><p>An estimate of the final value of
- <code>norm( Abar(transpose)*rbar )</code>, the norm of
- the residual for the usual normal equations.
- This should be small in all cases.  (arnorm
- will often be smaller than the true value
- computed from the output vector <code>x</code>.)</p></td>
+<code>norm( Abar(transpose)*rbar )</code>, the norm of
+the residual for the usual normal equations.
+This should be small in all cases.  (arnorm
+will often be smaller than the true value
+computed from the output vector <code>x</code>.)</p></td>
   
 </tr>
 
@@ -815,7 +821,7 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
   
   <td></td><td>::</td>
   <td><strong>xnorm</strong></td><td><p>An estimate of the norm of the final
- solution vector <code>x</code>.</p></td>
+solution vector <code>x</code>.</p></td>
   
 </tr>
 
@@ -850,18 +856,18 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
 <polygon fill="none" stroke="black" points="54,-87 0,-87 0,-63 54,-63 54,-87"/>
 <text text-anchor="middle" x="27" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">LSQR</text>
 </g>
-<!-- proc~dnrm2 -->
+<!-- proc~d2norm -->
 <g id="proc~~lsqr~~CallsGraph_node2" class="node">
-<title>proc~dnrm2</title>
-<g id="a_proc~~lsqr~~CallsGraph_node2"><a xlink:href=".././proc/dnrm2.html" xlink:title="dnrm2">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="144.5,-150 90.5,-150 90.5,-126 144.5,-126 144.5,-150"/>
-<text text-anchor="middle" x="117.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dnrm2</text>
+<title>proc~d2norm</title>
+<g id="a_proc~~lsqr~~CallsGraph_node2"><a xlink:href=".././proc/d2norm.html" xlink:title="d2norm">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-150 90,-150 90,-126 145,-126 145,-150"/>
+<text text-anchor="middle" x="117.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">d2norm</text>
 </a>
 </g>
 </g>
-<!-- proc~lsqr&#45;&gt;proc~dnrm2 -->
+<!-- proc~lsqr&#45;&gt;proc~d2norm -->
 <g id="proc~~lsqr~~CallsGraph_edge1" class="edge">
-<title>proc~lsqr&#45;&gt;proc~dnrm2</title>
+<title>proc~lsqr&#45;&gt;proc~d2norm</title>
 <path fill="none" stroke="#000000" d="M45.06,-87.15C58.16,-96.47 76.45,-109.49 91.25,-120.02"/>
 <polygon fill="#000000" stroke="#000000" points="89.31,-122.94 99.49,-125.89 93.37,-117.24 89.31,-122.94"/>
 </g>
@@ -895,18 +901,18 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
 <path fill="none" stroke="#000000" d="M54.07,-68.81C62.37,-66.84 71.7,-64.63 80.57,-62.53"/>
 <polygon fill="#000000" stroke="#000000" points="81.38,-65.93 90.31,-60.22 79.77,-59.12 81.38,-65.93"/>
 </g>
-<!-- proc~d2norm -->
+<!-- proc~dnrm2 -->
 <g id="proc~~lsqr~~CallsGraph_node5" class="node">
-<title>proc~d2norm</title>
-<g id="a_proc~~lsqr~~CallsGraph_node5"><a xlink:href=".././proc/d2norm.html" xlink:title="d2norm">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-24 90,-24 90,0 145,0 145,-24"/>
-<text text-anchor="middle" x="117.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">d2norm</text>
+<title>proc~dnrm2</title>
+<g id="a_proc~~lsqr~~CallsGraph_node5"><a xlink:href=".././proc/dnrm2.html" xlink:title="dnrm2">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144.5,-24 90.5,-24 90.5,0 144.5,0 144.5,-24"/>
+<text text-anchor="middle" x="117.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dnrm2</text>
 </a>
 </g>
 </g>
-<!-- proc~lsqr&#45;&gt;proc~d2norm -->
+<!-- proc~lsqr&#45;&gt;proc~dnrm2 -->
 <g id="proc~~lsqr~~CallsGraph_edge4" class="edge">
-<title>proc~lsqr&#45;&gt;proc~d2norm</title>
+<title>proc~lsqr&#45;&gt;proc~dnrm2</title>
 <path fill="none" stroke="#000000" d="M45.06,-62.85C58.16,-53.53 76.45,-40.51 91.25,-29.98"/>
 <polygon fill="#000000" stroke="#000000" points="93.37,-32.76 99.49,-24.11 89.31,-27.06 93.37,-32.76"/>
 </g>
@@ -1500,16 +1506,17 @@ private subroutine LSQR(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conl
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>LSQR was developed by Jacob Williams<br>&copy; 2021 
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
             
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> LSQR was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
