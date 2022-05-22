@@ -9,20 +9,10 @@ keywords = ["conjugate-gradient", "sparse", "linear systems", "least-squares"]
 [build]
 auto-executables = false
 auto-examples = false
-auto-tests = false
+auto-tests = true
 
 [library]
 source-dir = "src"
 
 [install]
 library = true
-
-[[test]]
-name = "lsqrtest_ez"
-source-dir = "tests"
-main = "lsqrtest_ez.f90"
-
-[[test]]
-name = "lsqrtest"
-source-dir = "tests"
-main = "lsqrtest.f90"

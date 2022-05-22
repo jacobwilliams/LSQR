@@ -1,7 +1,11 @@
 ![LSQR](media/logo.png)
 ============
 
-![Build Status](https://github.com/jacobwilliams/LSQR/actions/workflows/CI.yml/badge.svg)
+### Status
+[![GitHub release](https://img.shields.io/github/release/jacobwilliams/LSQR.svg)](https://github.com/jacobwilliams/LSQR/releases/latest)
+[![CI Status](https://github.com/jacobwilliams/LSQR/actions/workflows/CI.yml/badge.svg)](https://github.com/jacobwilliams/LSQR/actions)
+[![codecov](https://codecov.io/gh/jacobwilliams/LSQR/branch/master/graph/badge.svg)](https://codecov.io/gh/jacobwilliams/LSQR)
+[![last-commit](https://img.shields.io/github/last-commit/jacobwilliams/LSQR)](https://github.com/jacobwilliams/LSQR/commits/master)
 
 ### Brief Description
 
@@ -68,7 +72,7 @@ lsqr = { git="https://github.com/jacobwilliams/lsqr.git" }
 
 ### Documentation
 
-The latest API documentation can be found [here](http://jacobwilliams.github.io/LSQR/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford).
+The latest API documentation can be found [here](https://jacobwilliams.github.io/LSQR/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford).
 
 ### License
 

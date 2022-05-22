@@ -36,3 +36,6 @@ install
 
 # mac
 .DS_Store
+
+# tests
+/LSQR.LIS

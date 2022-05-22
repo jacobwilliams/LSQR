@@ -41,5 +41,7 @@
     write(*,'(1P,A,*(E16.6))') 'A*x     = ', matmul(a_mat, x_vec)
     write(*,'(1P,A,*(E16.6))') 'A*x - b = ', matmul(a_mat, x_vec) - b_vec
 
+    if (any(abs(matmul(a_mat, x_vec) - b_vec) > 1.0e-12)) error stop 'TEST FAILED'
+
     end program main
 !***************************************************************************************************
