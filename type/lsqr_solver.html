@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="LSQR -- Sparse Least Squares Solver with Modern Fortran">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,58 +43,27 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../lists/files.html">Source Files</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-        
             <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
-               
-            <li><a href="../lists/types.html">Derived Types</a></li>
-        
-               
-        
-        
+                   <li><a href="../lists/types.html">Derived Types</a></li>
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-
-
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
           </ul>
-        
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -108,51 +72,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>lsqr_solver
     <small>Derived Type</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title="<p>28.1% of total for derived types.</p>Including implementation: 377 statements, 43.4% of total for derived types.">9 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/lsqr.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/lsqr.f90.html'>lsqr.f90</a></li>
-    
      <li><a href='../module/lsqr_module.html'>lsqr_module</a></li>
-    
-  
      <li class="active">lsqr_solver</li>
   </ol>
 </div>
@@ -168,50 +110,20 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-0" class="panel-collapse collapse">
     <div class="list-group">
-      
       <a class="list-group-item" href="../type/lsqr_solver.html#boundprocedure-aprod">aprod</a>
-      
       <a class="list-group-item" href="../type/lsqr_solver.html#boundprocedure-lsqr">lsqr</a>
-      
       <a class="list-group-item" href="../type/lsqr_solver.html#boundprocedure-acheck">acheck</a>
-      
       <a class="list-group-item" href="../type/lsqr_solver.html#boundprocedure-xcheck">xcheck</a>
-      
     </div>
   </div>
 </div>
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -219,23 +131,18 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-      <h2>type, private, abstract :: lsqr_solver</h2>
+      <h2>type, public, abstract :: lsqr_solver</h2>
     <p>main class to access the <a href="../proc/lsqr.html">LSQR</a> solver.</p>
 <p>You can use this class directory by extending it
 and specifying <code>aprod</code>, or you can use the
 <a href="../type/lsqr_solver_ez.html">lsqr_solver_ez</a> class that has an easier
 interface.</p>
-    <br>
-    
-    
-    <div class="panel panel-default">
+<br>    <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Inherited by</h3>
       </div>
@@ -311,52 +218,22 @@ interface.</p>
     </div></div></div></div>
       </div>
     </div>
-    
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-1" class="panel-collapse collapse">
     <div class="list-group">
-      
       <a class="list-group-item" href="../type/lsqr_solver.html#boundprocedure-aprod">aprod</a>
-      
       <a class="list-group-item" href="../type/lsqr_solver.html#boundprocedure-lsqr">lsqr</a>
-      
       <a class="list-group-item" href="../type/lsqr_solver.html#boundprocedure-acheck">acheck</a>
-      
       <a class="list-group-item" href="../type/lsqr_solver.html#boundprocedure-xcheck">xcheck</a>
-      
     </div>
   </div>
 </div>
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -364,281 +241,113 @@ interface.</p>
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
     
     
     
-    
-    
-    
-     
+ 
     <section>
     <h2>Type-Bound Procedures</h2>
-    
-     
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-aprod"></span><h3>procedure(<a href='../interface/aprod_func.html'>aprod_func</a>), public, deferred :: <strong>aprod</strong>  
-    
-  </h3></div>
-  
+     <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-aprod"></span><h3>procedure(<a href='../interface/aprod_func.html'>aprod_func</a>), public, deferred :: <strong>aprod</strong>    </h3></div>
   <div class="panel-body">
     
-
-
     <p>User function to access the sparse matrix <code>A</code>.</p>
   </div>
-  
   <ul class="list-group">
-    
       <li class="list-group-item">
-      
-         
-            
+            <h3>subroutine aprod_func(me, mode, m, n, x, y)<small>Prototype</small></h3><p>User function to access the sparse matrix <code>A</code>.</p>
     
-    <h3>
-subroutine aprod_func(me, mode, m, n, x, y)
-    
-    
-   
-<small>Prototype</small></h3>
-    
-
-
-
-<p>User function to access the sparse matrix <code>A</code>.</p>
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(<a href='../type/lsqr_solver.html'>lsqr_solver</a>),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>me</strong></td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>mode</strong></td><td><ul>
 <li>If <code>mode = 1</code>, compute <code>y = y + A*x</code>.
   <code>y</code> should be altered without changing x.</li>
 <li>If <code>mode = 2</code>, compute <code>x = x + A(transpose)*y</code>.
   <code>x</code> should be altered without changing <code>y</code>.</li>
 </ul></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>m</strong></td><td><p>number of rows in <code>A</code> matrix</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>n</strong></td><td><p>number of columns in <code>A</code> matrix</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(inout),</td>
-  <td></td>
-  
-  <td>dimension(:)</td><td>::</td>
+<td>intent(inout),</td>
+  <td></td>  <td>dimension(:)</td><td>::</td>
   <td><strong>x</strong></td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(inout),</td>
-  <td></td>
-  
-  <td>dimension(:)</td><td>::</td>
+<td>intent(inout),</td>
+  <td></td>  <td>dimension(:)</td><td>::</td>
   <td><strong>y</strong></td><td></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-      
-    
-    
 
-         
-      
       </li>
-    
   </ul>
 </div>
 
-    
-     
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-lsqr"></span><h3>procedure, public :: <strong>lsqr</strong>  => <a href='../proc/lsqr.html'>LSQR</a> 
-    
-  </h3></div>
-  
+     <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-lsqr"></span><h3>procedure, public :: <strong>lsqr</strong>  => <a href='../proc/lsqr.html'>LSQR</a>   </h3></div>
   <div class="panel-body">
     
-
-
     <p>main solver routine</p>
   </div>
-  
   <ul class="list-group">
-    
       <li class="list-group-item">
-      
-        
-          
-    
-    <h3>
-private subroutine <a href='../proc/lsqr.html'>LSQR</a>(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conlim, itnlim, nout, istop, itn, anorm, acond, rnorm, arnorm, xnorm)
-    
-    
-   
-</h3>
-    
-
-
-
-
-
-
-
+          <h3>private subroutine <a href='../proc/lsqr.html'>LSQR</a>(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conlim, itnlim, nout, istop, itn, anorm, acond, rnorm, arnorm, xnorm)</h3>
 <p>LSQR finds a solution <script type="math/tex">x</script> to the following problems:</p><a href="../proc/lsqr.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(<a href='../type/lsqr_solver.html'>lsqr_solver</a>),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>me</strong></td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>m</strong></td><td><p>the number of rows in <code>A</code>.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>n</strong></td><td><p>the number of columns in <code>A</code>.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>damp</strong></td><td><p>The damping parameter for problem 3 above.
 (damp should be 0.0 for problems 1 and 2.)
 If the system <code>A*x = b</code> is incompatible, values
@@ -649,20 +358,11 @@ the norm of <code>x</code> and reduce the number of
 iterations required by LSQR.</p>
 <p>The work per iteration and the storage needed
 by LSQR are the same for all values of <code>damp</code>.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>logical,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>wantse</strong></td><td><p>A logical variable to say if the array <code>se(*)</code>
 of standard error estimates should be computed.
 If <code>m &gt; n</code>  or  <code>damp &gt; 0</code>,  the system is
@@ -673,81 +373,36 @@ mean much.  Some time and storage can be saved
 by setting <code>wantse = .false.</code> and using any
 convenient array for <code>se(*)</code>, which won't be
 touched.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>u</strong>(m)</td><td><p>The rhs vector <code>b</code>.  Beware that <code>u</code> is
 over-written by LSQR.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>v</strong>(n)</td><td><p>workspace</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>w</strong>(n)</td><td><p>workspace</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>x</strong>(n)</td><td><p>Returns the computed solution <code>x</code>.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(*)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(*)</td><td>::</td>
   <td><strong>se</strong></td><td><p>If <code>wantse</code> is true, the dimension of <code>se</code> must be
 <code>n</code> or more. <code>se(*)</code> then returns standard error
 estimates for the components of <code>x</code>.
@@ -762,56 +417,29 @@ and:
 <p>If <code>wantse</code> is false, <code>se(*)</code> will not be touched.
 The actual parameter can be any suitable array
 of any length.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>atol</strong></td><td><p>An estimate of the relative error in the data
 defining the matrix <code>A</code>.  For example,
 if <code>A</code> is accurate to about 6 digits, set
 <code>atol = 1.0e-6</code>.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>btol</strong></td><td><p>An estimate of the relative error in the data
 defining the rhs vector <code>b</code>.  For example,
 if <code>b</code> is accurate to about 6 digits, set
 <code>btol = 1.0e-6</code>.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>conlim</strong></td><td><p>An upper limit on <code>cond(Abar)</code>, the apparent
 condition number of the matrix <code>Abar</code>.
 Iterations will be terminated if a computed
@@ -833,55 +461,28 @@ together to regularize ill-conditioned systems.</p>
 <code>atol</code>, <code>btol</code> and <code>conlim</code>, any or all of them may be set
 to zero.  The effect will be the same as the values
 <code>relpr</code>, <code>relpr</code> and <code>1/relpr</code> respectively.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>itnlim</strong></td><td><p>An upper limit on the number of iterations.
 Suggested value:
 * <code>itnlim = n/2</code> for well-conditioned systems
   with clustered singular values,
 * <code>itnlim = 4*n</code> otherwise.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>nout</strong></td><td><p>File number for printed output.  If nonzero,
 a summary will be printed on file <code>nout</code>.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>istop</strong></td><td><p>An integer giving the reason for termination:</p>
 <ul>
 <li>0 -- <code>x</code> = 0  is the exact solution.
@@ -902,35 +503,17 @@ a summary will be printed on file <code>nout</code>.</p></td>
   error in subroutine <code>aprod</code>.</li>
 <li>5 -- The iteration limit <code>itnlim</code> was reached.</li>
 </ul></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>itn</strong></td><td><p>The number of iterations performed.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>anorm</strong></td><td><p>An estimate of the Frobenius norm of <code>Abar</code>.
 This is the square-root of the sum of squares
 of the elements of <code>Abar</code>.
@@ -940,667 +523,304 @@ have all been scaled to have length 1.0,
 A radically different value for <code>anorm</code> may
 indicate an error in subroutine <code>aprod</code> (there
 may be an inconsistency between modes 1 and 2).</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>acond</strong></td><td><p>An estimate of <code>cond(Abar)</code>, the condition
 number of <code>Abar</code>.  A very high value of <code>acond</code>
 may again indicate an error in <code>aprod</code>.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>rnorm</strong></td><td><p>An estimate of the final value of <code>norm(rbar)</code>,
 the function being minimized (see notation
 above).  This will be small if <code>A*x = b</code> has
 a solution.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>arnorm</strong></td><td><p>An estimate of the final value of
 <code>norm( Abar(transpose)*rbar )</code>, the norm of
 the residual for the usual normal equations.
 This should be small in all cases.  (arnorm
 will often be smaller than the true value
 computed from the output vector <code>x</code>.)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>xnorm</strong></td><td><p>An estimate of the norm of the final
 solution vector <code>x</code>.</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-      
-    
-    
 
-        
-      
       </li>
-    
   </ul>
 </div>
 
-    
-     
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-acheck"></span><h3>procedure, public :: <strong>acheck</strong>  
-    
-  </h3></div>
-  
+     <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-acheck"></span><h3>procedure, public :: <strong>acheck</strong>    </h3></div>
   <ul class="list-group">
-    
       <li class="list-group-item">
-      
-        
-          
-    
-    <h3>
-private subroutine <a href='../proc/acheck.html'>acheck</a>(me, m, n, nout, eps, v, w, x, y, inform)
-    
-    
-   
-</h3>
-    
-
-
-
-
-
-
-
+          <h3>private subroutine <a href='../proc/acheck.html'>acheck</a>(me, m, n, nout, eps, v, w, x, y, inform)</h3>
 <p>Checks the two modes of aprod for <a href="../proc/lsqr.html">LSQR</a>.</p><a href="../proc/acheck.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(<a href='../type/lsqr_solver.html'>lsqr_solver</a>),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>me</strong></td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>m</strong></td><td><p>No. of rows of A.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>n</strong></td><td><p>No. of columns of A.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>nout</strong></td><td><p>A file number for printed output.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>eps</strong></td><td><p>The machine precision.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td></td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>v</strong>(n)</td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td></td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>w</strong>(m)</td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td></td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>x</strong>(n)</td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp)</td>
-  <td></td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td></td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>y</strong>(m)</td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>inform</strong></td><td><p>Error indicator.
 inform = 0 if aprod seems to be
 consistent.
 inform = 1 otherwise.</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-      
-    
-    
 
-        
-      
       </li>
-    
   </ul>
 </div>
 
-    
-     
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-xcheck"></span><h3>procedure, public :: <strong>xcheck</strong>  
-    
-  </h3></div>
-  
+     <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-xcheck"></span><h3>procedure, public :: <strong>xcheck</strong>    </h3></div>
   <ul class="list-group">
-    
       <li class="list-group-item">
-      
-        
-          
-    
-    <h3>
-private subroutine <a href='../proc/xcheck.html'>xcheck</a>(me, m, n, nout, anorm, damp, eps, b, u, v, w, x, inform, test1, test2, test3)
-    
-    
-   
-</h3>
-    
-
-
-
-
-
-
-
+          <h3>private subroutine <a href='../proc/xcheck.html'>xcheck</a>(me, m, n, nout, anorm, damp, eps, b, u, v, w, x, inform, test1, test2, test3)</h3>
 <p>Tests if <code>x</code> solves a certain least-squares problem.</p><a href="../proc/xcheck.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>class(<a href='../type/lsqr_solver.html'>lsqr_solver</a>),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>me</strong></td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>m</strong></td><td><p>The number of rows in A.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>n</strong></td><td><p>The number of columns in A.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>nout</strong></td><td><p>A file number for printed output.
 If nout = 0, nothing is printed.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>anorm</strong></td><td><p>An estimate of norm(A) or
 norm( A, delta*I ) if delta &gt; 0.
 Normally this will be available
 from LSQR or CRAIG.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>damp</strong></td><td><p>Possibly defines a damped problem.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>eps</strong></td><td><p>Machine precision.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>b</strong>(m)</td><td><p>The right-hand side of Ax = b etc.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>u</strong>(m)</td><td><p>On exit, u = r (where r = b - Ax).</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>v</strong>(n)</td><td><p>On exit, v = A'r.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>w</strong>(n)</td><td><p>On exit, w = A'r - damp^2 x.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>x</strong>(n)</td><td><p>The given estimate of a solution.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>inform</strong></td><td><p>inform = 0 if b = 0 and x = 0.
 inform = 1, 2 or 3 if x seems to
 solve systems 1 2 or 3 above.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>test1</strong></td><td><p>These are dimensionless quantities
 that should be "small" if x does
 seem to solve one of the systems.
 "small" means less than
 tol = eps**power, where power is
 defined as a parameter below.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>test2</strong></td><td><p>These are dimensionless quantities
 that should be "small" if x does
 seem to solve one of the systems.
 "small" means less than
 tol = eps**power, where power is
 defined as a parameter below.</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>test3</strong></td><td><p>These are dimensionless quantities
 that should be "small" if x does
 seem to solve one of the systems.
 "small" means less than
 tol = eps**power, where power is
 defined as a parameter below.</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-      
-    
-    
 
-        
-      
       </li>
-    
   </ul>
 </div>
 
-    
     </section>
-    
-    
     
     <section>
     <h3><span class="anchor" id="src"></span>Source Code</h3>
-    <div class="highlight"><pre><span></span>   <span class="k">type</span><span class="p">,</span><span class="k">abstract</span><span class="p">,</span><span class="k">public</span> <span class="kd">::</span> <span class="n">lsqr_solver</span>
-      <span class="c">!! main class to access the [[lsqr]] solver.</span>
-      <span class="c">!!</span>
-      <span class="c">!! You can use this class directory by extending it</span>
-      <span class="c">!! and specifying `aprod`, or you can use the</span>
-      <span class="c">!! [[lsqr_solver_ez]] class that has an easier</span>
-      <span class="c">!! interface.</span>
-      <span class="k">private</span>
+    <div class="highlight"><pre><span></span><span class="w">   </span><span class="k">type</span><span class="p">,</span><span class="k">abstract</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lsqr_solver</span><span class="w"></span>
+<span class="w">      </span><span class="c">!! main class to access the [[lsqr]] solver.</span>
+<span class="w">      </span><span class="c">!!</span>
+<span class="w">      </span><span class="c">!! You can use this class directory by extending it</span>
+<span class="w">      </span><span class="c">!! and specifying `aprod`, or you can use the</span>
+<span class="w">      </span><span class="c">!! [[lsqr_solver_ez]] class that has an easier</span>
+<span class="w">      </span><span class="c">!! interface.</span>
+<span class="w">      </span><span class="k">private</span>
 <span class="k">   contains</span>
 <span class="k">      private</span>
-<span class="k">      procedure</span><span class="p">(</span><span class="n">aprod_func</span><span class="p">),</span><span class="k">deferred</span><span class="p">,</span><span class="k">public</span> <span class="kd">::</span> <span class="n">aprod</span> <span class="c">!! User function to access the sparse matrix `A`.</span>
-      <span class="k">procedure</span><span class="p">,</span><span class="k">public</span> <span class="kd">::</span> <span class="n">lsqr</span>  <span class="c">!! main solver routine</span>
-      <span class="k">procedure</span><span class="p">,</span><span class="k">public</span> <span class="kd">::</span> <span class="n">acheck</span>
-      <span class="k">procedure</span><span class="p">,</span><span class="k">public</span> <span class="kd">::</span> <span class="n">xcheck</span>
-   <span class="k">end type </span><span class="n">lsqr_solver</span>
+<span class="k">      procedure</span><span class="p">(</span><span class="n">aprod_func</span><span class="p">),</span><span class="k">deferred</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">aprod</span><span class="w"> </span><span class="c">!! User function to access the sparse matrix `A`.</span>
+<span class="w">      </span><span class="k">procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lsqr</span><span class="w">  </span><span class="c">!! main solver routine</span>
+<span class="w">      </span><span class="k">procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">acheck</span><span class="w"></span>
+<span class="w">      </span><span class="k">procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xcheck</span><span class="w"></span>
+<span class="w">   </span><span class="k">end type </span><span class="n">lsqr_solver</span><span class="w"></span>
 </pre></div>
 
     </section>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>LSQR was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>LSQR was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -1628,14 +848,11 @@ defined as a parameter below.</p></td>
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>
