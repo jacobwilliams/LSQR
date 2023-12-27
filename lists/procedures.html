@@ -4,78 +4,62 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="LSQR -- Sparse Least Squares Solver with Modern Fortran">
+      <meta name="description" content="LSQR -- Sparse Least Squares Solver with Modern Fortran">
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
     <title>All Procedures &ndash; LSQR
 </title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    <script src="../js/jquery-2.1.3.min.js"></script>
-    <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">LSQR </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-              data-toggle="dropdown" role="button"
-              aria-haspopup="true"
-     aria-expanded="false">Contents <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="../lists/files.html">Source Files</a></li>
-            <li><a href="../lists/modules.html">Modules</a></li>
-            <li><a href="../lists/procedures.html">Procedures</a></li>
-            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
-                   <li><a href="../lists/types.html">Derived Types</a></li>
-       
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
             </ul>
-        
-            </li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
-                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-          </ul>
-        <form action="../search.html" class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
         </div>
-<!--
-        <button type="submit" class="btn btn-default">Submit</button>
--->
-        </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <div class="container">
       <div class="row">
@@ -102,191 +86,231 @@
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: call~~graph~~CallGraph Pages: 1 -->
-<svg id="callgraphCallGraph" width="173pt" height="284pt"
- viewBox="0.00 0.00 173.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="call~~graph~~CallGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
+<svg id="callgraphCallGraph" width="646pt" height="263pt"
+ viewBox="0.00 0.00 646.00 263.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="call~~graph~~CallGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 259)">
 <title>call~~graph~~CallGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 169,-280 169,4 -4,4"/>
-<!-- proc~dcopy -->
-<g id="call~~graph~~CallGraph_node1" class="node">
-<title>proc~dcopy</title>
-<g id="a_call~~graph~~CallGraph_node1"><a xlink:href=".././proc/dcopy.html" xlink:title="dcopy">
-<polygon fill="#d9534f" stroke="#d9534f" points="164.5,-108 110.5,-108 110.5,-84 164.5,-84 164.5,-108"/>
-<text text-anchor="middle" x="137.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dcopy</text>
-</a>
-</g>
-</g>
-<!-- proc~dnrm2 -->
-<g id="call~~graph~~CallGraph_node2" class="node">
-<title>proc~dnrm2</title>
-<g id="a_call~~graph~~CallGraph_node2"><a xlink:href=".././proc/dnrm2.html" xlink:title="dnrm2">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="164.5,-66 110.5,-66 110.5,-42 164.5,-42 164.5,-66"/>
-<text text-anchor="middle" x="137.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dnrm2</text>
-</a>
-</g>
-</g>
-<!-- proc~lsqr -->
-<g id="call~~graph~~CallGraph_node3" class="node">
-<title>proc~lsqr</title>
-<g id="a_call~~graph~~CallGraph_node3"><a xlink:href=".././proc/lsqr.html" xlink:title="LSQR">
-<polygon fill="#d9534f" stroke="#d9534f" points="64,-150 10,-150 10,-126 64,-126 64,-150"/>
-<text text-anchor="middle" x="37" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LSQR</text>
-</a>
-</g>
-</g>
-<!-- proc~lsqr&#45;&gt;proc~dcopy -->
-<g id="call~~graph~~CallGraph_edge3" class="edge">
-<title>proc~lsqr&#45;&gt;proc~dcopy</title>
-<path fill="none" stroke="#000000" d="M64.14,-126.86C75.38,-122.06 88.7,-116.38 100.83,-111.21"/>
-<polygon fill="#000000" stroke="#000000" points="102.41,-114.34 110.24,-107.2 99.67,-107.9 102.41,-114.34"/>
-</g>
-<!-- proc~lsqr&#45;&gt;proc~dnrm2 -->
-<g id="call~~graph~~CallGraph_edge2" class="edge">
-<title>proc~lsqr&#45;&gt;proc~dnrm2</title>
-<path fill="none" stroke="#000000" d="M61.24,-125.99C65.66,-123.28 70.11,-120.24 74,-117 92.88,-101.25 92.28,-92.05 110,-75 110.78,-74.25 111.59,-73.49 112.42,-72.74"/>
-<polygon fill="#000000" stroke="#000000" points="114.77,-75.33 120.11,-66.18 110.23,-70.01 114.77,-75.33"/>
-</g>
-<!-- proc~dscal -->
-<g id="call~~graph~~CallGraph_node5" class="node">
-<title>proc~dscal</title>
-<g id="a_call~~graph~~CallGraph_node5"><a xlink:href=".././proc/dscal.html" xlink:title="dscal">
-<polygon fill="#d9534f" stroke="#d9534f" points="164.5,-150 110.5,-150 110.5,-126 164.5,-126 164.5,-150"/>
-<text text-anchor="middle" x="137.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dscal</text>
-</a>
-</g>
-</g>
-<!-- proc~lsqr&#45;&gt;proc~dscal -->
-<g id="call~~graph~~CallGraph_edge4" class="edge">
-<title>proc~lsqr&#45;&gt;proc~dscal</title>
-<path fill="none" stroke="#000000" d="M64.14,-138C75.16,-138 88.18,-138 100.11,-138"/>
-<polygon fill="#000000" stroke="#000000" points="100.24,-141.5 110.24,-138 100.24,-134.5 100.24,-141.5"/>
-</g>
-<!-- proc~d2norm -->
-<g id="call~~graph~~CallGraph_node8" class="node">
-<title>proc~d2norm</title>
-<g id="a_call~~graph~~CallGraph_node8"><a xlink:href=".././proc/d2norm.html" xlink:title="d2norm">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="165,-192 110,-192 110,-168 165,-168 165,-192"/>
-<text text-anchor="middle" x="137.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">d2norm</text>
-</a>
-</g>
-</g>
-<!-- proc~lsqr&#45;&gt;proc~d2norm -->
-<g id="call~~graph~~CallGraph_edge1" class="edge">
-<title>proc~lsqr&#45;&gt;proc~d2norm</title>
-<path fill="none" stroke="#000000" d="M64.14,-149.14C75.29,-153.9 88.49,-159.53 100.54,-164.67"/>
-<polygon fill="#000000" stroke="#000000" points="99.33,-167.95 109.9,-168.66 102.07,-161.51 99.33,-167.95"/>
-</g>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-259 642,-259 642,4 -4,4"/>
 <!-- proc~acheck -->
-<g id="call~~graph~~CallGraph_node4" class="node">
+<g id="call~~graph~~CallGraph_node1" class="node">
 <title>proc~acheck</title>
-<g id="a_call~~graph~~CallGraph_node4"><a xlink:href=".././proc/acheck.html" xlink:title="acheck">
-<polygon fill="#d9534f" stroke="#d9534f" points="64,-66 10,-66 10,-42 64,-42 64,-66"/>
-<text text-anchor="middle" x="37" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">acheck</text>
+<g id="a_call~~graph~~CallGraph_node1"><a xlink:href=".././proc/acheck.html" xlink:title="lsqr_module::lsqr_solver%acheck">
+<polygon fill="#d9534f" stroke="#d9534f" points="457,-87 267,-87 267,-63 457,-63 457,-87"/>
+<text text-anchor="middle" x="362" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver%acheck</text>
+</a>
+</g>
+</g>
+<!-- proc~dcopy -->
+<g id="call~~graph~~CallGraph_node4" class="node">
+<title>proc~dcopy</title>
+<g id="a_call~~graph~~CallGraph_node4"><a xlink:href=".././proc/dcopy.html" xlink:title="lsqpblas_module::dcopy">
+<polygon fill="#d9534f" stroke="#d9534f" points="636.5,-192 494.5,-192 494.5,-168 636.5,-168 636.5,-192"/>
+<text text-anchor="middle" x="565.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::dcopy</text>
 </a>
 </g>
 </g>
 <!-- proc~acheck&#45;&gt;proc~dcopy -->
-<g id="call~~graph~~CallGraph_edge7" class="edge">
+<g id="call~~graph~~CallGraph_edge2" class="edge">
 <title>proc~acheck&#45;&gt;proc~dcopy</title>
-<path fill="none" stroke="#000000" d="M64.14,-65.14C75.38,-69.94 88.7,-75.62 100.83,-80.79"/>
-<polygon fill="#000000" stroke="#000000" points="99.67,-84.1 110.24,-84.8 102.41,-77.66 99.67,-84.1"/>
-</g>
-<!-- proc~acheck&#45;&gt;proc~dnrm2 -->
-<g id="call~~graph~~CallGraph_edge6" class="edge">
-<title>proc~acheck&#45;&gt;proc~dnrm2</title>
-<path fill="none" stroke="#000000" d="M64.14,-54C75.16,-54 88.18,-54 100.11,-54"/>
-<polygon fill="#000000" stroke="#000000" points="100.24,-57.5 110.24,-54 100.24,-50.5 100.24,-57.5"/>
-</g>
-<!-- proc~acheck&#45;&gt;proc~dscal -->
-<g id="call~~graph~~CallGraph_edge8" class="edge">
-<title>proc~acheck&#45;&gt;proc~dscal</title>
-<path fill="none" stroke="#000000" d="M61.24,-66.01C65.66,-68.72 70.11,-71.76 74,-75 92.88,-90.75 92.28,-99.95 110,-117 110.78,-117.75 111.59,-118.51 112.42,-119.26"/>
-<polygon fill="#000000" stroke="#000000" points="110.23,-121.99 120.11,-125.82 114.77,-116.67 110.23,-121.99"/>
+<path fill="none" stroke="#000000" d="M441.68,-87.16C447.11,-89.61 452.29,-92.52 457,-96 482.95,-115.15 467.7,-139.01 493,-159 494.81,-160.43 496.72,-161.77 498.71,-163.01"/>
+<polygon fill="#000000" stroke="#000000" points="497.34,-166.25 507.8,-167.91 500.65,-160.09 497.34,-166.25"/>
 </g>
 <!-- proc~ddot -->
-<g id="call~~graph~~CallGraph_node9" class="node">
+<g id="call~~graph~~CallGraph_node5" class="node">
 <title>proc~ddot</title>
-<g id="a_call~~graph~~CallGraph_node9"><a xlink:href=".././proc/ddot.html" xlink:title="ddot">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="164.5,-24 110.5,-24 110.5,0 164.5,0 164.5,-24"/>
-<text text-anchor="middle" x="137.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ddot</text>
+<g id="a_call~~graph~~CallGraph_node5"><a xlink:href=".././proc/ddot.html" xlink:title="lsqpblas_module::ddot">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="632,-24 499,-24 499,0 632,0 632,-24"/>
+<text text-anchor="middle" x="565.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::ddot</text>
 </a>
 </g>
 </g>
 <!-- proc~acheck&#45;&gt;proc~ddot -->
-<g id="call~~graph~~CallGraph_edge5" class="edge">
+<g id="call~~graph~~CallGraph_edge3" class="edge">
 <title>proc~acheck&#45;&gt;proc~ddot</title>
-<path fill="none" stroke="#000000" d="M64.14,-42.86C75.38,-38.06 88.7,-32.38 100.83,-27.21"/>
-<polygon fill="#000000" stroke="#000000" points="102.41,-30.34 110.24,-23.2 99.67,-23.9 102.41,-30.34"/>
+<path fill="none" stroke="#000000" d="M399.34,-62.97C425.36,-54.43 461.27,-42.78 493,-33 499.48,-31 506.3,-28.94 513.06,-26.93"/>
+<polygon fill="#000000" stroke="#000000" points="514.26,-30.22 522.85,-24.03 512.27,-23.51 514.26,-30.22"/>
 </g>
-<!-- proc~solve_ez -->
+<!-- proc~dnrm2 -->
 <g id="call~~graph~~CallGraph_node6" class="node">
-<title>proc~solve_ez</title>
-<g id="a_call~~graph~~CallGraph_node6"><a xlink:href=".././proc/solve_ez.html" xlink:title="solve_ez">
-<polygon fill="#d9534f" stroke="#d9534f" points="66,-192 8,-192 8,-168 66,-168 66,-192"/>
-<text text-anchor="middle" x="37" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">solve_ez</text>
+<title>proc~dnrm2</title>
+<g id="a_call~~graph~~CallGraph_node6"><a xlink:href=".././proc/dnrm2.html" xlink:title="lsqpblas_module::dnrm2">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="638,-150 493,-150 493,-126 638,-126 638,-150"/>
+<text text-anchor="middle" x="565.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::dnrm2</text>
 </a>
 </g>
 </g>
-<!-- proc~xcheck -->
+<!-- proc~acheck&#45;&gt;proc~dnrm2 -->
+<g id="call~~graph~~CallGraph_edge4" class="edge">
+<title>proc~acheck&#45;&gt;proc~dnrm2</title>
+<path fill="none" stroke="#000000" d="M429.01,-87.03C438.55,-89.55 448.13,-92.52 457,-96 474.24,-102.77 475.99,-109.67 493,-117 497.71,-119.03 502.67,-120.93 507.69,-122.7"/>
+<polygon fill="#000000" stroke="#000000" points="506.79,-126.09 517.38,-125.93 509.01,-119.45 506.79,-126.09"/>
+</g>
+<!-- proc~dscal -->
 <g id="call~~graph~~CallGraph_node7" class="node">
+<title>proc~dscal</title>
+<g id="a_call~~graph~~CallGraph_node7"><a xlink:href=".././proc/dscal.html" xlink:title="lsqpblas_module::dscal">
+<polygon fill="#d9534f" stroke="#d9534f" points="634,-108 497,-108 497,-84 634,-84 634,-108"/>
+<text text-anchor="middle" x="565.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::dscal</text>
+</a>
+</g>
+</g>
+<!-- proc~acheck&#45;&gt;proc~dscal -->
+<g id="call~~graph~~CallGraph_edge5" class="edge">
+<title>proc~acheck&#45;&gt;proc~dscal</title>
+<path fill="none" stroke="#000000" d="M457.26,-84.82C467.14,-85.85 477.11,-86.89 486.78,-87.9"/>
+<polygon fill="#000000" stroke="#000000" points="486.42,-91.38 496.73,-88.94 487.14,-84.42 486.42,-91.38"/>
+</g>
+<!-- aprod -->
+<g id="call~~graph~~CallGraph_node12" class="node">
+<title>aprod</title>
+<polygon fill="#777777" stroke="#777777" points="592.5,-66 538.5,-66 538.5,-42 592.5,-42 592.5,-66"/>
+<text text-anchor="middle" x="565.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aprod</text>
+</g>
+<!-- proc~acheck&#45;&gt;aprod -->
+<g id="call~~graph~~CallGraph_edge1" class="edge">
+<title>proc~acheck&#45;&gt;aprod</title>
+<path fill="none" stroke="#000000" d="M457.26,-65.18C482.44,-62.55 508.16,-59.87 528.1,-57.79"/>
+<polygon fill="#000000" stroke="#000000" points="528.67,-61.25 538.25,-56.74 527.94,-54.29 528.67,-61.25"/>
+</g>
+<!-- proc~aprod_ez -->
+<g id="call~~graph~~CallGraph_node2" class="node">
+<title>proc~aprod_ez</title>
+<g id="a_call~~graph~~CallGraph_node2"><a xlink:href=".././proc/aprod_ez.html" xlink:title="lsqr_module::lsqr_solver_ez%aprod_ez">
+<polygon fill="#d9534f" stroke="#d9534f" points="224,-213 7,-213 7,-189 224,-189 224,-213"/>
+<text text-anchor="middle" x="115.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver_ez%aprod_ez</text>
+</a>
+</g>
+</g>
+<!-- proc~d2norm -->
+<g id="call~~graph~~CallGraph_node3" class="node">
+<title>proc~d2norm</title>
+<g id="a_call~~graph~~CallGraph_node3"><a xlink:href=".././proc/d2norm.html" xlink:title="lsqr_module::d2norm">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="629,-234 502,-234 502,-210 629,-210 629,-234"/>
+<text text-anchor="middle" x="565.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::d2norm</text>
+</a>
+</g>
+</g>
+<!-- proc~initialize_ez -->
+<g id="call~~graph~~CallGraph_node8" class="node">
+<title>proc~initialize_ez</title>
+<g id="a_call~~graph~~CallGraph_node8"><a xlink:href=".././proc/initialize_ez.html" xlink:title="lsqr_module::lsqr_solver_ez%initialize_ez">
+<polygon fill="#d9534f" stroke="#d9534f" points="231,-255 0,-255 0,-231 231,-231 231,-255"/>
+<text text-anchor="middle" x="115.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver_ez%initialize_ez</text>
+</a>
+</g>
+</g>
+<!-- proc~lsqr -->
+<g id="call~~graph~~CallGraph_node9" class="node">
+<title>proc~lsqr</title>
+<g id="a_call~~graph~~CallGraph_node9"><a xlink:href=".././proc/lsqr.html" xlink:title="lsqr_module::lsqr_solver%LSQR">
+<polygon fill="#d9534f" stroke="#d9534f" points="452.5,-171 271.5,-171 271.5,-147 452.5,-147 452.5,-171"/>
+<text text-anchor="middle" x="362" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver%LSQR</text>
+</a>
+</g>
+</g>
+<!-- proc~lsqr&#45;&gt;proc~d2norm -->
+<g id="call~~graph~~CallGraph_edge7" class="edge">
+<title>proc~lsqr&#45;&gt;proc~d2norm</title>
+<path fill="none" stroke="#000000" d="M399.34,-171.03C425.36,-179.57 461.27,-191.22 493,-201 499.48,-203 506.3,-205.06 513.06,-207.07"/>
+<polygon fill="#000000" stroke="#000000" points="512.27,-210.49 522.85,-209.97 514.26,-203.78 512.27,-210.49"/>
+</g>
+<!-- proc~lsqr&#45;&gt;proc~dcopy -->
+<g id="call~~graph~~CallGraph_edge8" class="edge">
+<title>proc~lsqr&#45;&gt;proc~dcopy</title>
+<path fill="none" stroke="#000000" d="M452.55,-168.33C463.04,-169.43 473.69,-170.54 484.04,-171.61"/>
+<polygon fill="#000000" stroke="#000000" points="483.96,-175.13 494.27,-172.68 484.69,-168.16 483.96,-175.13"/>
+</g>
+<!-- proc~lsqr&#45;&gt;proc~dnrm2 -->
+<g id="call~~graph~~CallGraph_edge9" class="edge">
+<title>proc~lsqr&#45;&gt;proc~dnrm2</title>
+<path fill="none" stroke="#000000" d="M452.55,-149.67C462.54,-148.63 472.67,-147.57 482.56,-146.54"/>
+<polygon fill="#000000" stroke="#000000" points="483.17,-150 492.75,-145.48 482.44,-143.03 483.17,-150"/>
+</g>
+<!-- proc~lsqr&#45;&gt;proc~dscal -->
+<g id="call~~graph~~CallGraph_edge10" class="edge">
+<title>proc~lsqr&#45;&gt;proc~dscal</title>
+<path fill="none" stroke="#000000" d="M429.01,-146.97C438.55,-144.45 448.13,-141.48 457,-138 474.24,-131.23 475.99,-124.33 493,-117 497.71,-114.97 502.67,-113.07 507.69,-111.3"/>
+<polygon fill="#000000" stroke="#000000" points="509.01,-114.55 517.38,-108.07 506.79,-107.91 509.01,-114.55"/>
+</g>
+<!-- proc~lsqr&#45;&gt;aprod -->
+<g id="call~~graph~~CallGraph_edge6" class="edge">
+<title>proc~lsqr&#45;&gt;aprod</title>
+<path fill="none" stroke="#000000" d="M441.68,-146.84C447.11,-144.39 452.29,-141.48 457,-138 482.95,-118.85 467.7,-94.99 493,-75 503.15,-66.98 516.28,-62.02 528.52,-58.96"/>
+<polygon fill="#000000" stroke="#000000" points="529.46,-62.33 538.5,-56.8 527.98,-55.49 529.46,-62.33"/>
+</g>
+<!-- proc~solve_ez -->
+<g id="call~~graph~~CallGraph_node10" class="node">
+<title>proc~solve_ez</title>
+<g id="a_call~~graph~~CallGraph_node10"><a xlink:href=".././proc/solve_ez.html" xlink:title="lsqr_module::lsqr_solver_ez%solve_ez">
+<polygon fill="#d9534f" stroke="#d9534f" points="222.5,-171 8.5,-171 8.5,-147 222.5,-147 222.5,-171"/>
+<text text-anchor="middle" x="115.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver_ez%solve_ez</text>
+</a>
+</g>
+</g>
+<!-- proc~solve_ez&#45;&gt;proc~lsqr -->
+<g id="call~~graph~~CallGraph_edge11" class="edge">
+<title>proc~solve_ez&#45;&gt;proc~lsqr</title>
+<path fill="none" stroke="#000000" d="M222.67,-159C235.49,-159 248.54,-159 261.26,-159"/>
+<polygon fill="#000000" stroke="#000000" points="261.37,-162.5 271.37,-159 261.37,-155.5 261.37,-162.5"/>
+</g>
+<!-- proc~xcheck -->
+<g id="call~~graph~~CallGraph_node11" class="node">
 <title>proc~xcheck</title>
-<g id="a_call~~graph~~CallGraph_node7"><a xlink:href=".././proc/xcheck.html" xlink:title="xcheck">
-<polygon fill="#d9534f" stroke="#d9534f" points="64,-108 10,-108 10,-84 64,-84 64,-108"/>
-<text text-anchor="middle" x="37" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">xcheck</text>
+<g id="a_call~~graph~~CallGraph_node11"><a xlink:href=".././proc/xcheck.html" xlink:title="lsqr_module::lsqr_solver%xcheck">
+<polygon fill="#d9534f" stroke="#d9534f" points="457,-129 267,-129 267,-105 457,-105 457,-129"/>
+<text text-anchor="middle" x="362" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver%xcheck</text>
 </a>
 </g>
 </g>
 <!-- proc~xcheck&#45;&gt;proc~dcopy -->
-<g id="call~~graph~~CallGraph_edge10" class="edge">
+<g id="call~~graph~~CallGraph_edge13" class="edge">
 <title>proc~xcheck&#45;&gt;proc~dcopy</title>
-<path fill="none" stroke="#000000" d="M64.14,-96C75.16,-96 88.18,-96 100.11,-96"/>
-<polygon fill="#000000" stroke="#000000" points="100.24,-99.5 110.24,-96 100.24,-92.5 100.24,-99.5"/>
+<path fill="none" stroke="#000000" d="M429.01,-129.03C438.55,-131.55 448.13,-134.52 457,-138 474.24,-144.77 475.99,-151.67 493,-159 497.71,-161.03 502.67,-162.93 507.69,-164.7"/>
+<polygon fill="#000000" stroke="#000000" points="506.79,-168.09 517.38,-167.93 509.01,-161.45 506.79,-168.09"/>
 </g>
 <!-- proc~xcheck&#45;&gt;proc~dnrm2 -->
-<g id="call~~graph~~CallGraph_edge9" class="edge">
+<g id="call~~graph~~CallGraph_edge14" class="edge">
 <title>proc~xcheck&#45;&gt;proc~dnrm2</title>
-<path fill="none" stroke="#000000" d="M64.14,-84.86C75.38,-80.06 88.7,-74.38 100.83,-69.21"/>
-<polygon fill="#000000" stroke="#000000" points="102.41,-72.34 110.24,-65.2 99.67,-65.9 102.41,-72.34"/>
+<path fill="none" stroke="#000000" d="M457.26,-126.82C465.78,-127.71 474.36,-128.61 482.76,-129.48"/>
+<polygon fill="#000000" stroke="#000000" points="482.59,-132.98 492.9,-130.54 483.32,-126.02 482.59,-132.98"/>
 </g>
 <!-- proc~xcheck&#45;&gt;proc~dscal -->
-<g id="call~~graph~~CallGraph_edge11" class="edge">
+<g id="call~~graph~~CallGraph_edge15" class="edge">
 <title>proc~xcheck&#45;&gt;proc~dscal</title>
-<path fill="none" stroke="#000000" d="M64.14,-107.14C75.38,-111.94 88.7,-117.62 100.83,-122.79"/>
-<polygon fill="#000000" stroke="#000000" points="99.67,-126.1 110.24,-126.8 102.41,-119.66 99.67,-126.1"/>
+<path fill="none" stroke="#000000" d="M457.26,-107.18C467.14,-106.15 477.11,-105.11 486.78,-104.1"/>
+<polygon fill="#000000" stroke="#000000" points="487.14,-107.58 496.73,-103.06 486.42,-100.62 487.14,-107.58"/>
 </g>
-<!-- proc~initialize_ez -->
-<g id="call~~graph~~CallGraph_node10" class="node">
-<title>proc~initialize_ez</title>
-<g id="a_call~~graph~~CallGraph_node10"><a xlink:href=".././proc/initialize_ez.html" xlink:title="initialize_ez">
-<polygon fill="#d9534f" stroke="#d9534f" points="74,-234 0,-234 0,-210 74,-210 74,-234"/>
-<text text-anchor="middle" x="37" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">initialize_ez</text>
-</a>
-</g>
-</g>
-<!-- proc~aprod_ez -->
-<g id="call~~graph~~CallGraph_node11" class="node">
-<title>proc~aprod_ez</title>
-<g id="a_call~~graph~~CallGraph_node11"><a xlink:href=".././proc/aprod_ez.html" xlink:title="aprod_ez">
-<polygon fill="#d9534f" stroke="#d9534f" points="67.5,-276 6.5,-276 6.5,-252 67.5,-252 67.5,-276"/>
-<text text-anchor="middle" x="37" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aprod_ez</text>
-</a>
-</g>
+<!-- proc~xcheck&#45;&gt;aprod -->
+<g id="call~~graph~~CallGraph_edge12" class="edge">
+<title>proc~xcheck&#45;&gt;aprod</title>
+<path fill="none" stroke="#000000" d="M429.01,-104.97C438.55,-102.45 448.13,-99.48 457,-96 474.24,-89.23 475.99,-82.33 493,-75 504.3,-70.13 517.08,-65.98 528.67,-62.69"/>
+<polygon fill="#000000" stroke="#000000" points="529.76,-66.02 538.49,-60.02 527.92,-59.26 529.76,-66.02"/>
 </g>
 </g>
 </svg>
-</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallGraph-help-text">Help</a></div>
+          <div class="modal fade" id="CallGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: Graph Key Pages: 1 -->
-<svg width="597pt" height="32pt"
- viewBox="0.00 0.00 596.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1.16 1.16) rotate(0) translate(4 28)">
 <title>Graph Key</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 592.5,-28 592.5,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
 <!-- Subroutine -->
 <g id="node1" class="node">
 <title>Subroutine</title>
@@ -305,80 +329,83 @@
 <polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
 <text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
 </g>
-<!-- Unknown Procedure Type -->
+<!-- Type Bound Procedure -->
 <g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
 <title>Unknown Procedure Type</title>
-<polygon fill="#777777" stroke="#777777" points="388.5,-24 243.5,-24 243.5,0 388.5,0 388.5,-24"/>
-<text text-anchor="middle" x="316" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
 </g>
 <!-- Program -->
-<g id="node5" class="node">
+<g id="node6" class="node">
 <title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="465,-24 407,-24 407,0 465,0 465,-24"/>
-<text text-anchor="middle" x="436" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
 </g>
 <!-- This Page&#39;s Entity -->
-<g id="node6" class="node">
+<g id="node7" class="node">
 <title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="588.5,-24 483.5,-24 483.5,0 588.5,0 588.5,-24"/>
-<text text-anchor="middle" x="536" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
 </g>
 </g>
 </svg>
 
-    
-    <p>Solid arrows point from a procedure to one which it calls. Dashed 
-    arrows point from an interface to procedures which implement that interface.
-    This could include the module procedures in a generic interface or the
-    implementation in a submodule of an interface in a parent module.
-    </p>
-    </div></div></div></div>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
-    <hr>    
+      <hr>
     </div> <!-- /container -->
     <footer>
       <div class="container">
-      <div class="row">
-        <div class="col-xs-6 col-md-6"><p>LSQR was developed by Jacob Williams<br>&copy; 2022 
+        <div class="row justify-content-between">
+          <div class="col"><p>LSQR was developed by Jacob Williams<br>&copy; 2023 
 </p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
         </div>
-        <div class="col-xs-6 col-md-6">
-          <p class="text-right">
-            Documentation generated by 
-            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-          </p>
-        </div>
-      </div>
-      <br>
-      </div> <!-- /container -->    
+        <br>
+      </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
--->
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
     <!-- MathJax JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
   </body>
 </html>

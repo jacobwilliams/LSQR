@@ -7,15 +7,25 @@
 
     module lsqr_kinds
 
-    use iso_fortran_env, only: wp => real64  ! double precision kinds
+    use iso_fortran_env 
 
     implicit none
 
-    public
+    private
+
+#ifdef REAL32
+    integer,parameter,public :: wp = real32   !! default real kind [4 bytes]
+#elif REAL64
+    integer,parameter,public :: wp = real64   !! default real kind [8 bytes]
+#elif REAL128
+    integer,parameter,public :: wp = real128  !! default real kind [16 bytes]
+#else
+    integer,parameter,public :: wp = real64   !! default real kind [8 bytes]
+#endif
 
     ! parameters:
-    real(wp),parameter :: zero = 0.0_wp
-    real(wp),parameter :: one  = 1.0_wp
+    real(wp),parameter,public :: zero = 0.0_wp
+    real(wp),parameter,public :: one  = 1.0_wp
 
 !***************************************************************************************************
     end module lsqr_kinds
