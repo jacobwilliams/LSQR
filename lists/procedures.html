@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +20,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -68,17 +71,72 @@
 			 <table class="table table-striped">
 			 <thead><tr><th>Procedure</th><th>Location</th><th>Procedure Type</th><th>Description</th></tr></thead>
 			 <tbody>
-			   <tr><td><a href='../proc/acheck.html'>acheck</a></td><td><a href='../module/lsqr_module.html'>lsqr_module</a></td><td>Subroutine</td><td><p>Checks the two modes of aprod for <a href="../proc/lsqr.html">LSQR</a>.</p><a href="../proc/acheck.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-			   <tr><td><a href='../proc/aprod_ez.html'>aprod_ez</a></td><td><a href='../module/lsqr_module.html'>lsqr_module</a></td><td>Subroutine</td><td><p>The internal <code>aprod</code> function for the <a href="../type/lsqr_solver_ez.html">lsqr_solver_ez</a> class.</p></td></tr>
-			   <tr><td><a href='../proc/d2norm.html'>d2norm</a></td><td><a href='../module/lsqr_module.html'>lsqr_module</a></td><td>Function</td><td><p>Returns <script type="math/tex"> \sqrt{ a^2 + b^2 } </script> with precautions to avoid overflow.</p><a href="../proc/d2norm.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-			   <tr><td><a href='../proc/dcopy.html'>dcopy</a></td><td><a href='../module/lsqpblas_module.html'>lsqpblas_module</a></td><td>Subroutine</td><td><p>copies a vector, <code>x</code>, to a vector, <code>y</code>.</p></td></tr>
-			   <tr><td><a href='../proc/ddot.html'>ddot</a></td><td><a href='../module/lsqpblas_module.html'>lsqpblas_module</a></td><td>Function</td><td><p>dot product of two vectors</p></td></tr>
-			   <tr><td><a href='../proc/dnrm2.html'>dnrm2</a></td><td><a href='../module/lsqpblas_module.html'>lsqpblas_module</a></td><td>Function</td><td><p>euclidean norm of a vector.</p></td></tr>
-			   <tr><td><a href='../proc/dscal.html'>dscal</a></td><td><a href='../module/lsqpblas_module.html'>lsqpblas_module</a></td><td>Subroutine</td><td><p>scales a vector by a constant.</p></td></tr>
-			   <tr><td><a href='../proc/initialize_ez.html'>initialize_ez</a></td><td><a href='../module/lsqr_module.html'>lsqr_module</a></td><td>Subroutine</td><td><p>Constructor for <a href="../type/lsqr_solver_ez.html">lsqr_solver_ez</a>.</p></td></tr>
-			   <tr><td><a href='../proc/lsqr.html'>LSQR</a></td><td><a href='../module/lsqr_module.html'>lsqr_module</a></td><td>Subroutine</td><td><p>LSQR finds a solution <script type="math/tex">x</script> to the following problems:</p><a href="../proc/lsqr.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-			   <tr><td><a href='../proc/solve_ez.html'>solve_ez</a></td><td><a href='../module/lsqr_module.html'>lsqr_module</a></td><td>Subroutine</td><td><p>Wrapper for <a href="../proc/lsqr.html">LSQR</a> for the easy version of the class.</p></td></tr>
-			   <tr><td><a href='../proc/xcheck.html'>xcheck</a></td><td><a href='../module/lsqr_module.html'>lsqr_module</a></td><td>Subroutine</td><td><p>Tests if <code>x</code> solves a certain least-squares problem.</p><a href="../proc/xcheck.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
+			   <tr>
+                 <td><a href='../proc/acheck.html'>acheck</a></td>
+                 <td><a href='../module/lsqr_module.html'>lsqr_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Checks the two modes of aprod for <a href="../proc/lsqr.html">LSQR</a>.</p><a href="../proc/acheck.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/aprod_ez.html'>aprod_ez</a></td>
+                 <td><a href='../module/lsqr_module.html'>lsqr_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>The internal <code>aprod</code> function for the <a href="../type/lsqr_solver_ez.html">lsqr_solver_ez</a> class.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/d2norm.html'>d2norm</a></td>
+                 <td><a href='../module/lsqr_module.html'>lsqr_module</a></td>
+                 <td>Function</td>
+                 <td><p>Returns <script type="math/tex"> \sqrt{ a^2 + b^2 } </script> with precautions to avoid overflow.</p><a href="../proc/d2norm.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/dcopy.html'>dcopy</a></td>
+                 <td><a href='../module/lsqpblas_module.html'>lsqpblas_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>copies a vector, <code>x</code>, to a vector, <code>y</code>.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/ddot.html'>ddot</a></td>
+                 <td><a href='../module/lsqpblas_module.html'>lsqpblas_module</a></td>
+                 <td>Function</td>
+                 <td><p>dot product of two vectors</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/dnrm2.html'>dnrm2</a></td>
+                 <td><a href='../module/lsqpblas_module.html'>lsqpblas_module</a></td>
+                 <td>Function</td>
+                 <td><p>euclidean norm of a vector.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/dscal.html'>dscal</a></td>
+                 <td><a href='../module/lsqpblas_module.html'>lsqpblas_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>scales a vector by a constant.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/initialize_ez.html'>initialize_ez</a></td>
+                 <td><a href='../module/lsqr_module.html'>lsqr_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Constructor for <a href="../type/lsqr_solver_ez.html">lsqr_solver_ez</a>.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/lsqr.html'>LSQR</a></td>
+                 <td><a href='../module/lsqr_module.html'>lsqr_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>LSQR finds a solution <script type="math/tex">x</script> to the following problems:</p><a href="../proc/lsqr.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/solve_ez.html'>solve_ez</a></td>
+                 <td><a href='../module/lsqr_module.html'>lsqr_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Wrapper for <a href="../proc/lsqr.html">LSQR</a> for the easy version of the class.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/xcheck.html'>xcheck</a></td>
+                 <td><a href='../module/lsqr_module.html'>lsqr_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Tests if <code>x</code> solves a certain least-squares problem.</p><a href="../proc/xcheck.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
 			 </tbody></table>
              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -94,7 +152,7 @@
 <!-- proc~acheck -->
 <g id="call~~graph~~CallGraph_node1" class="node">
 <title>proc~acheck</title>
-<g id="a_call~~graph~~CallGraph_node1"><a xlink:href=".././proc/acheck.html" xlink:title="lsqr_module::lsqr_solver%acheck">
+<g id="a_call~~graph~~CallGraph_node1"><a xlink:href="../proc/acheck.html" xlink:title="lsqr_module::lsqr_solver%acheck">
 <polygon fill="#d9534f" stroke="#d9534f" points="457,-87 267,-87 267,-63 457,-63 457,-87"/>
 <text text-anchor="middle" x="362" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver%acheck</text>
 </a>
@@ -103,7 +161,7 @@
 <!-- proc~dcopy -->
 <g id="call~~graph~~CallGraph_node4" class="node">
 <title>proc~dcopy</title>
-<g id="a_call~~graph~~CallGraph_node4"><a xlink:href=".././proc/dcopy.html" xlink:title="lsqpblas_module::dcopy">
+<g id="a_call~~graph~~CallGraph_node4"><a xlink:href="../proc/dcopy.html" xlink:title="lsqpblas_module::dcopy">
 <polygon fill="#d9534f" stroke="#d9534f" points="636.5,-192 494.5,-192 494.5,-168 636.5,-168 636.5,-192"/>
 <text text-anchor="middle" x="565.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::dcopy</text>
 </a>
@@ -118,7 +176,7 @@
 <!-- proc~ddot -->
 <g id="call~~graph~~CallGraph_node5" class="node">
 <title>proc~ddot</title>
-<g id="a_call~~graph~~CallGraph_node5"><a xlink:href=".././proc/ddot.html" xlink:title="lsqpblas_module::ddot">
+<g id="a_call~~graph~~CallGraph_node5"><a xlink:href="../proc/ddot.html" xlink:title="lsqpblas_module::ddot">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="632,-24 499,-24 499,0 632,0 632,-24"/>
 <text text-anchor="middle" x="565.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::ddot</text>
 </a>
@@ -133,7 +191,7 @@
 <!-- proc~dnrm2 -->
 <g id="call~~graph~~CallGraph_node6" class="node">
 <title>proc~dnrm2</title>
-<g id="a_call~~graph~~CallGraph_node6"><a xlink:href=".././proc/dnrm2.html" xlink:title="lsqpblas_module::dnrm2">
+<g id="a_call~~graph~~CallGraph_node6"><a xlink:href="../proc/dnrm2.html" xlink:title="lsqpblas_module::dnrm2">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="638,-150 493,-150 493,-126 638,-126 638,-150"/>
 <text text-anchor="middle" x="565.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::dnrm2</text>
 </a>
@@ -148,7 +206,7 @@
 <!-- proc~dscal -->
 <g id="call~~graph~~CallGraph_node7" class="node">
 <title>proc~dscal</title>
-<g id="a_call~~graph~~CallGraph_node7"><a xlink:href=".././proc/dscal.html" xlink:title="lsqpblas_module::dscal">
+<g id="a_call~~graph~~CallGraph_node7"><a xlink:href="../proc/dscal.html" xlink:title="lsqpblas_module::dscal">
 <polygon fill="#d9534f" stroke="#d9534f" points="634,-108 497,-108 497,-84 634,-84 634,-108"/>
 <text text-anchor="middle" x="565.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::dscal</text>
 </a>
@@ -175,7 +233,7 @@
 <!-- proc~aprod_ez -->
 <g id="call~~graph~~CallGraph_node2" class="node">
 <title>proc~aprod_ez</title>
-<g id="a_call~~graph~~CallGraph_node2"><a xlink:href=".././proc/aprod_ez.html" xlink:title="lsqr_module::lsqr_solver_ez%aprod_ez">
+<g id="a_call~~graph~~CallGraph_node2"><a xlink:href="../proc/aprod_ez.html" xlink:title="lsqr_module::lsqr_solver_ez%aprod_ez">
 <polygon fill="#d9534f" stroke="#d9534f" points="224,-213 7,-213 7,-189 224,-189 224,-213"/>
 <text text-anchor="middle" x="115.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver_ez%aprod_ez</text>
 </a>
@@ -184,7 +242,7 @@
 <!-- proc~d2norm -->
 <g id="call~~graph~~CallGraph_node3" class="node">
 <title>proc~d2norm</title>
-<g id="a_call~~graph~~CallGraph_node3"><a xlink:href=".././proc/d2norm.html" xlink:title="lsqr_module::d2norm">
+<g id="a_call~~graph~~CallGraph_node3"><a xlink:href="../proc/d2norm.html" xlink:title="lsqr_module::d2norm">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="629,-234 502,-234 502,-210 629,-210 629,-234"/>
 <text text-anchor="middle" x="565.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::d2norm</text>
 </a>
@@ -193,7 +251,7 @@
 <!-- proc~initialize_ez -->
 <g id="call~~graph~~CallGraph_node8" class="node">
 <title>proc~initialize_ez</title>
-<g id="a_call~~graph~~CallGraph_node8"><a xlink:href=".././proc/initialize_ez.html" xlink:title="lsqr_module::lsqr_solver_ez%initialize_ez">
+<g id="a_call~~graph~~CallGraph_node8"><a xlink:href="../proc/initialize_ez.html" xlink:title="lsqr_module::lsqr_solver_ez%initialize_ez">
 <polygon fill="#d9534f" stroke="#d9534f" points="231,-255 0,-255 0,-231 231,-231 231,-255"/>
 <text text-anchor="middle" x="115.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver_ez%initialize_ez</text>
 </a>
@@ -202,7 +260,7 @@
 <!-- proc~lsqr -->
 <g id="call~~graph~~CallGraph_node9" class="node">
 <title>proc~lsqr</title>
-<g id="a_call~~graph~~CallGraph_node9"><a xlink:href=".././proc/lsqr.html" xlink:title="lsqr_module::lsqr_solver%LSQR">
+<g id="a_call~~graph~~CallGraph_node9"><a xlink:href="../proc/lsqr.html" xlink:title="lsqr_module::lsqr_solver%LSQR">
 <polygon fill="#d9534f" stroke="#d9534f" points="452.5,-171 271.5,-171 271.5,-147 452.5,-147 452.5,-171"/>
 <text text-anchor="middle" x="362" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver%LSQR</text>
 </a>
@@ -241,7 +299,7 @@
 <!-- proc~solve_ez -->
 <g id="call~~graph~~CallGraph_node10" class="node">
 <title>proc~solve_ez</title>
-<g id="a_call~~graph~~CallGraph_node10"><a xlink:href=".././proc/solve_ez.html" xlink:title="lsqr_module::lsqr_solver_ez%solve_ez">
+<g id="a_call~~graph~~CallGraph_node10"><a xlink:href="../proc/solve_ez.html" xlink:title="lsqr_module::lsqr_solver_ez%solve_ez">
 <polygon fill="#d9534f" stroke="#d9534f" points="222.5,-171 8.5,-171 8.5,-147 222.5,-147 222.5,-171"/>
 <text text-anchor="middle" x="115.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver_ez%solve_ez</text>
 </a>
@@ -256,7 +314,7 @@
 <!-- proc~xcheck -->
 <g id="call~~graph~~CallGraph_node11" class="node">
 <title>proc~xcheck</title>
-<g id="a_call~~graph~~CallGraph_node11"><a xlink:href=".././proc/xcheck.html" xlink:title="lsqr_module::lsqr_solver%xcheck">
+<g id="a_call~~graph~~CallGraph_node11"><a xlink:href="../proc/xcheck.html" xlink:title="lsqr_module::lsqr_solver%xcheck">
 <polygon fill="#d9534f" stroke="#d9534f" points="457,-129 267,-129 267,-105 457,-105 457,-129"/>
 <text text-anchor="middle" x="362" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver%xcheck</text>
 </a>
@@ -288,17 +346,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"

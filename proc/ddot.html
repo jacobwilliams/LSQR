@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -159,7 +162,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-n~8"></span>
+              <span class="anchor" id="variable-n~2"></span>
               integer
             </td>
 <td></td>
@@ -174,7 +177,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dx"></span>
+              <span class="anchor" id="variable-dx~2"></span>
               real(kind=wp)
             </td>
 <td></td>
@@ -189,7 +192,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-incx"></span>
+              <span class="anchor" id="variable-incx~2"></span>
               integer
             </td>
 <td></td>
@@ -204,7 +207,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dy"></span>
+              <span class="anchor" id="variable-dy~2"></span>
               real(kind=wp)
             </td>
 <td></td>
@@ -219,7 +222,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-incy"></span>
+              <span class="anchor" id="variable-incy~2"></span>
               integer
             </td>
 <td></td>
@@ -268,7 +271,7 @@
 <!-- proc~acheck -->
 <g id="proc~~ddot~~CalledByGraph_node2" class="node">
 <title>proc~acheck</title>
-<g id="a_proc~~ddot~~CalledByGraph_node2"><a xlink:href=".././proc/acheck.html" xlink:title="lsqr_module::lsqr_solver%acheck">
+<g id="a_proc~~ddot~~CalledByGraph_node2"><a xlink:href="../proc/acheck.html" xlink:title="lsqr_module::lsqr_solver%acheck">
 <polygon fill="#d9534f" stroke="#d9534f" points="190,-24 0,-24 0,0 190,0 190,-24"/>
 <text text-anchor="middle" x="95" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver%acheck</text>
 </a>
@@ -282,17 +285,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CalledByGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"

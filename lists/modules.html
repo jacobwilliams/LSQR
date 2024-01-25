@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +20,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -68,9 +71,21 @@
 			 <table class="table">
 			 <thead><tr><th>Module</th><th>Source File</th><th>Description</th></tr></thead>
 			 <tbody>
-			   <tr class="active"><td><a href='../module/lsqpblas_module.html'>lsqpblas_module</a></td><td><a href='../sourcefile/lsqrblas.f90.html'>lsqrblas.f90</a></td><td><p>this file contains BLAS routines required by subroutines <a href="../proc/lsqr.html">LSQR</a> and <a href="../proc/acheck.html">acheck</a>.</p><a href="../module/lsqpblas_module.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/lsqr_kinds.html'>lsqr_kinds</a></td><td><a href='../sourcefile/lsqr_kinds.f90.html'>lsqr_kinds.F90</a></td><td><p>Module for LSQR kinds and parameters</p><a href="../module/lsqr_kinds.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/lsqr_module.html'>lsqr_module</a></td><td><a href='../sourcefile/lsqr.f90.html'>lsqr.f90</a></td><td><p>Module for <a>LSQR</a>.</p><a href="../module/lsqr_module.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
+			   <tr class="active">
+                 <td><a href='../module/lsqpblas_module.html'>lsqpblas_module</a></td>
+                 <td><a href='../sourcefile/lsqrblas.f90.html'>lsqrblas.f90</a></td>
+                 <td><p>this file contains BLAS routines required by subroutines <a href="../proc/lsqr.html">LSQR</a> and <a href="../proc/acheck.html">acheck</a>.</p><a href="../module/lsqpblas_module.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/lsqr_kinds.html'>lsqr_kinds</a></td>
+                 <td><a href='../sourcefile/lsqr_kinds.f90.html'>lsqr_kinds.F90</a></td>
+                 <td><p>Module for LSQR kinds and parameters</p><a href="../module/lsqr_kinds.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/lsqr_module.html'>lsqr_module</a></td>
+                 <td><a href='../sourcefile/lsqr.f90.html'>lsqr.f90</a></td>
+                 <td><p>Module for <a>LSQR</a>.</p><a href="../module/lsqr_module.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
 <!--active-->			 </tbody></table>
              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -86,7 +101,7 @@
 <!-- module~lsqpblas_module -->
 <g id="module~~graph~~ModuleGraph_node1" class="node">
 <title>module~lsqpblas_module</title>
-<g id="a_module~~graph~~ModuleGraph_node1"><a xlink:href=".././module/lsqpblas_module.html" xlink:title="lsqpblas_module">
+<g id="a_module~~graph~~ModuleGraph_node1"><a xlink:href="../module/lsqpblas_module.html" xlink:title="lsqpblas_module">
 <polygon fill="#337ab7" stroke="#337ab7" points="333,-44 231,-44 231,-20 333,-20 333,-44"/>
 <text text-anchor="middle" x="282" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module</text>
 </a>
@@ -95,7 +110,7 @@
 <!-- module~lsqr_kinds -->
 <g id="module~~graph~~ModuleGraph_node2" class="node">
 <title>module~lsqr_kinds</title>
-<g id="a_module~~graph~~ModuleGraph_node2"><a xlink:href=".././module/lsqr_kinds.html" xlink:title="lsqr_kinds">
+<g id="a_module~~graph~~ModuleGraph_node2"><a xlink:href="../module/lsqr_kinds.html" xlink:title="lsqr_kinds">
 <polygon fill="#337ab7" stroke="#337ab7" points="195,-24 130,-24 130,0 195,0 195,-24"/>
 <text text-anchor="middle" x="162.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_kinds</text>
 </a>
@@ -122,7 +137,7 @@
 <!-- module~lsqr_module -->
 <g id="module~~graph~~ModuleGraph_node3" class="node">
 <title>module~lsqr_module</title>
-<g id="a_module~~graph~~ModuleGraph_node3"><a xlink:href=".././module/lsqr_module.html" xlink:title="lsqr_module">
+<g id="a_module~~graph~~ModuleGraph_node3"><a xlink:href="../module/lsqr_module.html" xlink:title="lsqr_module">
 <polygon fill="#337ab7" stroke="#337ab7" points="447,-24 369,-24 369,0 447,0 447,-24"/>
 <text text-anchor="middle" x="408" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module</text>
 </a>
@@ -142,17 +157,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#ModuleGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#ModuleGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="ModuleGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"

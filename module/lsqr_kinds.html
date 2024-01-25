@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -191,17 +194,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -291,7 +294,7 @@ modules which it uses.
 <!-- module~lsqpblas_module -->
 <g id="module~~lsqr_kinds~~UsedByGraph_node2" class="node">
 <title>module~lsqpblas_module</title>
-<g id="a_module~~lsqr_kinds~~UsedByGraph_node2"><a xlink:href=".././module/lsqpblas_module.html" xlink:title="lsqpblas_module">
+<g id="a_module~~lsqr_kinds~~UsedByGraph_node2"><a xlink:href="../module/lsqpblas_module.html" xlink:title="lsqpblas_module">
 <polygon fill="#337ab7" stroke="#337ab7" points="203,-24 101,-24 101,0 203,0 203,-24"/>
 <text text-anchor="middle" x="152" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module</text>
 </a>
@@ -306,7 +309,7 @@ modules which it uses.
 <!-- module~lsqr_module -->
 <g id="module~~lsqr_kinds~~UsedByGraph_node3" class="node">
 <title>module~lsqr_module</title>
-<g id="a_module~~lsqr_kinds~~UsedByGraph_node3"><a xlink:href=".././module/lsqr_module.html" xlink:title="lsqr_module">
+<g id="a_module~~lsqr_kinds~~UsedByGraph_node3"><a xlink:href="../module/lsqr_module.html" xlink:title="lsqr_module">
 <polygon fill="#337ab7" stroke="#337ab7" points="317,-44 239,-44 239,-20 317,-20 317,-44"/>
 <text text-anchor="middle" x="278" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module</text>
 </a>
@@ -326,17 +329,17 @@ modules which it uses.
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsedByGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"

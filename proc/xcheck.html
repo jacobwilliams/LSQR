@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -176,7 +179,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~4"></span>
+              <span class="anchor" id="variable-me~7"></span>
               class(<a href='../type/lsqr_solver.html'>lsqr_solver</a>),
             </td>
 <td>intent(inout)</td>
@@ -191,7 +194,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-m~7"></span>
+              <span class="anchor" id="variable-m~10"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -206,7 +209,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-n~7"></span>
+              <span class="anchor" id="variable-n~11"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -237,7 +240,7 @@ If nout = 0, nothing is printed.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-anorm~2"></span>
+              <span class="anchor" id="variable-anorm~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -255,7 +258,7 @@ from LSQR or CRAIG.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-damp~2"></span>
+              <span class="anchor" id="variable-damp~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -285,7 +288,7 @@ from LSQR or CRAIG.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-b"></span>
+              <span class="anchor" id="variable-b~2"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -315,7 +318,7 @@ from LSQR or CRAIG.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-v~3"></span>
+              <span class="anchor" id="variable-v~4"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -330,7 +333,7 @@ from LSQR or CRAIG.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-w~3"></span>
+              <span class="anchor" id="variable-w~4"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -345,7 +348,7 @@ from LSQR or CRAIG.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~4"></span>
+              <span class="anchor" id="variable-x~7"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -377,7 +380,7 @@ solve systems 1 2 or 3 above.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-test1"></span>
+              <span class="anchor" id="variable-test1~3"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -397,7 +400,7 @@ defined as a parameter below.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-test2"></span>
+              <span class="anchor" id="variable-test2~3"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -417,7 +420,7 @@ defined as a parameter below.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-test3"></span>
+              <span class="anchor" id="variable-test3~3"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -476,7 +479,7 @@ defined as a parameter below.</p>
 <!-- proc~dcopy -->
 <g id="proc~~xcheck~~CallsGraph_node3" class="node">
 <title>proc~dcopy</title>
-<g id="a_proc~~xcheck~~CallsGraph_node3"><a xlink:href=".././proc/dcopy.html" xlink:title="lsqpblas_module::dcopy">
+<g id="a_proc~~xcheck~~CallsGraph_node3"><a xlink:href="../proc/dcopy.html" xlink:title="lsqpblas_module::dcopy">
 <polygon fill="#d9534f" stroke="#d9534f" points="369.5,-108 227.5,-108 227.5,-84 369.5,-84 369.5,-108"/>
 <text text-anchor="middle" x="298.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::dcopy</text>
 </a>
@@ -491,7 +494,7 @@ defined as a parameter below.</p>
 <!-- proc~dnrm2 -->
 <g id="proc~~xcheck~~CallsGraph_node4" class="node">
 <title>proc~dnrm2</title>
-<g id="a_proc~~xcheck~~CallsGraph_node4"><a xlink:href=".././proc/dnrm2.html" xlink:title="lsqpblas_module::dnrm2">
+<g id="a_proc~~xcheck~~CallsGraph_node4"><a xlink:href="../proc/dnrm2.html" xlink:title="lsqpblas_module::dnrm2">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="371,-66 226,-66 226,-42 371,-42 371,-66"/>
 <text text-anchor="middle" x="298.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::dnrm2</text>
 </a>
@@ -506,7 +509,7 @@ defined as a parameter below.</p>
 <!-- proc~dscal -->
 <g id="proc~~xcheck~~CallsGraph_node5" class="node">
 <title>proc~dscal</title>
-<g id="a_proc~~xcheck~~CallsGraph_node5"><a xlink:href=".././proc/dscal.html" xlink:title="lsqpblas_module::dscal">
+<g id="a_proc~~xcheck~~CallsGraph_node5"><a xlink:href="../proc/dscal.html" xlink:title="lsqpblas_module::dscal">
 <polygon fill="#d9534f" stroke="#d9534f" points="367,-24 230,-24 230,0 367,0 367,-24"/>
 <text text-anchor="middle" x="298.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::dscal</text>
 </a>
@@ -520,17 +523,17 @@ defined as a parameter below.</p>
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"

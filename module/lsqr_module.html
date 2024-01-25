@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -193,8 +196,8 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='../module/lsqpblas_module.html'>lsqpblas_module</a></li>
-                  <li class="list-inline-item"><a href='../module/lsqr_kinds.html'>lsqr_kinds</a></li>
+                  <li class="list-inline-item"><a href='lsqpblas_module.html'>lsqpblas_module</a></li>
+                  <li class="list-inline-item"><a href='lsqr_kinds.html'>lsqr_kinds</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -218,7 +221,7 @@
 <!-- module~lsqpblas_module -->
 <g id="module~~lsqr_module~~UsesGraph_node2" class="node">
 <title>module~lsqpblas_module</title>
-<g id="a_module~~lsqr_module~~UsesGraph_node2"><a xlink:href=".././module/lsqpblas_module.html" xlink:title="lsqpblas_module">
+<g id="a_module~~lsqr_module~~UsesGraph_node2"><a xlink:href="../module/lsqpblas_module.html" xlink:title="lsqpblas_module">
 <polygon fill="#337ab7" stroke="#337ab7" points="333,-44 231,-44 231,-20 333,-20 333,-44"/>
 <text text-anchor="middle" x="282" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module</text>
 </a>
@@ -233,7 +236,7 @@
 <!-- module~lsqr_kinds -->
 <g id="module~~lsqr_module~~UsesGraph_node3" class="node">
 <title>module~lsqr_kinds</title>
-<g id="a_module~~lsqr_module~~UsesGraph_node3"><a xlink:href=".././module/lsqr_kinds.html" xlink:title="lsqr_kinds">
+<g id="a_module~~lsqr_module~~UsesGraph_node3"><a xlink:href="../module/lsqr_kinds.html" xlink:title="lsqr_kinds">
 <polygon fill="#337ab7" stroke="#337ab7" points="195,-24 130,-24 130,0 195,0 195,-24"/>
 <text text-anchor="middle" x="162.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_kinds</text>
 </a>
@@ -265,17 +268,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -409,7 +412,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-m~2"></span>
+              <span class="anchor" id="variable-m~5"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -424,7 +427,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-n~2"></span>
+              <span class="anchor" id="variable-n~6"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -439,7 +442,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~5"></span>
+              <span class="anchor" id="variable-x~2"></span>
               real(kind=wp),
             </td>
 <td>intent(inout),</td>
@@ -454,7 +457,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-y~2"></span>
+              <span class="anchor" id="variable-y"></span>
               real(kind=wp),
             </td>
 <td>intent(inout),</td>
@@ -501,12 +504,12 @@ modules which it uses.
               <tr>
                 <td>  procedure(<a href='../interface/aprod_func.html'>aprod_func</a>), public, deferred ::
   <strong><a href='../type/lsqr_solver.html#boundprocedure-aprod'>aprod</a></strong></td>
-                <td><p>User function to access the sparse matrix <code>A</code>.</p></td>
+                <td>../../<p>User function to access the sparse matrix <code>A</code>.</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/lsqr_solver.html#boundprocedure-lsqr'>lsqr</a></strong> => <a href='../proc/lsqr.html'>LSQR</a></td>
-                <td><p>main solver routine</p></td>
+  <strong><a href='../type/lsqr_solver.html#boundprocedure-lsqr'>lsqr</a></strong> => <a href='/home/runner/work/LSQR/LSQR/doc/proc/lsqr.html'>LSQR</a></td>
+                <td>../../<p>main solver routine</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
@@ -551,7 +554,7 @@ to set the matrix and other inputs.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-m"></span>
+              <span class="anchor" id="variable-m~4"></span>
               integer,
             </td>
               <td>private</td>
@@ -568,7 +571,7 @@ to set the matrix and other inputs.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-n"></span>
+              <span class="anchor" id="variable-n~5"></span>
               integer,
             </td>
               <td>private</td>
@@ -816,8 +819,8 @@ condition number of the matrix <code>Abar</code>.</p>
           <tbody>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/lsqr_solver.html#boundprocedure-lsqr'>lsqr</a></strong> => <a href='../proc/lsqr.html'>LSQR</a></td>
-                <td><p>main solver routine</p></td>
+  <strong><a href='../type/lsqr_solver.html#boundprocedure-lsqr'>lsqr</a></strong> => <a href='/home/runner/work/LSQR/LSQR/doc/proc/lsqr.html'>LSQR</a></td>
+                <td>../../<p>main solver routine</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
@@ -831,18 +834,18 @@ condition number of the matrix <code>Abar</code>.</p>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/lsqr_solver_ez.html#boundprocedure-initialize'>initialize</a></strong> => <a href='../proc/initialize_ez.html'>initialize_ez</a></td>
-                <td><p>Constructor. Must be call first.</p></td>
+  <strong><a href='../type/lsqr_solver_ez.html#boundprocedure-initialize'>initialize</a></strong> => <a href='/home/runner/work/LSQR/LSQR/doc/proc/initialize_ez.html'>initialize_ez</a></td>
+                <td>../../<p>Constructor. Must be call first.</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/lsqr_solver_ez.html#boundprocedure-solve'>solve</a></strong> => <a href='../proc/solve_ez.html'>solve_ez</a></td>
+  <strong><a href='../type/lsqr_solver_ez.html#boundprocedure-solve'>solve</a></strong> => <a href='/home/runner/work/LSQR/LSQR/doc/proc/solve_ez.html'>solve_ez</a></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/lsqr_solver_ez.html#boundprocedure-aprod~2'>aprod</a></strong> => <a href='../proc/aprod_ez.html'>aprod_ez</a></td>
-                <td><p>internal routine</p></td>
+  <strong><a href='../type/lsqr_solver_ez.html#boundprocedure-aprod~2'>aprod</a></strong> => <a href='/home/runner/work/LSQR/LSQR/doc/proc/aprod_ez.html'>aprod_ez</a></td>
+                <td>../../<p>internal routine</p></td>
               </tr>
           </tbody>
         </table>
@@ -855,7 +858,7 @@ condition number of the matrix <code>Abar</code>.</p>
         <section>
           <h2>Functions</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-d2norm"></span><h3>private pure function <a href='../proc/d2norm.html'>d2norm</a>(a, b)  
+    <div class="card-header codesum"><span class="anchor" id="proc-d2norm"></span> <h3>private pure function <a href='../proc/d2norm.html'>d2norm</a>(a, b)  
 </h3></div>
     <div class="card-body">
           
@@ -920,7 +923,7 @@ condition number of the matrix <code>Abar</code>.</p>
         <section>
           <h2>Subroutines</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initialize_ez"></span><h3>private  subroutine <a href='../proc/initialize_ez.html'>initialize_ez</a>(me, m, n, a, irow, icol, atol, btol, conlim, itnlim, nout)  
+    <div class="card-header codesum"><span class="anchor" id="proc-initialize_ez"></span> <h3>private  subroutine <a href='../proc/initialize_ez.html'>initialize_ez</a>(me, m, n, a, irow, icol, atol, btol, conlim, itnlim, nout)  
 </h3></div>
     <div class="card-body">
           
@@ -939,7 +942,7 @@ condition number of the matrix <code>Abar</code>.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~5"></span>
+              <span class="anchor" id="variable-me~2"></span>
               class(<a href='../type/lsqr_solver_ez.html'>lsqr_solver_ez</a>),
             </td>
 <td>intent(out)</td>
@@ -954,7 +957,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-m~3"></span>
+              <span class="anchor" id="variable-m~6"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -969,7 +972,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-n~3"></span>
+              <span class="anchor" id="variable-n~7"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1111,7 +1114,7 @@ condition number of the matrix <code>Abar</code>.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-aprod_ez"></span><h3>private  subroutine <a href='../proc/aprod_ez.html'>aprod_ez</a>(me, mode, m, n, x, y)  
+    <div class="card-header codesum"><span class="anchor" id="proc-aprod_ez"></span> <h3>private  subroutine <a href='../proc/aprod_ez.html'>aprod_ez</a>(me, mode, m, n, x, y)  
 </h3></div>
     <div class="card-body">
           
@@ -1130,7 +1133,7 @@ condition number of the matrix <code>Abar</code>.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~7"></span>
+              <span class="anchor" id="variable-me~3"></span>
               class(<a href='../type/lsqr_solver_ez.html'>lsqr_solver_ez</a>),
             </td>
 <td>intent(inout)</td>
@@ -1160,7 +1163,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-m~4"></span>
+              <span class="anchor" id="variable-m~7"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1175,7 +1178,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-n~4"></span>
+              <span class="anchor" id="variable-n~8"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1190,7 +1193,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-x"></span>
+              <span class="anchor" id="variable-x~3"></span>
               real(kind=wp),
             </td>
 <td>intent(inout),</td>
@@ -1205,7 +1208,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-y"></span>
+              <span class="anchor" id="variable-y~2"></span>
               real(kind=wp),
             </td>
 <td>intent(inout),</td>
@@ -1226,7 +1229,7 @@ condition number of the matrix <code>Abar</code>.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-solve_ez"></span><h3>private  subroutine <a href='../proc/solve_ez.html'>solve_ez</a>(me, b, damp, x, istop, se, itn, anorm, acond, rnorm, arnorm, xnorm)  
+    <div class="card-header codesum"><span class="anchor" id="proc-solve_ez"></span> <h3>private  subroutine <a href='../proc/solve_ez.html'>solve_ez</a>(me, b, damp, x, istop, se, itn, anorm, acond, rnorm, arnorm, xnorm)  
 </h3></div>
     <div class="card-body">
           
@@ -1245,7 +1248,7 @@ condition number of the matrix <code>Abar</code>.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~6"></span>
+              <span class="anchor" id="variable-me~4"></span>
               class(<a href='../type/lsqr_solver_ez.html'>lsqr_solver_ez</a>),
             </td>
 <td>intent(inout)</td>
@@ -1260,7 +1263,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-b~2"></span>
+              <span class="anchor" id="variable-b"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1275,7 +1278,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-damp~3"></span>
+              <span class="anchor" id="variable-damp"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -1290,7 +1293,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~2"></span>
+              <span class="anchor" id="variable-x~4"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -1320,7 +1323,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-se~2"></span>
+              <span class="anchor" id="variable-se"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -1335,7 +1338,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-itn~2"></span>
+              <span class="anchor" id="variable-itn"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -1350,7 +1353,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-anorm~3"></span>
+              <span class="anchor" id="variable-anorm"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -1365,7 +1368,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-acond~2"></span>
+              <span class="anchor" id="variable-acond"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -1380,7 +1383,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rnorm~2"></span>
+              <span class="anchor" id="variable-rnorm"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -1395,7 +1398,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-arnorm~2"></span>
+              <span class="anchor" id="variable-arnorm"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -1410,7 +1413,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-xnorm~2"></span>
+              <span class="anchor" id="variable-xnorm"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -1431,7 +1434,7 @@ condition number of the matrix <code>Abar</code>.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-lsqr"></span><h3>private  subroutine <a href='../proc/lsqr.html'>LSQR</a>(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conlim, itnlim, nout, istop, itn, anorm, acond, rnorm, arnorm, xnorm)  
+    <div class="card-header codesum"><span class="anchor" id="proc-lsqr"></span> <h3>private  subroutine <a href='../proc/lsqr.html'>LSQR</a>(me, m, n, damp, wantse, u, v, w, x, se, atol, btol, conlim, itnlim, nout, istop, itn, anorm, acond, rnorm, arnorm, xnorm)  
 </h3></div>
     <div class="card-body">
           
@@ -1450,7 +1453,7 @@ condition number of the matrix <code>Abar</code>.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~2"></span>
+              <span class="anchor" id="variable-me~5"></span>
               class(<a href='../type/lsqr_solver.html'>lsqr_solver</a>),
             </td>
 <td>intent(inout)</td>
@@ -1465,7 +1468,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-m~5"></span>
+              <span class="anchor" id="variable-m~8"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1480,7 +1483,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-n~5"></span>
+              <span class="anchor" id="variable-n~9"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1495,7 +1498,7 @@ condition number of the matrix <code>Abar</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-damp"></span>
+              <span class="anchor" id="variable-damp~2"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -1512,7 +1515,7 @@ of <code>damp</code> in the range 0 to <code>sqrt(relpr)*norm(A)</code>
 will probably have a negligible effect.
 Larger values of <code>damp</code> will tend to decrease
 the norm of <code>x</code> and reduce the number of
-iterations required by LSQR.</p><a href="../proc/lsqr.html#variable-damp" class="pull-right"><emph>Read more&hellip;</emph></a>
+iterations required by LSQR.</p><a href="../proc/lsqr.html#variable-damp~2" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
@@ -1587,7 +1590,7 @@ over-written by LSQR.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~3"></span>
+              <span class="anchor" id="variable-x~5"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -1602,7 +1605,7 @@ over-written by LSQR.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-se"></span>
+              <span class="anchor" id="variable-se~2"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -1622,7 +1625,7 @@ diagonal of the inverse of <code>Abar(transpose)*Abar</code>
 and:
 * <code>t = 1      if  m &lt;= n</code>
 * <code>t = m - n  if  m &gt; n  and  damp = 0</code>
-* <code>t = m      if  damp /= 0</code></p><a href="../proc/lsqr.html#variable-se" class="pull-right"><emph>Read more&hellip;</emph></a>
+* <code>t = m      if  damp /= 0</code></p><a href="../proc/lsqr.html#variable-se~2" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
@@ -1735,7 +1738,7 @@ a summary will be printed on file <code>nout</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-itn"></span>
+              <span class="anchor" id="variable-itn~2"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -1750,7 +1753,7 @@ a summary will be printed on file <code>nout</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-anorm"></span>
+              <span class="anchor" id="variable-anorm~2"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -1773,7 +1776,7 @@ may be an inconsistency between modes 1 and 2).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-acond"></span>
+              <span class="anchor" id="variable-acond~2"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -1790,7 +1793,7 @@ may again indicate an error in <code>aprod</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rnorm"></span>
+              <span class="anchor" id="variable-rnorm~2"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -1808,7 +1811,7 @@ a solution.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-arnorm"></span>
+              <span class="anchor" id="variable-arnorm~2"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -1828,7 +1831,7 @@ computed from the output vector <code>x</code>.)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-xnorm"></span>
+              <span class="anchor" id="variable-xnorm~2"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -1850,7 +1853,7 @@ solution vector <code>x</code>.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-acheck"></span><h3>private  subroutine <a href='../proc/acheck.html'>acheck</a>(me, m, n, nout, eps, v, w, x, y, inform)  
+    <div class="card-header codesum"><span class="anchor" id="proc-acheck"></span> <h3>private  subroutine <a href='../proc/acheck.html'>acheck</a>(me, m, n, nout, eps, v, w, x, y, inform)  
 </h3></div>
     <div class="card-body">
           
@@ -1869,7 +1872,7 @@ solution vector <code>x</code>.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~3"></span>
+              <span class="anchor" id="variable-me~6"></span>
               class(<a href='../type/lsqr_solver.html'>lsqr_solver</a>),
             </td>
 <td>intent(inout)</td>
@@ -1884,7 +1887,7 @@ solution vector <code>x</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-m~6"></span>
+              <span class="anchor" id="variable-m~9"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1899,7 +1902,7 @@ solution vector <code>x</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-n~6"></span>
+              <span class="anchor" id="variable-n~10"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1944,7 +1947,7 @@ solution vector <code>x</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-v~4"></span>
+              <span class="anchor" id="variable-v~3"></span>
               real(kind=wp)
             </td>
 <td></td>
@@ -1959,7 +1962,7 @@ solution vector <code>x</code>.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-w~4"></span>
+              <span class="anchor" id="variable-w~3"></span>
               real(kind=wp)
             </td>
 <td></td>
@@ -2028,7 +2031,7 @@ inform = 1 otherwise.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-xcheck"></span><h3>private  subroutine <a href='../proc/xcheck.html'>xcheck</a>(me, m, n, nout, anorm, damp, eps, b, u, v, w, x, inform, test1, test2, test3)  
+    <div class="card-header codesum"><span class="anchor" id="proc-xcheck"></span> <h3>private  subroutine <a href='../proc/xcheck.html'>xcheck</a>(me, m, n, nout, anorm, damp, eps, b, u, v, w, x, inform, test1, test2, test3)  
 </h3></div>
     <div class="card-body">
           
@@ -2047,7 +2050,7 @@ inform = 1 otherwise.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~4"></span>
+              <span class="anchor" id="variable-me~7"></span>
               class(<a href='../type/lsqr_solver.html'>lsqr_solver</a>),
             </td>
 <td>intent(inout)</td>
@@ -2062,7 +2065,7 @@ inform = 1 otherwise.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-m~7"></span>
+              <span class="anchor" id="variable-m~10"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2077,7 +2080,7 @@ inform = 1 otherwise.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-n~7"></span>
+              <span class="anchor" id="variable-n~11"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2108,7 +2111,7 @@ If nout = 0, nothing is printed.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-anorm~2"></span>
+              <span class="anchor" id="variable-anorm~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -2126,7 +2129,7 @@ from LSQR or CRAIG.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-damp~2"></span>
+              <span class="anchor" id="variable-damp~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -2156,7 +2159,7 @@ from LSQR or CRAIG.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-b"></span>
+              <span class="anchor" id="variable-b~2"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -2186,7 +2189,7 @@ from LSQR or CRAIG.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-v~3"></span>
+              <span class="anchor" id="variable-v~4"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -2201,7 +2204,7 @@ from LSQR or CRAIG.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-w~3"></span>
+              <span class="anchor" id="variable-w~4"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -2216,7 +2219,7 @@ from LSQR or CRAIG.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~4"></span>
+              <span class="anchor" id="variable-x~7"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -2248,7 +2251,7 @@ solve systems 1 2 or 3 above.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-test1"></span>
+              <span class="anchor" id="variable-test1~3"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -2268,7 +2271,7 @@ defined as a parameter below.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-test2"></span>
+              <span class="anchor" id="variable-test2~3"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>
@@ -2288,7 +2291,7 @@ defined as a parameter below.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-test3"></span>
+              <span class="anchor" id="variable-test3~3"></span>
               real(kind=wp),
             </td>
 <td>intent(out)</td>

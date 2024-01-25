@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -161,7 +164,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~6"></span>
+              <span class="anchor" id="variable-me~4"></span>
               class(<a href='../type/lsqr_solver_ez.html'>lsqr_solver_ez</a>),
             </td>
 <td>intent(inout)</td>
@@ -176,7 +179,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-b~2"></span>
+              <span class="anchor" id="variable-b"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -191,7 +194,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-damp~3"></span>
+              <span class="anchor" id="variable-damp"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -206,7 +209,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~2"></span>
+              <span class="anchor" id="variable-x~4"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -236,7 +239,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-se~2"></span>
+              <span class="anchor" id="variable-se"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -251,7 +254,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-itn~2"></span>
+              <span class="anchor" id="variable-itn"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -266,7 +269,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-anorm~3"></span>
+              <span class="anchor" id="variable-anorm"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -281,7 +284,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-acond~2"></span>
+              <span class="anchor" id="variable-acond"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -296,7 +299,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rnorm~2"></span>
+              <span class="anchor" id="variable-rnorm"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -311,7 +314,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-arnorm~2"></span>
+              <span class="anchor" id="variable-arnorm"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -326,7 +329,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-xnorm~2"></span>
+              <span class="anchor" id="variable-xnorm"></span>
               real(kind=wp),
             </td>
 <td>intent(out),</td>
@@ -368,7 +371,7 @@
 <!-- proc~lsqr -->
 <g id="proc~~solve_ez~~CallsGraph_node2" class="node">
 <title>proc~lsqr</title>
-<g id="a_proc~~solve_ez~~CallsGraph_node2"><a xlink:href=".././proc/lsqr.html" xlink:title="lsqr_module::lsqr_solver%LSQR">
+<g id="a_proc~~solve_ez~~CallsGraph_node2"><a xlink:href="../proc/lsqr.html" xlink:title="lsqr_module::lsqr_solver%LSQR">
 <polygon fill="#d9534f" stroke="#d9534f" points="431,-108 250,-108 250,-84 431,-84 431,-108"/>
 <text text-anchor="middle" x="340.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::lsqr_solver%LSQR</text>
 </a>
@@ -395,7 +398,7 @@
 <!-- proc~d2norm -->
 <g id="proc~~solve_ez~~CallsGraph_node4" class="node">
 <title>proc~d2norm</title>
-<g id="a_proc~~solve_ez~~CallsGraph_node4"><a xlink:href=".././proc/d2norm.html" xlink:title="lsqr_module::d2norm">
+<g id="a_proc~~solve_ez~~CallsGraph_node4"><a xlink:href="../proc/d2norm.html" xlink:title="lsqr_module::d2norm">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="603,-150 476,-150 476,-126 603,-126 603,-150"/>
 <text text-anchor="middle" x="539.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqr_module::d2norm</text>
 </a>
@@ -410,7 +413,7 @@
 <!-- proc~dcopy -->
 <g id="proc~~solve_ez~~CallsGraph_node5" class="node">
 <title>proc~dcopy</title>
-<g id="a_proc~~solve_ez~~CallsGraph_node5"><a xlink:href=".././proc/dcopy.html" xlink:title="lsqpblas_module::dcopy">
+<g id="a_proc~~solve_ez~~CallsGraph_node5"><a xlink:href="../proc/dcopy.html" xlink:title="lsqpblas_module::dcopy">
 <polygon fill="#d9534f" stroke="#d9534f" points="610.5,-108 468.5,-108 468.5,-84 610.5,-84 610.5,-108"/>
 <text text-anchor="middle" x="539.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::dcopy</text>
 </a>
@@ -425,7 +428,7 @@
 <!-- proc~dnrm2 -->
 <g id="proc~~solve_ez~~CallsGraph_node6" class="node">
 <title>proc~dnrm2</title>
-<g id="a_proc~~solve_ez~~CallsGraph_node6"><a xlink:href=".././proc/dnrm2.html" xlink:title="lsqpblas_module::dnrm2">
+<g id="a_proc~~solve_ez~~CallsGraph_node6"><a xlink:href="../proc/dnrm2.html" xlink:title="lsqpblas_module::dnrm2">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="612,-66 467,-66 467,-42 612,-42 612,-66"/>
 <text text-anchor="middle" x="539.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::dnrm2</text>
 </a>
@@ -440,7 +443,7 @@
 <!-- proc~dscal -->
 <g id="proc~~solve_ez~~CallsGraph_node7" class="node">
 <title>proc~dscal</title>
-<g id="a_proc~~solve_ez~~CallsGraph_node7"><a xlink:href=".././proc/dscal.html" xlink:title="lsqpblas_module::dscal">
+<g id="a_proc~~solve_ez~~CallsGraph_node7"><a xlink:href="../proc/dscal.html" xlink:title="lsqpblas_module::dscal">
 <polygon fill="#d9534f" stroke="#d9534f" points="608,-24 471,-24 471,0 608,0 608,-24"/>
 <text text-anchor="middle" x="539.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lsqpblas_module::dscal</text>
 </a>
@@ -454,17 +457,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
