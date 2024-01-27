@@ -80,6 +80,12 @@ The latest API documentation can be found [here](https://jacobwilliams.github.io
 
 The lsqr source code and related files and documentation are distributed under a permissive free software [license](https://github.com/jacobwilliams/LSQR/blob/master/LICENSE.txt) (BSD-style).
 
+### See also
+
+ * [LSMR](https://github.com/jacobwilliams/LSMR)
+ * [LUSOL](https://github.com/jacobwilliams/lusol)
+ * [nlesolver-fortran](https://github.com/jacobwilliams/nlesolver-fortran)
+
 ### References
 
 * The original Fortran 77 version of this algorithm can be found here: [https://web.stanford.edu/group/SOL/software/lsqr/](https://web.stanford.edu/group/SOL/software/lsqr/) The updated version has been significantly refactored.
