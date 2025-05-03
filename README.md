@@ -69,7 +69,7 @@ fpm test --profile release
 To use `lsqr` within your fpm project, add the following to your `fpm.toml` file:
 ```toml
 [dependencies]
-lsqr = { git="https://github.com/jacobwilliams/lsqr.git" }
+LSQR = { git="https://github.com/jacobwilliams/lsqr.git" }
 ```
 
 ### Documentation
