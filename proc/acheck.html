@@ -1,0 +1,662 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="LSQR -- Sparse Least Squares Solver with Modern Fortran">
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>acheck &ndash; LSQR</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">LSQR </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>acheck
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 7.9% of total for procedures.">48 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/lsqr.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/lsqr.f90.html'>lsqr.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/lsqr_module.html'>lsqr_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">acheck</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/acheck.html#src">acheck</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine acheck(me, m, n, nout, eps, v, w, x, y, inform)  
+</h2>
+    
+
+    <p>Checks the two modes of aprod for <a href="../proc/lsqr.html">LSQR</a>.</p>
+<p>acheck may be called to test the user-written subroutine
+  aprod required by LSQR and CRAIG.  For some m x n matrix A,
+  aprod with mode = 1 and 2 supplies LSQR and CRAIG with products
+  of the form
+     y := y + Ax  and  x := x + A'y
+  respectively, where A' means A(transpose).
+  acheck tries to verify that A and A' refer to the same matrix.</p>
+<h3>Method</h3>
+<p>We cook up some "unlikely" vectors x and y of unit length
+  and test if  y'(y + Ax)  =  x'(x + A'y).</p>
+<h3>History</h3>
+<ul>
+<li>04 Sep 1991  Initial design and code.
+   Michael Saunders, Dept of Operations Research,
+   Stanford University</li>
+<li>10 Feb 1992  aprod and eps added as parameters.
+   tol defined via power.</li>
+</ul>
+
+    <h3>Type Bound</h3>
+    <p><a href='../type/lsqr_solver.html'>lsqr_solver</a></p>
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~6"></span>
+              class(<a href='../type/lsqr_solver.html'>lsqr_solver</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-m~6"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>m</strong></td>
+            <td>
+                <p>No. of rows of A.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~6"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>n</strong></td>
+            <td>
+                <p>No. of columns of A.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nout~4"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nout</strong></td>
+            <td>
+                <p>A file number for printed output.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-eps"></span>
+              real(kind=wp),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>eps</strong></td>
+            <td>
+                <p>The machine precision.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-v~3"></span>
+              real(kind=wp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>v</strong>(n)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-w~3"></span>
+              real(kind=wp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>w</strong>(m)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~5"></span>
+              real(kind=wp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong>(n)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-y~3"></span>
+              real(kind=wp)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>y</strong>(m)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-inform"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>inform</strong></td>
+            <td>
+                <p>Error indicator.
+inform = 0 if aprod seems to be
+consistent.
+inform = 1 otherwise.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~acheck~~CallsGraph Pages: 1 -->
+<svg id="procacheckCallsGraph" width="216pt" height="200pt"
+ viewBox="0.00 0.00 216.00 200.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~acheck~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 196)">
+<title>proc~~acheck~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-196 212,-196 212,4 -4,4"/>
+<!-- proc~acheck -->
+<g id="proc~~acheck~~CallsGraph_node1" class="node">
+<title>proc~acheck</title>
+<polygon fill="none" stroke="black" points="118,-108 0,-108 0,-84 118,-84 118,-108"/>
+<text text-anchor="middle" x="59" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50">lsqr_solver%acheck</text>
+</g>
+<!-- aprod -->
+<g id="proc~~acheck~~CallsGraph_node2" class="node">
+<title>aprod</title>
+<polygon fill="#777777" stroke="#777777" points="208,-192 154,-192 154,-168 208,-168 208,-192"/>
+<text text-anchor="middle" x="181" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aprod</text>
+</g>
+<!-- proc~acheck&#45;&gt;aprod -->
+<g id="proc~~acheck~~CallsGraph_edge1" class="edge">
+<title>proc~acheck&#45;&gt;aprod</title>
+<path fill="none" stroke="#000000" d="M77.19,-108.04C97.42,-122.19 131.19,-145.84 154.48,-162.13"/>
+<polygon fill="#000000" stroke="#000000" points="152.64,-165.12 162.84,-167.99 156.65,-159.39 152.64,-165.12"/>
+</g>
+<!-- proc~dcopy -->
+<g id="proc~~acheck~~CallsGraph_node3" class="node">
+<title>proc~dcopy</title>
+<g id="a_proc~~acheck~~CallsGraph_node3"><a xlink:href="../proc/dcopy.html" xlink:title="dcopy">
+<polygon fill="#d9534f" stroke="#d9534f" points="208,-150 154,-150 154,-126 208,-126 208,-150"/>
+<text text-anchor="middle" x="181" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dcopy</text>
+</a>
+</g>
+</g>
+<!-- proc~acheck&#45;&gt;proc~dcopy -->
+<g id="proc~~acheck~~CallsGraph_edge2" class="edge">
+<title>proc~acheck&#45;&gt;proc~dcopy</title>
+<path fill="none" stroke="#000000" d="M94.39,-108.04C109.84,-113.44 128.08,-119.83 143.75,-125.31"/>
+<polygon fill="#000000" stroke="#000000" points="143.02,-128.77 153.62,-128.77 145.34,-122.16 143.02,-128.77"/>
+</g>
+<!-- proc~ddot -->
+<g id="proc~~acheck~~CallsGraph_node4" class="node">
+<title>proc~ddot</title>
+<g id="a_proc~~acheck~~CallsGraph_node4"><a xlink:href="../proc/ddot.html" xlink:title="ddot">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="208,-108 154,-108 154,-84 208,-84 208,-108"/>
+<text text-anchor="middle" x="181" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ddot</text>
+</a>
+</g>
+</g>
+<!-- proc~acheck&#45;&gt;proc~ddot -->
+<g id="proc~~acheck~~CallsGraph_edge3" class="edge">
+<title>proc~acheck&#45;&gt;proc~ddot</title>
+<path fill="none" stroke="#000000" d="M118.24,-96C126.96,-96 135.73,-96 143.81,-96"/>
+<polygon fill="#000000" stroke="#000000" points="143.98,-99.5 153.98,-96 143.98,-92.5 143.98,-99.5"/>
+</g>
+<!-- proc~dnrm2 -->
+<g id="proc~~acheck~~CallsGraph_node5" class="node">
+<title>proc~dnrm2</title>
+<g id="a_proc~~acheck~~CallsGraph_node5"><a xlink:href="../proc/dnrm2.html" xlink:title="dnrm2">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="208,-66 154,-66 154,-42 208,-42 208,-66"/>
+<text text-anchor="middle" x="181" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dnrm2</text>
+</a>
+</g>
+</g>
+<!-- proc~acheck&#45;&gt;proc~dnrm2 -->
+<g id="proc~~acheck~~CallsGraph_edge4" class="edge">
+<title>proc~acheck&#45;&gt;proc~dnrm2</title>
+<path fill="none" stroke="#000000" d="M94.39,-83.96C109.84,-78.56 128.08,-72.17 143.75,-66.69"/>
+<polygon fill="#000000" stroke="#000000" points="145.34,-69.84 153.62,-63.23 143.02,-63.23 145.34,-69.84"/>
+</g>
+<!-- proc~dscal -->
+<g id="proc~~acheck~~CallsGraph_node6" class="node">
+<title>proc~dscal</title>
+<g id="a_proc~~acheck~~CallsGraph_node6"><a xlink:href="../proc/dscal.html" xlink:title="dscal">
+<polygon fill="#d9534f" stroke="#d9534f" points="208,-24 154,-24 154,0 208,0 208,-24"/>
+<text text-anchor="middle" x="181" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dscal</text>
+</a>
+</g>
+</g>
+<!-- proc~acheck&#45;&gt;proc~dscal -->
+<g id="proc~~acheck~~CallsGraph_edge5" class="edge">
+<title>proc~acheck&#45;&gt;proc~dscal</title>
+<path fill="none" stroke="#000000" d="M77.19,-83.96C97.42,-69.81 131.19,-46.16 154.48,-29.87"/>
+<polygon fill="#000000" stroke="#000000" points="156.65,-32.61 162.84,-24.01 152.64,-26.88 156.65,-32.61"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">   </span><span class="k">subroutine </span><span class="n">acheck</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">nout</span><span class="p">,</span><span class="w"> </span><span class="n">eps</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                     </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">inform</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">implicit none</span>
+
+<span class="k">   class</span><span class="p">(</span><span class="n">lsqr_solver</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">   </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">m</span><span class="w">       </span><span class="c">!! No. of rows of A.</span>
+<span class="w">   </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w">       </span><span class="c">!! No. of columns of A.</span>
+<span class="w">   </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">nout</span><span class="w">    </span><span class="c">!! A file number for printed output.</span>
+<span class="w">   </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">inform</span><span class="w">  </span><span class="c">!! Error indicator.</span>
+<span class="w">                                   </span><span class="c">!! inform = 0 if aprod seems to be</span>
+<span class="w">                                   </span><span class="c">!! consistent.</span>
+<span class="w">                                   </span><span class="c">!! inform = 1 otherwise.</span>
+<span class="w">   </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">eps</span><span class="w">     </span><span class="c">!! The machine precision.</span>
+<span class="w">   </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="w">   </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">w</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="w">   </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="w">   </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="w">   </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">power</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5_wp</span><span class="w">   </span><span class="c">!! eps**power is used as the tolerance for judging</span>
+<span class="w">                                          </span><span class="c">!! whether `y&#39;(y + Ax)  =  x&#39;(x + A&#39;y)`</span>
+<span class="w">                                          </span><span class="c">!! to sufficient accuracy.</span>
+<span class="w">                                          </span><span class="c">!! power should be in the range (0.25, 0.9) say.</span>
+<span class="w">                                          </span><span class="c">!! For example, power = 0.75 means that we are happy</span>
+<span class="w">                                          </span><span class="c">!! if three quarters of the available digits agree.</span>
+<span class="w">                                          </span><span class="c">!! power = 0.5 seems a reasonable requirement</span>
+<span class="w">                                          </span><span class="c">!! (asking for half the digits to agree).</span>
+
+<span class="w">   </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span>
+<span class="w">   </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">alfa</span><span class="p">,</span><span class="w"> </span><span class="n">beta</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">test1</span><span class="p">,</span><span class="w"> </span><span class="n">test2</span><span class="p">,</span><span class="w"> </span><span class="n">test3</span><span class="p">,</span><span class="w"> </span><span class="n">tol</span>
+
+<span class="w">   </span><span class="n">tol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eps</span><span class="o">**</span><span class="n">power</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nout</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">nout</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(//A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="s1">&#39;Enter acheck. Test of aprod for LSQR and CRAIG&#39;</span>
+
+<span class="w">   </span><span class="c">! ==================================================================</span>
+<span class="w">   </span><span class="c">! Cook up some &quot;unlikely&quot; vectors x and y of unit length.</span>
+<span class="w">   </span><span class="c">! ==================================================================</span>
+<span class="w">   </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">one</span>
+<span class="w">   </span><span class="k">do </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span>
+<span class="w">      </span><span class="n">t</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">one</span>
+<span class="w">      </span><span class="n">x</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">end do</span>
+
+<span class="k">   </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">one</span>
+<span class="w">   </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">m</span>
+<span class="w">      </span><span class="n">t</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">one</span>
+<span class="w">      </span><span class="n">y</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">end do</span>
+
+<span class="k">   </span><span class="n">alfa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dnrm2</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="n">beta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dnrm2</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">dscal</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">one</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">alfa</span><span class="p">),</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">dscal</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">one</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">beta</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">   </span><span class="c">! ==================================================================</span>
+<span class="w">   </span><span class="c">! Test if y&#39;(y + Ax) = x&#39;(x + A&#39;y).</span>
+<span class="w">   </span><span class="c">! ==================================================================</span>
+
+<span class="w">   </span><span class="c">! First set w = y + Ax, v = x + A&#39;y.</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">dcopy</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">dcopy</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">aprod</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">aprod</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">   </span><span class="c">! Now set alfa = y&#39;w, beta = x&#39;v.</span>
+
+<span class="w">   </span><span class="n">alfa</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">ddot</span><span class="w">  </span><span class="p">(</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="n">beta</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">ddot</span><span class="w">  </span><span class="p">(</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="n">test1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="w"> </span><span class="n">alfa</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beta</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="n">test2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">one</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="nb">abs</span><span class="p">(</span><span class="w"> </span><span class="n">alfa</span><span class="w"> </span><span class="p">)</span><span class="w">  </span><span class="o">+</span><span class="w">  </span><span class="nb">abs</span><span class="p">(</span><span class="w"> </span><span class="n">beta</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="n">test3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">test1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">test2</span>
+
+<span class="w">   </span><span class="c">! See if alfa and beta are essentially the same.</span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">test3</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">tol</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">inform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nout</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">nout</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(1P,A,1X,E10.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">         </span><span class="s1">&#39;aprod seems OK. Relative error =&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">test3</span>
+<span class="w">   </span><span class="k">else</span>
+<span class="k">      </span><span class="n">inform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nout</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">nout</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(1P,A,1X,E10.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">         </span><span class="s1">&#39;aprod seems incorrect. Relative error =&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">test3</span>
+<span class="w">   </span><span class="k">end if</span>
+
+<span class="k">   end subroutine </span><span class="n">acheck</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              LSQR
+ was developed by Jacob Williams<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>
